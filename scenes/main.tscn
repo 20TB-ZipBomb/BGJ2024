@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://mrwfhtbww3xe"]
+[gd_scene load_steps=3 format=3 uid="uid://mrwfhtbww3xe"]
 
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_pytbp"]
 [ext_resource type="PackedScene" uid="uid://dqboerkph0roh" path="res://scenes/ui/main_menu.tscn" id="2_2ff72"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" node_paths=PackedStringArray("level_container", "ui_container")]
+script = ExtResource("1_pytbp")
+level_container = NodePath("LevelContainer")
+ui_container = NodePath("UI")
 
-[node name="Game" type="Node2D" parent="."]
+[node name="LevelContainer" type="Node2D" parent="."]
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
