@@ -1,8 +1,13 @@
-[gd_scene format=3 uid="uid://mrwfhtbww3xe"]
+[gd_scene load_steps=2 format=3 uid="uid://mrwfhtbww3xe"]
+
+[ext_resource type="PackedScene" uid="uid://b1amqp52ot6iw" path="res://scenes/levels/test_level.tscn" id="1_8kmj7"]
 
 [node name="Main" type="Node"]
 
 [node name="Game" type="Node2D" parent="."]
+
+[node name="TestLevel" parent="Game" instance=ExtResource("1_8kmj7")]
+position = Vector2(3.79753, 5.52263)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

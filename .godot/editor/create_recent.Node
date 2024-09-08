@@ -1,3 +1,8 @@
-Control
+StaticBody2D
 Node2D
+CollisionShape2D
+Camera2D
+Sprite2D
+CharacterBody2D
+Control
 Node
