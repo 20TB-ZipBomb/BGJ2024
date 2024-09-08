@@ -1,16 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://mrwfhtbww3xe"]
 
-[ext_resource type="PackedScene" uid="uid://b1amqp52ot6iw" path="res://scenes/levels/test_level.tscn" id="1_8kmj7"]
+[ext_resource type="PackedScene" uid="uid://dqboerkph0roh" path="res://scenes/ui/main_menu.tscn" id="2_2ff72"]
 
 [node name="Main" type="Node"]
 
 [node name="Game" type="Node2D" parent="."]
 
-[node name="TestLevel" parent="Game" instance=ExtResource("1_8kmj7")]
-position = Vector2(3.79753, 5.52263)
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" parent="UI" instance=ExtResource("2_2ff72")]
+layout_mode = 1
