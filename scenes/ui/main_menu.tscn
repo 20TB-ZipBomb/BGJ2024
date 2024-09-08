@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b1amqp52ot6iw" path="res://scenes/levels/test_level.tscn" id="2_mww2v"]
 
 [sub_resource type="SystemFont" id="SystemFont_em61w"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_y8mke"]
 font = SubResource("SystemFont_em61w")
