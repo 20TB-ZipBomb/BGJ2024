@@ -1,8 +1,0 @@
-res://scenes/characters/player.tscn
-res://scripts/player/player.gd
-res://scenes/levels/test_level.tscn
-res://scenes/main.tscn
-res://scenes/ui/main_menu.tscn
-res://scripts/ui/main_menu.gd
-res://scripts/autoloads/globals.gd
-res://scripts/main.gd
