@@ -44,6 +44,9 @@ texture = SubResource("PlaceholderTexture2D_kcogh")
 position = Vector2(0.0190921, 0.00697327)
 shape = SubResource("RectangleShape2D_pyvad")
 
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Obstacle2"]
+vertices = PackedVector2Array(-13.7839, -53.6533, 5.25906, -53.7647, 6.53973, -44.633, -13.8953, -44.9671)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 position = Vector2(-17.1634, -29.014)
@@ -55,16 +58,12 @@ position = Vector2(26.0721, -8.7776)
 
 [node name="Animal" parent="." instance=ExtResource("2_102cr")]
 position = Vector2(-21.4556, -11.0296)
-max_idle_time = 5
 
 [node name="Animal2" parent="." instance=ExtResource("2_102cr")]
 position = Vector2(-21.4556, 13.7471)
-max_idle_time = 5
 
 [node name="Animal3" parent="." instance=ExtResource("2_102cr")]
 position = Vector2(-63.9299, -11.0296)
-max_idle_time = 5
 
 [node name="Animal4" parent="." instance=ExtResource("2_102cr")]
 position = Vector2(-21.4556, -46.6609)
-max_idle_time = 5
