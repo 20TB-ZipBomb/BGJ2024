@@ -8,7 +8,7 @@ subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_y8mke"]
 font = SubResource("SystemFont_em61w")
-font_size = 64
+font_size = 32
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,7 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="SpacerTop" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="StartGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
@@ -62,7 +62,7 @@ layout_mode = 2
 text = "Start Game"
 
 [node name="SpacerMid" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="QuitGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
@@ -71,7 +71,6 @@ layout_mode = 2
 text = "Quit Game"
 
 [node name="SpacerBot" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Buttons"]
-custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]

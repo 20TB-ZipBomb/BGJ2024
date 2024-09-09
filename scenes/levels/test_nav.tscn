@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://xpl84s0f3nyw"]
+
+[ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_ngob1"]
+[ext_resource type="PackedScene" uid="uid://be18qb18qxiqu" path="res://scenes/characters/animal.tscn" id="2_102cr"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rfgko"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqngr"]
+size = Vector2(21.9206, 10)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kcogh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyvad"]
+size = Vector2(13.4281, 6.67461)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3l5w7"]
+vertices = PackedVector2Array(122.227, -27.9297, 98.3125, 78.3594, -63.7578, 77.5078, -66.1484, -33.2734)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-76.3782, -43.5695, 134.659, -37.5849, 106.31, 88.4072, -73.543, 87.4624)])
+
+[node name="NavTest" type="Node2D"]
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2(0, -39.3806)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+scale = Vector2(21.9726, 10.8556)
+texture = SubResource("PlaceholderTexture2D_rfgko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+shape = SubResource("RectangleShape2D_yqngr")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Obstacle"]
+affect_navigation_mesh = true
+
+[node name="Obstacle2" type="StaticBody2D" parent="."]
+position = Vector2(4.06586, 10.2088)
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle2"]
+scale = Vector2(13.4341, 6.7088)
+texture = SubResource("PlaceholderTexture2D_kcogh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
+position = Vector2(0.0190921, 0.00697327)
+shape = SubResource("RectangleShape2D_pyvad")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(-17.1634, -29.014)
+navigation_polygon = SubResource("NavigationPolygon_3l5w7")
+navigation_layers = 3
+
+[node name="Player" parent="." instance=ExtResource("1_ngob1")]
+position = Vector2(26.0721, -8.7776)
+
+[node name="Animal" parent="." instance=ExtResource("2_102cr")]
+position = Vector2(-21.4556, -11.0296)
+max_idle_time = 5
+
+[node name="Animal2" parent="." instance=ExtResource("2_102cr")]
+position = Vector2(-21.4556, 13.7471)
+max_idle_time = 5
+
+[node name="Animal3" parent="." instance=ExtResource("2_102cr")]
+position = Vector2(-63.9299, -11.0296)
+max_idle_time = 5
+
+[node name="Animal4" parent="." instance=ExtResource("2_102cr")]
+position = Vector2(-21.4556, -46.6609)
+max_idle_time = 5
