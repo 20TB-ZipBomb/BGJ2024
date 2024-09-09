@@ -1,51 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=9 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/grass_tile.png" id="1_yopsd"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
-[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/test_animal.tscn" id="4_wejr3"]
+[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uhxfi"]
+sky_material = SubResource("ProceduralSkyMaterial_1d0ar")
+
+[sub_resource type="Environment" id="Environment_dob34"]
+background_mode = 2
+sky = SubResource("Sky_uhxfi")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvm8w"]
+albedo_texture = ExtResource("1_yopsd")
+uv1_triplanar = true
+texture_filter = 0
 
 [node name="AlexTestLevel" type="Node"]
 
-[node name="Node2D" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="Level" type="Node3D" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="Node2D"]
-texture_filter = 1
-texture_repeat = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -359.0
-offset_top = -225.5
-offset_right = 359.0
-offset_bottom = 225.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_yopsd")
-stretch_mode = 1
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_dob34")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(-0.866025, -0.3847, -0.319384, -5.58429e-08, -0.638768, 0.7694, -0.5, 0.66632, 0.553189, 0, 18.264, 0)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_lvm8w")
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="Node2D" instance=ExtResource("1_uer05")]
-lasso_range = 20.0
+[node name="Player" parent="Level" instance=ExtResource("1_uer05")]
+lasso_range = 0.7
 
-[node name="TestAnimal" parent="Node2D" instance=ExtResource("4_wejr3")]
-position = Vector2(-54, 25)
+[node name="Camera3D" type="Camera3D" parent="Level/Player"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5, 5.3)
+fov = 45.0
+size = 2.709
 
-[node name="TestAnimal2" parent="Node2D" instance=ExtResource("4_wejr3")]
-position = Vector2(-47, -33)
+[node name="TestAnimal" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23142, 0, -1.21179)
 
-[node name="TestAnimal3" parent="Node2D" instance=ExtResource("4_wejr3")]
-position = Vector2(62, -32)
+[node name="TestAnimal2" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41084, 4.76837e-07, -2.15116)
 
-[node name="TestAnimal4" parent="Node2D" instance=ExtResource("4_wejr3")]
-position = Vector2(59, 33)
+[node name="TestAnimal3" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.98627, -4.76837e-07, 1.05204)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Animal" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, 9.53674e-07, 1.977)
 
-[node name="HUD" type="Control" parent="CanvasLayer"]
+[node name="Animal2" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25795, 4.76837e-07, 3.91713)
+
+[node name="Animal3" parent="Level" instance=ExtResource("4_wejr3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29569, 4.76837e-07, -5.58656)
+
+[node name="HUD" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -62,7 +85,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
-[node name="ShoutBar" parent="CanvasLayer/HUD" instance=ExtResource("3_kng4s")]
+[node name="ShoutBar" parent="HUD" instance=ExtResource("3_kng4s")]
 layout_mode = 1
 offset_left = 953.0
 offset_top = 534.0

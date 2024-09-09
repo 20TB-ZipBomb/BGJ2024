@@ -2,38 +2,51 @@
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/simple_farmer.png" id="2_fyp6h"]
-[ext_resource type="Texture2D" uid="uid://blkvh1qoyjbv3" path="res://assets/reticle.png" id="3_3xm4s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewt8a"]
-size = Vector2(8, 6.99438)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nea58"]
+radius = 0.3
+height = 1.0
 
-[node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_msj1a"]
+height = 1.0
+radius = 4.0
+
+[node name="Player" type="CharacterBody3D"]
 motion_mode = 1
 script = ExtResource("1_g4b2t")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+[node name="CollisionShape2D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_nea58")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -8)
+[node name="Tilt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0.1)
+
+[node name="Sprite3D" type="Sprite3D" parent="Tilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+pixel_size = 0.05
+shaded = true
+alpha_cut = 2
+texture_filter = 0
 texture = ExtResource("2_fyp6h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -3.49719)
-shape = SubResource("RectangleShape2D_ewt8a")
-
-[node name="Reticle" type="Sprite2D" parent="."]
+[node name="LeashPoint" type="Node3D" parent="Tilt"]
 unique_name_in_owner = true
-texture_filter = 1
-position = Vector2(0, -8)
-texture = ExtResource("3_3xm4s")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305, 0.235, 0)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+target_position = Vector3(0, 0, -1)
 collision_mask = 8
 hit_from_inside = true
 collide_with_areas = true
+collide_with_bodies = false
+
+[node name="ShoutArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShoutArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_msj1a")

@@ -5,7 +5,7 @@ extends Control
 @onready var progress_bar: ProgressBar = %ProgressBar
 
 func _ready():
-	Globals.shout_energy.connect(set_progress)
+	Globals.shout_energy_changed.connect(set_progress)
 
 func set_progress(percentage: float):
 	progress_bar.value = percentage
