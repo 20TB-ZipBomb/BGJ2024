@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3alwvlu7bmqq"]
+
+[ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
+[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/grass_tile.png" id="1_yopsd"]
+[ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
+[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/test_animal.tscn" id="4_wejr3"]
+
+[node name="AlexTestLevel" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+texture_filter = 1
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -225.5
+offset_right = 359.0
+offset_bottom = 225.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yopsd")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="Node2D" instance=ExtResource("1_uer05")]
+lasso_range = 20.0
+
+[node name="TestAnimal" parent="Node2D" instance=ExtResource("4_wejr3")]
+position = Vector2(-54, 25)
+
+[node name="TestAnimal2" parent="Node2D" instance=ExtResource("4_wejr3")]
+position = Vector2(-47, -33)
+
+[node name="TestAnimal3" parent="Node2D" instance=ExtResource("4_wejr3")]
+position = Vector2(62, -32)
+
+[node name="TestAnimal4" parent="Node2D" instance=ExtResource("4_wejr3")]
+position = Vector2(59, 33)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1086.0
+offset_top = -607.0
+offset_right = -1046.0
+offset_bottom = -567.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="ShoutBar" parent="CanvasLayer/HUD" instance=ExtResource("3_kng4s")]
+layout_mode = 1
+offset_left = 953.0
+offset_top = 534.0
+offset_right = 953.0
+offset_bottom = 534.0
