@@ -1,5 +1,8 @@
 name: "godot-ci export"
-on: push
+on:
+  push:
+    branches:
+      - release
 
 env:
   GODOT_VERSION: 4.3
@@ -27,7 +30,7 @@ jobs:
           mkdir -v -p build/windows
           godot --headless --verbose --export-release "Windows" build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: windows
           path: build/windows
@@ -57,7 +60,7 @@ jobs:
           mkdir -v -p build/linux
           godot --headless --verbose --export-release "Linux" build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: build/linux
@@ -87,7 +90,7 @@ jobs:
           mkdir -v -p build/web
           godot --headless --verbose --export-release "Web" build/web/index.html
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: web
           path: build/web
