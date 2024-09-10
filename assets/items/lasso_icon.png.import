@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpew4axhcdomu"
-path="res://.godot/imported/simple_farmer.png-c9756b8c4f6e6bb4d74514d09bd4d37c.ctex"
+uid="uid://dik1oyf24wmr5"
+path="res://.godot/imported/lasso_icon.png-7f1432f7251d7e347d94f525b14c4091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/simple_farmer.png"
-dest_files=["res://.godot/imported/simple_farmer.png-c9756b8c4f6e6bb4d74514d09bd4d37c.ctex"]
+source_file="res://assets/items/lasso_icon.png"
+dest_files=["res://.godot/imported/lasso_icon.png-7f1432f7251d7e347d94f525b14c4091.ctex"]
 
 [params]
 

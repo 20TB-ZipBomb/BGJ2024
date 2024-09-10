@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bid43j03uy7nc"
-path.s3tc="res://.godot/imported/wood_tile.png-015d4e655050012628bcd37fd1f7bfab.s3tc.ctex"
+uid="uid://ynjlw3a0ahs6"
+path="res://.godot/imported/cow.png-1267d98df795157a6c88bc6f61409246.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wood_tile.png"
-dest_files=["res://.godot/imported/wood_tile.png-015d4e655050012628bcd37fd1f7bfab.s3tc.ctex"]
+source_file="res://assets/characters/cow.png"
+dest_files=["res://.godot/imported/cow.png-1267d98df795157a6c88bc6f61409246.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
