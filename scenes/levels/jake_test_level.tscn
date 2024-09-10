@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cgjayrnnd08td"]
 
-[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/grass_tile.png" id="1_u5vrs"]
+[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_u5vrs"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="2_8r0kf"]
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_rpn6x"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="3_df0a6"]
