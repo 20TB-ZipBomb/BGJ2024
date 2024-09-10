@@ -3,7 +3,7 @@ extends Node
 @export var level_container: Node2D
 @export var ui_container: Control
 
-var current_level: Node2D = null
+var current_level: Node = null
 
 func _ready() -> void:
 	Globals.main = self
