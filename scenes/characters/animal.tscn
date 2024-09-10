@@ -1,10 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://d2m7e7f1ij6ss"]
 
-[ext_resource type="Script" path="res://scenes/characters/animal.gd" id="1_4a3xr"]
-[ext_resource type="Texture2D" uid="uid://ynjlw3a0ahs6" path="res://assets/cow.png" id="1_qnv4c"]
-[ext_resource type="Texture2D" uid="uid://dik1oyf24wmr5" path="res://assets/lasso_icon.png" id="2_tudki"]
-[ext_resource type="Script" path="res://scenes/characters/animal_sprite.gd" id="3_dlphk"]
-[ext_resource type="Script" path="res://scripts/desire.gd" id="5_88ntp"]
+[ext_resource type="Script" path="res://scripts/characters/animal.gd" id="1_4a3xr"]
+[ext_resource type="Texture2D" uid="uid://ynjlw3a0ahs6" path="res://assets/characters/cow.png" id="1_qnv4c"]
+[ext_resource type="Texture2D" uid="uid://dik1oyf24wmr5" path="res://assets/items/lasso_icon.png" id="2_tudki"]
+[ext_resource type="Script" path="res://scripts/characters/animal_sprite.gd" id="3_dlphk"]
+[ext_resource type="Script" path="res://scripts/mechanics/desire.gd" id="5_88ntp"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wyftn"]
 radius = 0.3

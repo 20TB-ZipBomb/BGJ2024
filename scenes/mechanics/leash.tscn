@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwmsx6nlgxkaa"]
 
-[ext_resource type="Script" path="res://scenes/misc/leash/leash.gd" id="1_3ocpm"]
-[ext_resource type="Texture2D" uid="uid://bid43j03uy7nc" path="res://assets/wood_tile.png" id="2_axy5l"]
+[ext_resource type="Script" path="res://scripts/mechanics/leash.gd" id="1_3ocpm"]
+[ext_resource type="Texture2D" uid="uid://bid43j03uy7nc" path="res://assets/scenery/wood_tile.png" id="2_axy5l"]
+
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx3ut"]
 shading_mode = 0
