@@ -1,7 +1,7 @@
 class_name PlayerController
 extends CharacterBody3D
 
-@onready var leash_packed_scene: PackedScene = preload("res://scenes/misc/leash/leash.tscn")
+@export var leash_packed_scene: PackedScene = null
 
 @export var shout_cooldown: float = 5 # Seconds
 @export var speed: float = 4
