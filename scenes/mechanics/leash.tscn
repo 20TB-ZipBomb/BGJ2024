@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwmsx6nlgxkaa"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/leash.gd" id="1_3ocpm"]
+[ext_resource type="Texture2D" uid="uid://bid43j03uy7nc" path="res://assets/scenery/wood_tile.png" id="2_axy5l"]
+
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wx3ut"]
+shading_mode = 0
+albedo_texture = ExtResource("2_axy5l")
+uv1_scale = Vector3(-4.005, -4.005, -4.005)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2t2si"]
+material = SubResource("StandardMaterial3D_wx3ut")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.0
+radial_segments = 4
+cap_top = false
+cap_bottom = false
+
+[node name="Leash" type="Node3D"]
+script = ExtResource("1_3ocpm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_2t2si")
