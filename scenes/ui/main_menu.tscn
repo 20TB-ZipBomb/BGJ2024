@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqboerkph0roh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_hj6qr"]
-[ext_resource type="PackedScene" uid="uid://b1amqp52ot6iw" path="res://scenes/levels/test_level.tscn" id="2_mww2v"]
+[ext_resource type="PackedScene" uid="uid://dly1p06i1c1i4" path="res://scenes/levels/first_level.tscn" id="2_in2bw"]
 
 [sub_resource type="SystemFont" id="SystemFont_em61w"]
 subpixel_positioning = 0
@@ -18,7 +18,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hj6qr")
-start_game_level = ExtResource("2_mww2v")
+start_game_level = ExtResource("2_in2bw")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -1,6 +1,6 @@
 extends Control
 
-@export var start_game_level: PackedScene
+@export var start_game_level: PackedScene = null
 
 func _on_start_game_pressed() -> void:
 	Globals.main.load_level(start_game_level)
