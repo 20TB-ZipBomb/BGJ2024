@@ -14,7 +14,6 @@ height = 1.0
 radius = 0.7
 
 [node name="Animal" type="CharacterBody3D"]
-motion_mode = 1
 script = ExtResource("1_4a3xr")
 
 [node name="Desire" type="Node" parent="." node_paths=PackedStringArray("animal_sprite")]

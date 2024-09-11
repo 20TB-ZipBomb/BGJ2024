@@ -42,9 +42,10 @@ func _physics_process(delta):
 			var sign = ((randi() % 2) - 0.5) * 2
 			wander_vector = wander_vector.rotated(sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * wander_speed
-			move_and_slide()
 		State.SCARED:
 			var sign = ((randi() % 2) - 0.5) * 2
 			wander_vector = wander_vector.rotated(sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * scared_speed
-			move_and_slide()
+	if not is_on_floor():
+		velocity += get_gravity()
+	move_and_slide()
