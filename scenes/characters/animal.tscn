@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/characters/animal_sprite.gd" id="3_dlphk"]
 [ext_resource type="Script" path="res://scripts/mechanics/desire.gd" id="5_88ntp"]
 
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wyftn"]
 radius = 0.3
 height = 1.0

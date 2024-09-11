@@ -8,8 +8,6 @@ class_name Animal
 @onready var lasso_icon: Sprite3D = %LassoIcon
 @onready var leash_point: Node3D = %LeashPoint
 
-var leash: Leash = null
-
 var wander_vector: Vector2 = Vector2.DOWN
 
 enum State {
