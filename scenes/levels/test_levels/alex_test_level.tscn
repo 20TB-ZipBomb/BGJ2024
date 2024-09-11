@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=12 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
+[ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -103,3 +104,8 @@ offset_left = 953.0
 offset_top = 534.0
 offset_right = 953.0
 offset_bottom = 534.0
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="StormSystem" parent="Systems" instance=ExtResource("6_nc3aw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
