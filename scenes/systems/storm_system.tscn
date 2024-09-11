@@ -21,7 +21,7 @@ script = ExtResource("1_3afom")
 animal_scene = ExtResource("2_mnl4w")
 storm_difficulty_curve = SubResource("Curve_llu4w")
 
-[node name="StormTimer" type="Timer" parent="."]
+[node name="StormWaveTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
@@ -33,4 +33,4 @@ curve = SubResource("Curve3D_xmgyp")
 transform = Transform3D(-4.37094e-08, 0, 0.999902, 0, 0.999937, 0, -0.999954, 0, -4.37071e-08, 5, -0.875, -5)
 tilt_enabled = false
 
-[connection signal="timeout" from="StormTimer" to="." method="_on_storm_timer_timeout"]
+[connection signal="timeout" from="StormWaveTimer" to="." method="_on_storm_timer_timeout"]
