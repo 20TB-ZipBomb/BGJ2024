@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgjayrnnd08td"]
+[gd_scene load_steps=9 format=3 uid="uid://cgjayrnnd08td"]
 
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_u5vrs"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="2_8r0kf"]
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_rpn6x"]
-[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="3_df0a6"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="4_hmcg2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
@@ -54,11 +53,8 @@ lasso_range = 0.7
 
 [node name="Camera3D" type="Camera3D" parent="Level/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5, 5.3)
-fov = 40.0
+fov = 100.0
 size = 2.709
-
-[node name="Animal" parent="Level" instance=ExtResource("3_df0a6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, 9.53674e-07, 1.977)
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

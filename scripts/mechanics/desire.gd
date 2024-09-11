@@ -1,36 +1,53 @@
 extends Node
-
 class_name Desire
 
-enum DesireType {NONE, HUNGRY, INJURED, THIRSTY, BURNING}
-
-const DESIRE_COLOR_MAP = {
-	DesireType.NONE: Color("white"),
-	DesireType.HUNGRY: Color("blue"),
-	DesireType.THIRSTY: Color("green"),
-	DesireType.BURNING: Color("red")
+enum DesireTypes {
+	NONE,
+	THIRSTY,
+	INJURED,
+	HUNGRY,
+	WET,
+	SHOCKED,
+	BURNING,
 }
 
-@export var sprite_node_type = "AnimalSprite"
+## The animal sprite being updated with desire colors.
+@export var animal_sprite: Sprite3D = null
+## Maps the desires for each animal to a particular color.
+@export var desire_to_color_map: Dictionary = {
+	DesireTypes.NONE: Color.WHITE,
+	DesireTypes.THIRSTY: Color.GREEN,
+	DesireTypes.INJURED: Color.PINK,
+	DesireTypes.HUNGRY: Color.SADDLE_BROWN,
+	DesireTypes.WET: Color.BLUE,
+	DesireTypes.SHOCKED: Color.YELLOW,
+	DesireTypes.BURNING: Color.FIREBRICK,
+}
 
-var current_desire = DesireType.NONE
+## String representation for the current desire. 
+## This is readonly, and updating it will have no impact.
+@export var _current_desire_string = ""
+var current_desire: DesireTypes = DesireTypes.NONE
 
-var sprite = null
 
-func set_desire(new_desire) -> void:
-	# unsure if there is a better method to ensure type of param
-	if new_desire is not DesireType:
-		print_debug(new_desire, "is not a desire type")
-		pass
-	current_desire = new_desire
-	if sprite:
-		#material.set_shader_parameter("selected_color", DESIRE_COLOR_MAP[new_desire])
-		sprite.modulate = DESIRE_COLOR_MAP[new_desire]
-	
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite = get_node("../Tilt/" + sprite_node_type)
 	var rng = RandomNumberGenerator.new()
-	var desires = DESIRE_COLOR_MAP.keys()
-	set_desire(desires[rng.randi_range(0,3)])
+	var desires = desire_to_color_map.keys()
+	var rand = rng.randi_range(0, len(desire_to_color_map) - 1)
+	update_sprite_color_with_desire(desires[rand])
+
+
+## Sets the color of the current sprite based on the provided desire
+func update_sprite_color_with_desire(new_desire: DesireTypes) -> void:
+	if not animal_sprite:
+		print_debug("The animal sprite is not set, no sprites will have their colors updated")
+		return
+		
+	if not desire_to_color_map.has(new_desire):
+		print_debug("Attempted to set a desire ", new_desire, " but it doesn't have a valid color set")
+		return
+	
+	# Update the current desire and modulate the sprite based on it
+	current_desire = new_desire
+	_current_desire_string = DesireTypes.keys()[current_desire]
+	animal_sprite.modulate = desire_to_color_map[current_desire]
