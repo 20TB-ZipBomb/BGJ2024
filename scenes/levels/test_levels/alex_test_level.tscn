@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=11 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
+[ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
@@ -22,6 +23,8 @@ glow_enabled = true
 albedo_texture = ExtResource("1_yopsd")
 uv1_triplanar = true
 texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfj3e"]
 
 [node name="AlexTestLevel" type="Node"]
 
@@ -67,6 +70,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25795, 4.76837e-07, 3.91713
 
 [node name="Animal3" parent="Level" instance=ExtResource("4_wejr3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.29569, 4.76837e-07, -5.58656)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88929, 0, 4.52151)
+
+[node name="PenArea" type="Area3D" parent="Level/CSGBox3D"]
+script = ExtResource("4_j4edg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/CSGBox3D/PenArea"]
+shape = SubResource("BoxShape3D_gfj3e")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
