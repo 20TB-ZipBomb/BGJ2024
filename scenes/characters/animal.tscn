@@ -13,8 +13,9 @@ height = 1.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_ah35l"]
 radius = 0.7
 
-[node name="Animal" type="CharacterBody3D"]
+[node name="Animal" type="CharacterBody3D" node_paths=PackedStringArray("desire")]
 script = ExtResource("1_4a3xr")
+desire = NodePath("Desire")
 
 [node name="Desire" type="Node" parent="." node_paths=PackedStringArray("animal_sprite")]
 script = ExtResource("5_88ntp")
