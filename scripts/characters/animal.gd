@@ -1,12 +1,14 @@
 extends CharacterBody3D
 class_name Animal
 
+@export var desire: Desire
 @export var wander_speed: float = 0.5
 @export var scared_speed: float = 1.0
 @export var scared_duration: float = 3.0 ## How long the animal will be scared for
 
 @onready var lasso_icon: Sprite3D = %LassoIcon
 @onready var leash_point: Node3D = %LeashPoint
+
 
 var wander_vector: Vector2 = Vector2.DOWN
 
