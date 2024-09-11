@@ -22,6 +22,7 @@ var targeted_animal: Animal:
 		if targeted_animal:
 			targeted_animal.show_lasso()
 
+var dragged_animal_count: int = 0
 var current_shout_cooldown: float = 0
 
 func _ready() -> void:
@@ -41,11 +42,15 @@ func _physics_process(_delta: float) -> void:
 	if body and body.owner is Animal and body.owner not in Leash.leashed_characters:
 		targeted_animal = body.owner
 		if Input.is_action_just_pressed("use_lasso"):
-			Leash.create_leash(leash_point, targeted_animal.leash_point)
+			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
+			dragged_animal_count += 1
+			leash.tree_exiting.connect(func():
+				dragged_animal_count -= 1
+			)
 	else:
 		targeted_animal = null
 		
-	var movement_vector: Vector2 = direction * (speed * pow(speed_reduction_per_dragged_body, Leash.leashed_characters.size()))
+	var movement_vector: Vector2 = direction * (speed * pow(speed_reduction_per_dragged_body, dragged_animal_count))
 	velocity = Vector3(movement_vector.x, 0, movement_vector.y)
 	move_and_slide()
 
