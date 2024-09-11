@@ -17,6 +17,10 @@ radius = 0.7
 motion_mode = 1
 script = ExtResource("1_4a3xr")
 
+[node name="Desire" type="Node" parent="." node_paths=PackedStringArray("animal_sprite")]
+script = ExtResource("5_88ntp")
+animal_sprite = NodePath("../Tilt/AnimalSprite")
+
 [node name="Tilt" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0.1)
 
@@ -51,6 +55,3 @@ collision_mask = 8
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LassoableArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("SphereShape3D_ah35l")
-
-[node name="Desire" type="Node" parent="."]
-script = ExtResource("5_88ntp")

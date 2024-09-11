@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgjayrnnd08td"]
+
+[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_u5vrs"]
+[ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="2_8r0kf"]
+[ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_rpn6x"]
+[ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="4_hmcg2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uhxfi"]
+sky_material = SubResource("ProceduralSkyMaterial_1d0ar")
+
+[sub_resource type="Environment" id="Environment_dob34"]
+background_mode = 2
+sky = SubResource("Sky_uhxfi")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvm8w"]
+albedo_texture = ExtResource("1_u5vrs")
+uv1_triplanar = true
+texture_filter = 0
+
+[node name="JakeTestLevel" type="Node"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_dob34")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(-0.866025, -0.3847, -0.319384, -5.58429e-08, -0.638768, 0.7694, -0.5, 0.66632, 0.553189, 0, 18.264, 0)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(30, 1, 30)
+material = SubResource("StandardMaterial3D_lvm8w")
+metadata/_edit_lock_ = true
+
+[node name="Systems" type="Node" parent="Level"]
+
+[node name="StormSystem" parent="Level/Systems" instance=ExtResource("2_8r0kf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
+
+[node name="Player" parent="Level" instance=ExtResource("2_rpn6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00857115, -4.76837e-07, -0.00502801)
+lasso_range = 0.7
+
+[node name="Camera3D" type="Camera3D" parent="Level/Player"]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5, 5.3)
+fov = 100.0
+size = 2.709
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.848437
+anchor_top = 0.843056
+anchor_right = 1.81719
+anchor_bottom = 1.7875
+offset_left = -1086.0
+offset_top = -607.0
+offset_right = -1046.0
+offset_bottom = -567.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="ShoutBar" parent="HUD" instance=ExtResource("4_hmcg2")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.051
+offset_top = -58.5203
+offset_right = -100.051
+offset_bottom = -58.5203
+grow_horizontal = 0
+grow_vertical = 0
