@@ -6,13 +6,16 @@ class_name Desire
 ## and those that are 'storm-specific' for the time-being.
 enum DesireType {
 	NONE,
-	THIRSTY,
-	INJURED,
-	HUNGRY,
-	WET,
-	SHOCKED,
-	BURNING,
-	MAX,
+	RED_PEN,
+	BLUE_PEN,
+	GREEN_PEN,
+	YELLOW_PEN,
+	#THIRSTY,
+	#INJURED,
+	#HUNGRY,
+	#WET,
+	#SHOCKED,
+	#BURNING,
 }
 
 ## The animal sprite being updated with desire colors.
@@ -24,12 +27,16 @@ enum DesireType {
 ## (╯°□°)╯︵ ┻━┻
 @export var desire_to_color_map: Dictionary = {
 	DesireType.NONE: Color.WHITE,
-	DesireType.THIRSTY: Color.GREEN,
-	DesireType.INJURED: Color.PINK,
-	DesireType.HUNGRY: Color.SADDLE_BROWN,
-	DesireType.WET: Color.BLUE,
-	DesireType.SHOCKED: Color.YELLOW,
-	DesireType.BURNING: Color.FIREBRICK,
+	DesireType.RED_PEN: Color.RED,
+	DesireType.BLUE_PEN: Color.BLUE,
+	DesireType.GREEN_PEN: Color.GREEN,
+	DesireType.YELLOW_PEN: Color.YELLOW,
+	#DesireType.THIRSTY: Color.GREEN,
+	#DesireType.INJURED: Color.PINK,
+	#DesireType.HUNGRY: Color.SADDLE_BROWN,
+	#DesireType.WET: Color.BLUE,
+	#DesireType.SHOCKED: Color.YELLOW,
+	#DesireType.BURNING: Color.FIREBRICK,
 }
 
 ## String representation for the current desire.
@@ -49,7 +56,7 @@ func roll_new_desire_and_update_sprite() -> void:
 		return
 
 	var rng = RandomNumberGenerator.new()
-	var random_desire_type = rng.randi_range(0, DesireType.MAX - 1) as DesireType
+	var random_desire_type: DesireType = DesireType.values().pick_random() #rng.randi_range(0, DesireType.MAX - 1) as DesireType
 	if not desire_to_color_map.has(random_desire_type):
 		print_debug("Attempted to set a desire ", DesireType.keys()[random_desire_type], " but it doesn't have a valid color set")
 		return
