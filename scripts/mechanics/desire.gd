@@ -44,6 +44,8 @@ enum DesireType {
 @export var _current_desire_string = ""
 var current_desire: DesireType = DesireType.NONE
 
+@export var burning_particles: GPUParticles3D
+
 
 func _ready() -> void:
 	roll_new_desire_and_update_sprite()
@@ -64,6 +66,13 @@ func roll_new_desire_and_update_sprite() -> void:
 	# Update the current desire and its string
 	current_desire = random_desire_type
 	_current_desire_string = DesireType.keys()[current_desire]
+	
+	match current_desire:
+		DesireType.RED_PEN:
+			burning_particles.emitting = true
+		_:
+			burning_particles.emitting = false
+			pass
 
 	# Modulate the sprite based on the color associated with the desire
 	animal_sprite.modulate = desire_to_color_map[current_desire]
