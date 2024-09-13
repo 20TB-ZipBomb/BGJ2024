@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce8i21qt6ws87"]
+[gd_scene load_steps=4 format=3 uid="uid://ce8i21qt6ws87"]
 
 [ext_resource type="Script" path="res://scripts/ui/shout_bar.gd" id="1_vyfse"]
+[ext_resource type="Texture2D" uid="uid://mv4lmmtcdtup" path="res://assets/ui/progress_over.png" id="2_7ulx5"]
+[ext_resource type="Texture2D" uid="uid://cmhd2fkrcbcws" path="res://assets/ui/progress_fill.png" id="3_j71vn"]
 
 [node name="ShoutBar" type="Control"]
 layout_mode = 3
@@ -17,26 +19,23 @@ script = ExtResource("1_vyfse")
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = -29.5
-offset_top = -27.0
-offset_right = 29.5
-offset_bottom = -4.0
-text = "SHOUT!"
+offset_left = -31.0
+offset_top = -30.0
+offset_right = 31.0
+offset_bottom = -7.0
+text = "SHOUT!
+"
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.37
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
 offset_top = -2.0
-offset_right = 65.37
+offset_right = 65.0
 offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
 max_value = 1.0
 step = 0.001
-show_percentage = false
+nine_patch_stretch = true
+texture_over = ExtResource("2_7ulx5")
+texture_progress = ExtResource("3_j71vn")
