@@ -42,21 +42,23 @@ enum DesireType {
 ## String representation for the current desire.
 ## This is readonly, and updating it will have no impact.
 @export var _current_desire_string = ""
-var current_desire: DesireType = DesireType.NONE
+var current_desire: DesireType = DesireType.NONE:
+	set(value):
+		if value != current_desire:
+			current_desire = value
+			desire_changed.emit(current_desire)
 
 @export var burning_particles: GPUParticles3D
 
+signal desire_changed(new_desire: DesireType)
 
 func _ready() -> void:
-	roll_new_desire_and_update_sprite()
+	desire_changed.connect(_on_desire_changed)
+	roll_new_desire()
 
-
-## Sets the color of the current sprite based on the provided desire
-func roll_new_desire_and_update_sprite() -> void:
-	if not animal_sprite:
-		Log.warn("The animal sprite is not set, no sprites will have their colors updated")
-		return
-
+## Randomly assigns a new desire
+func roll_new_desire() -> void:
+	var rng = RandomNumberGenerator.new()
 	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
 		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
@@ -66,7 +68,15 @@ func roll_new_desire_and_update_sprite() -> void:
 	current_desire = random_desire_type
 	_current_desire_string = DesireType.keys()[current_desire]
 
-	match current_desire:
+## Sets the color of the current sprite based on the provided desire
+func _on_desire_changed(new_desire: DesireType) -> void:
+	if animal_sprite:
+		# Modulate the sprite based on the color associated with the desire
+		animal_sprite.modulate = desire_to_color_map[new_desire]
+	else:
+		Log.error("The animal sprite is not set, no sprites will have their colors updated")
+	
+	match new_desire:
 		DesireType.RED_PEN:
 			burning_particles.emitting = true
 		_:
@@ -74,4 +84,4 @@ func roll_new_desire_and_update_sprite() -> void:
 			pass
 
 	# Modulate the sprite based on the color associated with the desire
-	animal_sprite.modulate = desire_to_color_map[current_desire]
+	animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])

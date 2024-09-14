@@ -1,10 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://70wcoikythob"]
+[gd_scene load_steps=9 format=3 uid="uid://70wcoikythob"]
 
 [ext_resource type="Texture2D" uid="uid://dhumjcc767h6x" path="res://assets/scenery/firenado_transparent.png" id="1_m2yj0"]
 [ext_resource type="Script" path="res://scripts/mechanics/tornado.gd" id="1_n5pc6"]
 [ext_resource type="PackedScene" uid="uid://bljivl64m5rcv" path="res://scenes/mechanics/desire.tscn" id="2_1u750"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="2_03n5f"]
 [ext_resource type="Curve" uid="uid://ctw5vyt686uqy" path="res://resources/animal_spawn_difficulty_curve.tres" id="2_38j44"]
+[ext_resource type="Shader" path="res://assets/materials/desire.gdshader" id="5_yx55a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsv4o"]
+render_priority = 0
+shader = ExtResource("5_yx55a")
+shader_parameter/color_to_replace = Color(1, 1, 1, 1)
+shader_parameter/new_color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("1_m2yj0")
 
 [sub_resource type="Curve3D" id="Curve3D_783am"]
 bake_interval = 100.0
@@ -39,6 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="TornadoSprite" type="Sprite3D" parent="Tilt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.2)
+material_override = SubResource("ShaderMaterial_fsv4o")
 pixel_size = 0.05
 shaded = true
 alpha_cut = 2

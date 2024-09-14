@@ -20,6 +20,7 @@ var state: State = State.WANDERING
 var wander_vector: Vector2 = Vector2.DOWN
 var is_thrown: bool = false
 
+
 func _ready() -> void:
 	hide_lasso()
 
@@ -37,13 +38,15 @@ func scare(scare_origin: Vector3) -> void:
 	get_tree().create_timer(scared_duration).timeout.connect(func():
 		state = State.WANDERING
 	)
+	# lifts the animals in the air slightly for more feedback
+	position += Vector3(0,2,0)
 
 ## Throws the animal, used to spawn the animal from a tornado
 func throw(throwing_position: Vector3) -> void:
 	position = throwing_position
 	state = State.THROWN
 	is_thrown = true
-
+	
 func _physics_process(delta):
 	match state:
 		State.WANDERING:
