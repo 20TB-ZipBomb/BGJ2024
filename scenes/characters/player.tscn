@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jmen0e87ma80"]
+[gd_scene load_steps=16 format=3 uid="uid://jmen0e87ma80"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://b8l2yap0tdwmk" path="res://assets/audio/sfx/player/footstep dirt 5.wav" id="7_g0whf"]
 [ext_resource type="AudioStream" uid="uid://cn8i7hsqroqxu" path="res://assets/audio/sfx/player/boom.wav" id="8_jl5ne"]
 [ext_resource type="AudioStream" uid="uid://sujurkwqmrdh" path="res://assets/audio/sfx/player/oi.wav" id="8_wsr2q"]
+[ext_resource type="AudioStream" uid="uid://bsvdbnt8hwunw" path="res://assets/audio/sfx/player/crack.wav" id="14_ika78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nea58"]
 radius = 0.3
@@ -32,6 +33,12 @@ stream_0/stream = ExtResource("8_wsr2q")
 stream_0/volume = 0.0
 stream_1/stream = ExtResource("8_jl5ne")
 stream_1/volume = -12.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k3g2g"]
+random_pitch = 1.2
+random_volume_offset_db = 0.2
+streams_count = 1
+stream_0/stream = ExtResource("14_ika78")
 
 [node name="Player" type="CharacterBody3D"]
 motion_mode = 1
@@ -83,3 +90,11 @@ pitch_scale = 2.0
 unique_name_in_owner = true
 stream = SubResource("AudioStreamSynchronized_0quom")
 pitch_scale = 0.8
+
+[node name="LassoAttachStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_k3g2g")
+
+[node name="LassoDetachStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_k3g2g")

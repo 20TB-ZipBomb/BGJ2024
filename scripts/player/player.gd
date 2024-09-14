@@ -14,6 +14,8 @@ extends CharacterBody3D
 @onready var shout_area: Area3D = %ShoutArea
 @onready var foostep_sound: AudioStreamPlayer = %FootstepsStreamPlayer
 @onready var shout_sound: AudioStreamPlayer = %ShoutStreamPlayer
+@onready var lasso_attach_sound: AudioStreamPlayer = %LassoAttachStreamPlayer
+@onready var lasso_detach_sound: AudioStreamPlayer = %LassoDetachStreamPlayer
 
 ## Can be null when not targetting any animal
 var targeted_animal: Animal:
@@ -51,6 +53,7 @@ func _physics_process(_delta: float) -> void:
 		if Input.is_action_just_pressed("use_leash"):
 			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
 			dragged_animal_count += 1
+			lasso_attach_sound.play()
 			leash.tree_exiting.connect(func():
 				dragged_animal_count -= 1
 			)
@@ -75,5 +78,6 @@ func _process(delta: float):
 			camera_shaker.apply_shake()
 		shout_sound.play()
 	if Input.is_action_just_pressed("remove_leash"):
+		lasso_detach_sound.play()
 		for leash in Leash.all_leashes:
 			leash.queue_free()
