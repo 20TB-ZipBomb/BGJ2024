@@ -42,23 +42,24 @@ enum DesireType {
 ## String representation for the current desire.
 ## This is readonly, and updating it will have no impact.
 @export var _current_desire_string = ""
-var current_desire: DesireType = DesireType.NONE
+var current_desire: DesireType = DesireType.NONE:
+	set(value):
+		if value != current_desire:
+			current_desire = value
+			desire_changed.emit(current_desire)
 
 @export var burning_particles: GPUParticles3D
 
+signal desire_changed(new_desire: DesireType)
 
 func _ready() -> void:
-	roll_new_desire_and_update_sprite()
+	desire_changed.connect(_on_desire_changed)
+	roll_new_desire()
 
-
-## Sets the color of the current sprite based on the provided desire
-func roll_new_desire_and_update_sprite() -> void:
-	if not animal_sprite:
-		print_debug("The animal sprite is not set, no sprites will have their colors updated")
-		return
-
+## Randomly assigns a new desire
+func roll_new_desire() -> void:
 	var rng = RandomNumberGenerator.new()
-	var random_desire_type: DesireType = DesireType.values().pick_random() #rng.randi_range(0, DesireType.MAX - 1) as DesireType
+	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
 		print_debug("Attempted to set a desire ", DesireType.keys()[random_desire_type], " but it doesn't have a valid color set")
 		return
@@ -66,13 +67,19 @@ func roll_new_desire_and_update_sprite() -> void:
 	# Update the current desire and its string
 	current_desire = random_desire_type
 	_current_desire_string = DesireType.keys()[current_desire]
+
+## Sets the color of the current sprite based on the provided desire
+func _on_desire_changed(new_desire: DesireType) -> void:
+	if animal_sprite:
+		# Modulate the sprite based on the color associated with the desire
+		animal_sprite.modulate = desire_to_color_map[new_desire]
+	else:
+		print_debug("The animal sprite is not set, no sprites will have their colors updated")
 	
-	match current_desire:
+	match new_desire:
 		DesireType.RED_PEN:
 			burning_particles.emitting = true
 		_:
 			burning_particles.emitting = false
 			pass
-
-	# Modulate the sprite based on the color associated with the desire
-	animal_sprite.modulate = desire_to_color_map[current_desire]
+	
