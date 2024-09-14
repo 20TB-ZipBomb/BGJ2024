@@ -82,4 +82,6 @@ func _on_desire_changed(new_desire: DesireType) -> void:
 		_:
 			burning_particles.emitting = false
 			pass
-	
+
+	# Modulate the sprite based on the color associated with the desire
+	animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])
