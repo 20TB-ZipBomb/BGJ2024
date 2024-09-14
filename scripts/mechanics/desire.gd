@@ -75,4 +75,4 @@ func roll_new_desire_and_update_sprite() -> void:
 			pass
 
 	# Modulate the sprite based on the color associated with the desire
-	animal_sprite.modulate = desire_to_color_map[current_desire]
+	animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])
