@@ -24,5 +24,5 @@ func _ready():
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
 			PenArea.penned_signal.emit()
-			print("Animal penned")
+			Log.debug("Animal penned")
 	)

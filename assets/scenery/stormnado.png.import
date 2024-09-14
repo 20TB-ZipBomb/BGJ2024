@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5hp146fekugr"
-path="res://.godot/imported/button-2.png-7154edb8ef42e473ac3c0b1da6696c93.ctex"
+uid="uid://buj8323qm8jk3"
+path="res://.godot/imported/stormnado.png-b838900390534b89755124e3f53905ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/button-2.png"
-dest_files=["res://.godot/imported/button-2.png-7154edb8ef42e473ac3c0b1da6696c93.ctex"]
+source_file="res://assets/scenery/stormnado.png"
+dest_files=["res://.godot/imported/stormnado.png-b838900390534b89755124e3f53905ad.ctex"]
 
 [params]
 
