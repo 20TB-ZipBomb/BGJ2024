@@ -2,7 +2,7 @@ class_name ShoutProgressBar
 extends Control
 
 @onready var label: Label = %Label
-@onready var progress_bar: ProgressBar = %ProgressBar
+@onready var progress_bar: TextureProgressBar = %TextureProgressBar
 
 func _ready():
 	Globals.shout_energy_changed.connect(set_progress)
