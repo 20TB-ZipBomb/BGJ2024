@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jmen0e87ma80"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
-[ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/simple_farmer.png" id="2_fyp6h"]
+[ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nea58"]
 radius = 0.3

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bid43j03uy7nc"
-path.s3tc="res://.godot/imported/wood_tile.png-015d4e655050012628bcd37fd1f7bfab.s3tc.ctex"
+uid="uid://2vnrdxnbe47t"
+path.s3tc="res://.godot/imported/fire_particles.png-707b284e6e23e7c79eaa68ed73a01315.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/wood_tile.png"
-dest_files=["res://.godot/imported/wood_tile.png-015d4e655050012628bcd37fd1f7bfab.s3tc.ctex"]
+source_file="res://assets/particles/fire_particles.png"
+dest_files=["res://.godot/imported/fire_particles.png-707b284e6e23e7c79eaa68ed73a01315.s3tc.ctex"]
 
 [params]
 

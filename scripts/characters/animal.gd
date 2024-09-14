@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Animal
 
+@export var desire: Desire
 @export var wander_speed: float = 0.5
 @export var scared_speed: float = 1.0
 @export var scared_duration: float = 3.0 ## How long the animal will be scared for
@@ -8,7 +9,6 @@ class_name Animal
 @onready var lasso_icon: Sprite3D = %LassoIcon
 @onready var leash_point: Node3D = %LeashPoint
 
-var leash: Leash = null
 
 var wander_vector: Vector2 = Vector2.DOWN
 
@@ -44,9 +44,10 @@ func _physics_process(delta):
 			var sign = ((randi() % 2) - 0.5) * 2
 			wander_vector = wander_vector.rotated(sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * wander_speed
-			move_and_slide()
 		State.SCARED:
 			var sign = ((randi() % 2) - 0.5) * 2
 			wander_vector = wander_vector.rotated(sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * scared_speed
-			move_and_slide()
+	if not is_on_floor():
+		velocity += get_gravity()
+	move_and_slide()

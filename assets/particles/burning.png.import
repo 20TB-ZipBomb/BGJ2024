@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpew4axhcdomu"
-path="res://.godot/imported/simple_farmer.png-c9756b8c4f6e6bb4d74514d09bd4d37c.ctex"
+uid="uid://b2n1ge86uplrr"
+path.s3tc="res://.godot/imported/burning.png-7fcce8492a13306680906a2d6a8c701a.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/simple_farmer.png"
-dest_files=["res://.godot/imported/simple_farmer.png-c9756b8c4f6e6bb4d74514d09bd4d37c.ctex"]
+source_file="res://assets/particles/burning.png"
+dest_files=["res://.godot/imported/burning.png-7fcce8492a13306680906a2d6a8c701a.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
