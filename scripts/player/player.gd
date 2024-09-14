@@ -39,9 +39,9 @@ func _physics_process(_delta: float) -> void:
 	
 	# Handle targetting and leashing of animals
 	var body: Area3D = raycast.get_collider()
-	if body and body.owner is Animal and body.owner not in Leash.leashed_characters:
+	if body and body.owner is Animal and body.owner not in Leash.leashed_characters and body.owner.desire.current_desire != Desire.DesireType.NONE:
 		targeted_animal = body.owner
-		if Input.is_action_just_pressed("use_lasso"):
+		if Input.is_action_just_pressed("use_leash"):
 			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
 			dragged_animal_count += 1
 			leash.tree_exiting.connect(func():
@@ -63,5 +63,7 @@ func _process(delta: float):
 			if body is Animal:
 				body.scare(global_position)
 		current_shout_cooldown = 0
-		print("Shouted")
+	if Input.is_action_just_pressed("remove_leash"):
+		for leash in Leash.all_leashes:
+			leash.queue_free()
 	
