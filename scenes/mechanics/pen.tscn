@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3frlqkb0np11"]
+[gd_scene load_steps=3 format=3 uid="uid://d3frlqkb0np11"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="1_nbjw6"]
+[ext_resource type="AudioStream" uid="uid://iusuegf28ylo" path="res://assets/audio/ding.wav" id="2_u44re"]
 
 [node name="PenArea" type="Area3D"]
 script = ExtResource("1_nbjw6")
+
+[node name="FeedbackAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u44re")
+volume_db = -10.0

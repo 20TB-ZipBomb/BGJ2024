@@ -8,6 +8,7 @@ class_name Animal
 
 @onready var lasso_icon: Sprite3D = %LassoIcon
 @onready var leash_point: Node3D = %LeashPoint
+@onready var moo_sound: AudioStreamPlayer3D = %MooStreamPlayer3D
 
 
 var wander_vector: Vector2 = Vector2.DOWN
@@ -33,6 +34,7 @@ func scare(scare_origin: Vector3) -> void:
 	var scare_direction: Vector3 = (global_position - scare_origin).normalized()
 	wander_vector = Vector2(scare_direction.x, scare_direction.z)
 	state = State.SCARED
+	moo_sound.play()
 	get_tree().create_timer(scared_duration).timeout.connect(func():
 		state = State.WANDERING
 	)

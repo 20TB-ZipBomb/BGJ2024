@@ -12,6 +12,8 @@ extends CharacterBody3D
 @onready var raycast: RayCast3D = %RayCast3D
 @onready var leash_point: Node3D = %LeashPoint
 @onready var shout_area: Area3D = %ShoutArea
+@onready var foostep_sound: AudioStreamPlayer = %FootstepsStreamPlayer
+@onready var shout_sound: AudioStreamPlayer = %ShoutStreamPlayer
 
 ## Can be null when not targetting any animal
 var targeted_animal: Animal:
@@ -36,6 +38,11 @@ func _physics_process(_delta: float) -> void:
 	if direction.length() > 0:
 		var raycast_direction: Vector2 = direction.normalized() * lasso_range
 		raycast.target_position = Vector3(raycast_direction.x, 0, raycast_direction.y)
+		if not foostep_sound.playing:
+			foostep_sound.play()
+	else:
+		if foostep_sound.playing:
+			foostep_sound.stop()
 	
 	# Handle targetting and leashing of animals
 	var body: Area3D = raycast.get_collider()
@@ -66,6 +73,7 @@ func _process(delta: float):
 		var camera_shaker: CameraShaker = $CameraShaker
 		if camera_shaker:
 			camera_shaker.apply_shake()
+		shout_sound.play()
 	if Input.is_action_just_pressed("remove_leash"):
 		for leash in Leash.all_leashes:
 			leash.queue_free()

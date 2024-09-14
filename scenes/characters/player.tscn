@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://jmen0e87ma80"]
+[gd_scene load_steps=14 format=3 uid="uid://jmen0e87ma80"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
+[ext_resource type="AudioStream" uid="uid://c8nx4q5w1jina" path="res://assets/audio/sfx/player/footstep dirt 1.wav" id="3_46thp"]
+[ext_resource type="AudioStream" uid="uid://cwhgm4eekpkcr" path="res://assets/audio/sfx/player/footstep dirt 2.wav" id="4_6xbb8"]
+[ext_resource type="AudioStream" uid="uid://cypiw5crjlipo" path="res://assets/audio/sfx/player/footstep dirt 3.wav" id="5_aboim"]
+[ext_resource type="AudioStream" uid="uid://c0jp7tkptmvk0" path="res://assets/audio/sfx/player/footstep dirt 4.wav" id="6_wfc38"]
+[ext_resource type="AudioStream" uid="uid://b8l2yap0tdwmk" path="res://assets/audio/sfx/player/footstep dirt 5.wav" id="7_g0whf"]
+[ext_resource type="AudioStream" uid="uid://cn8i7hsqroqxu" path="res://assets/audio/sfx/player/boom.wav" id="8_jl5ne"]
+[ext_resource type="AudioStream" uid="uid://sujurkwqmrdh" path="res://assets/audio/sfx/player/oi.wav" id="8_wsr2q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nea58"]
 radius = 0.3
@@ -10,6 +17,21 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_msj1a"]
 height = 1.0
 radius = 4.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j6fpb"]
+streams_count = 5
+stream_0/stream = ExtResource("3_46thp")
+stream_1/stream = ExtResource("4_6xbb8")
+stream_2/stream = ExtResource("5_aboim")
+stream_3/stream = ExtResource("6_wfc38")
+stream_4/stream = ExtResource("7_g0whf")
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_0quom"]
+stream_count = 2
+stream_0/stream = ExtResource("8_wsr2q")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("8_jl5ne")
+stream_1/volume = -12.0
 
 [node name="Player" type="CharacterBody3D"]
 motion_mode = 1
@@ -50,3 +72,13 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShoutArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_msj1a")
+
+[node name="FootstepsStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_j6fpb")
+volume_db = -8.0
+pitch_scale = 2.0
+
+[node name="ShoutStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamSynchronized_0quom")
