@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=19 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
+[ext_resource type="Script" path="res://scripts/mechanics/kill_area.gd" id="5_bm0ha"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
@@ -40,6 +41,9 @@ albedo_color = Color(0.0166667, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4dnu"]
 albedo_color = Color(0.983333, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rf1ft"]
+size = Vector3(80, 1, 80)
 
 [node name="AlexTestLevel" type="Node"]
 
@@ -136,6 +140,13 @@ desire_type = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/YellowPen/PenArea"]
 shape = SubResource("BoxShape3D_gfj3e")
+
+[node name="KillArea" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.2347, 0)
+script = ExtResource("5_bm0ha")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/KillArea"]
+shape = SubResource("BoxShape3D_rf1ft")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
