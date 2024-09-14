@@ -61,9 +61,12 @@ func _physics_process(delta):
 			var _sign = ((randi() % 2) - 0.5) * 2
 			wander_vector = wander_vector.rotated(_sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * (_sign * throw_intensity)
+	
 	if not is_on_floor():
 		velocity += get_gravity()
+	
 	if is_on_floor() and is_thrown:
 		is_thrown = false
 		state = State.WANDERING
+	
 	move_and_slide()

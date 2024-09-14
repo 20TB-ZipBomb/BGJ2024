@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405385, 0.9477, 0.00607109)
 curve = SubResource("Curve3D_xmgyp")
 
 [node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoSpawnPath"]
-transform = Transform3D(-4.37092e-08, 0, 0.999898, 0, 0.999933, 0, -0.999949, 0, -4.37069e-08, 5, -0.875, -5)
+transform = Transform3D(-4.37092e-08, 0, 0.999897, 0, 0.999932, 0, -0.999949, 0, -4.37069e-08, 5, -0.875, -5)
 tilt_enabled = false
 
 [connection signal="timeout" from="Timers/TornadoDelayTimer" to="." method="_on_tornado_delay_timer_timeout"]

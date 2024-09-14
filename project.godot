@@ -35,6 +35,8 @@ project/assembly_name="BGJ2024"
 
 folder_colors={
 "res://assets/": "orange",
+"res://build/": "yellow",
+"res://resources/": "green",
 "res://scenes/": "blue",
 "res://scripts/": "red"
 }
