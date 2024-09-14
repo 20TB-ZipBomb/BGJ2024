@@ -36,6 +36,8 @@ func scare(scare_origin: Vector3) -> void:
 	get_tree().create_timer(scared_duration).timeout.connect(func():
 		state = State.WANDERING
 	)
+	# lifts the animals in the air slightly for more feedback
+	position += Vector3(0,2,0)
 	
 
 func _physics_process(delta):
