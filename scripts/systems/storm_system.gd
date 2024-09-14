@@ -30,10 +30,10 @@ func spawn_tornado() -> void:
 ## Begins the calm period - begins the storm again after a fixed duration of time.
 func start_calm_period() -> void:
 	Log.debug("Started the calm period, it will last %d seconds" % calm_duration)
-	get_tree().create_timer(calm_duration).timeout.connect(func():
-		start_next_wave()
-		start_storm_period()
-	)
+	
+	await get_tree().create_timer(calm_duration).timeout
+	start_next_wave()
+	start_storm_period()
 
 
 ## Begins the storm - starts a timer that spawns tornadoes in a fixed interval.
@@ -41,10 +41,10 @@ func start_calm_period() -> void:
 func start_storm_period() -> void:
 	Log.debug("Started the storm period, it will last %d seconds" % storm_duration)
 	tornado_delay_timer.start()
-	get_tree().create_timer(storm_duration).timeout.connect(func():
-		tornado_delay_timer.stop()
-		start_calm_period()
-	)
+	
+	await get_tree().create_timer(storm_duration).timeout
+	tornado_delay_timer.stop()
+	start_calm_period()
 
 
 ## Starts the next wave, increments the global wave counter.

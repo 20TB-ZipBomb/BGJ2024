@@ -25,9 +25,9 @@ func _ready() -> void:
 
 	# Determine the number of cows to spawn using the current wave number,
 	# the maximum number of cows per storm, and the difficulty curve
+	# @TODO: Port this logic for the tornado spawning... I think?
 	var sample_point: float = float(Globals.current_storm_wave_number) / float(max_number_of_storms_before_max_difficulty)
 	curved_num_animals_to_spawn = floor(storm_difficulty_curve.sample(sample_point))
-	print(curved_num_animals_to_spawn)
 
 
 func _process(delta: float) -> void:
