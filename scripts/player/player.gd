@@ -63,5 +63,8 @@ func _process(delta: float):
 			if body is Animal:
 				body.scare(global_position)
 		current_shout_cooldown = 0
+		var camera_shaker:CameraShaker = $CameraShaker
+		if camera_shaker:
+			camera_shaker.apply_shake()
 		print("Shouted")
 	
