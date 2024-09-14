@@ -82,3 +82,4 @@ pitch_scale = 2.0
 [node name="ShoutStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamSynchronized_0quom")
+pitch_scale = 0.8
