@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgjayrnnd08td"]
+[gd_scene load_steps=15 format=3 uid="uid://d1maq4fjr1o12"]
 
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_u5vrs"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="2_8r0kf"]
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_rpn6x"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="4_hmcg2"]
+[ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_tp6kd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,6 +23,21 @@ glow_enabled = true
 albedo_texture = ExtResource("1_u5vrs")
 uv1_triplanar = true
 texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_il7ka"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfj3e"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gkno"]
+albedo_color = Color(0.0333333, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t038i"]
+albedo_color = Color(0.0166667, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4dnu"]
+albedo_color = Color(0.983333, 1, 0, 1)
 
 [node name="JakeTestLevel" type="Node"]
 
@@ -42,46 +58,95 @@ size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_lvm8w")
 metadata/_edit_lock_ = true
 
-[node name="Systems" type="Node" parent="Level"]
-
-[node name="StormSystem" parent="Level/Systems" instance=ExtResource("2_8r0kf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
-
 [node name="Player" parent="Level" instance=ExtResource("2_rpn6x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00857115, -4.76837e-07, -0.00502801)
 lasso_range = 0.7
 
 [node name="Camera3D" type="Camera3D" parent="Level/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5, 5.3)
-fov = 100.0
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 6.645, 7.64)
+fov = 40.0
 size = 2.709
+
+[node name="Pens" type="Node" parent="Level"]
+
+[node name="RedPen" type="CSGBox3D" parent="Level/Pens"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35889, 0.025, 8.92349)
+size = Vector3(4, 0.05, 4)
+material = SubResource("StandardMaterial3D_il7ka")
+
+[node name="PenArea" type="Area3D" parent="Level/Pens/RedPen"]
+script = ExtResource("4_tp6kd")
+desire_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Pens/RedPen/PenArea"]
+shape = SubResource("BoxShape3D_gfj3e")
+
+[node name="BluePen" type="CSGBox3D" parent="Level/Pens"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3205, 0.025, 9.06598)
+size = Vector3(4, 0.05, 4)
+material = SubResource("StandardMaterial3D_2gkno")
+
+[node name="PenArea" type="Area3D" parent="Level/Pens/BluePen"]
+script = ExtResource("4_tp6kd")
+desire_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Pens/BluePen/PenArea"]
+shape = SubResource("BoxShape3D_gfj3e")
+
+[node name="GreenPen" type="CSGBox3D" parent="Level/Pens"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53789, 0.025, -6.03453)
+size = Vector3(4, 0.05, 4)
+material = SubResource("StandardMaterial3D_t038i")
+
+[node name="PenArea" type="Area3D" parent="Level/Pens/GreenPen"]
+script = ExtResource("4_tp6kd")
+desire_type = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Pens/GreenPen/PenArea"]
+shape = SubResource("BoxShape3D_gfj3e")
+
+[node name="YellowPen" type="CSGBox3D" parent="Level/Pens"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89017, 0.025, -5.46226)
+size = Vector3(4, 0.05, 4)
+material = SubResource("StandardMaterial3D_m4dnu")
+
+[node name="PenArea" type="Area3D" parent="Level/Pens/YellowPen"]
+script = ExtResource("4_tp6kd")
+desire_type = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Pens/YellowPen/PenArea"]
+shape = SubResource("BoxShape3D_gfj3e")
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="StormSystem" parent="Systems" instance=ExtResource("2_8r0kf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchor_left = 0.848437
-anchor_top = 0.843056
-anchor_right = 1.81719
-anchor_bottom = 1.7875
-offset_left = -1086.0
-offset_top = -607.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -766.0
+offset_top = -427.0
 offset_right = -1046.0
 offset_bottom = -567.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="ShoutBar" parent="HUD" instance=ExtResource("4_hmcg2")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -100.051
-offset_top = -58.5203
-offset_right = -100.051
-offset_bottom = -58.5203
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1051.0
+offset_top = 589.0
+offset_right = 1051.0
+offset_bottom = 589.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.25, 0.25)

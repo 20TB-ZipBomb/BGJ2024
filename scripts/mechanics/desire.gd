@@ -54,19 +54,18 @@ func _ready() -> void:
 ## Sets the color of the current sprite based on the provided desire
 func roll_new_desire_and_update_sprite() -> void:
 	if not animal_sprite:
-		print_debug("The animal sprite is not set, no sprites will have their colors updated")
+		Log.warn("The animal sprite is not set, no sprites will have their colors updated")
 		return
 
-	var rng = RandomNumberGenerator.new()
-	var random_desire_type: DesireType = DesireType.values().pick_random() #rng.randi_range(0, DesireType.MAX - 1) as DesireType
+	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
-		print_debug("Attempted to set a desire ", DesireType.keys()[random_desire_type], " but it doesn't have a valid color set")
+		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
 		return
 
 	# Update the current desire and its string
 	current_desire = random_desire_type
 	_current_desire_string = DesireType.keys()[current_desire]
-	
+
 	match current_desire:
 		DesireType.RED_PEN:
 			burning_particles.emitting = true

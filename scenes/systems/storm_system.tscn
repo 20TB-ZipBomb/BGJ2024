@@ -1,15 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cru7nkq8vmpey"]
+[gd_scene load_steps=4 format=3 uid="uid://cru7nkq8vmpey"]
 
 [ext_resource type="Script" path="res://scripts/systems/storm_system.gd" id="1_3afom"]
-[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="2_mnl4w"]
-
-[sub_resource type="Curve" id="Curve_llu4w"]
-max_value = 25.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 10), 0.0, 0.0, 0, 0, Vector2(0.75, 20), 0.0, 0.0, 0, 0, Vector2(1, 25), 0.0, 0.0, 0, 0]
-point_count = 4
+[ext_resource type="PackedScene" uid="uid://70wcoikythob" path="res://scenes/mechanics/tornado.tscn" id="3_jaeq8"]
 
 [sub_resource type="Curve3D" id="Curve3D_xmgyp"]
-bake_interval = 0.01
+bake_interval = 100.0
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, -0.875, -5, 0, 0, 0, 0, 0, 0, -5, -0.875, -5, 0, 0, 0, 0, 0, 0, -5, -0.875, 5, 0, 0, 0, 0, 0, 0, 5, -0.875, 5, 0, 0, 0, 0, 0, 0, 5, -0.875, -5),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
@@ -18,19 +13,20 @@ point_count = 5
 
 [node name="StormSystem" type="Node3D"]
 script = ExtResource("1_3afom")
-animal_scene = ExtResource("2_mnl4w")
-storm_difficulty_curve = SubResource("Curve_llu4w")
+tornado_scene = ExtResource("3_jaeq8")
 
-[node name="StormWaveTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+[node name="Timers" type="Node" parent="."]
 
-[node name="SpawnPath" type="Path3D" parent="."]
+[node name="TornadoDelayTimer" type="Timer" parent="Timers"]
+editor_description = "The amount of time (in seconds) between each tornado being spawned. "
+wait_time = 2.0
+
+[node name="TornadoSpawnPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405385, 0.9477, 0.00607109)
 curve = SubResource("Curve3D_xmgyp")
 
-[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-4.37094e-08, 0, 0.999902, 0, 0.999937, 0, -0.999954, 0, -4.37071e-08, 5, -0.875, -5)
+[node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoSpawnPath"]
+transform = Transform3D(-4.37092e-08, 0, 0.999898, 0, 0.999933, 0, -0.999949, 0, -4.37069e-08, 5, -0.875, -5)
 tilt_enabled = false
 
-[connection signal="timeout" from="StormWaveTimer" to="." method="_on_storm_timer_timeout"]
+[connection signal="timeout" from="Timers/TornadoDelayTimer" to="." method="_on_tornado_delay_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvigtj206xfc8"
-path="res://.godot/imported/button-2-press.png-d3204ac6849590a31d648822aa713be1.ctex"
+uid="uid://s0g41eu6322f"
+path="res://.godot/imported/firenado.png-476d0f002262db78d31e905d485a7ed4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/button-2-press.png"
-dest_files=["res://.godot/imported/button-2-press.png-d3204ac6849590a31d648822aa713be1.ctex"]
+source_file="res://assets/scenery/firenado.png"
+dest_files=["res://.godot/imported/firenado.png-476d0f002262db78d31e905d485a7ed4.ctex"]
 
 [params]
 
