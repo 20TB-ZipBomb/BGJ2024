@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crhfhlpsju2xu"
-path="res://.godot/imported/cownado-title.png-05281b3f4be189f6a5fd366b183ec128.ctex"
+path="res://.godot/imported/cownado-title.png-daba8f2d422100ffa2be839a1ea26d1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cownado-title.png"
-dest_files=["res://.godot/imported/cownado-title.png-05281b3f4be189f6a5fd366b183ec128.ctex"]
+source_file="res://assets/ui/cownado-title.png"
+dest_files=["res://.godot/imported/cownado-title.png-daba8f2d422100ffa2be839a1ea26d1a.ctex"]
 
 [params]
 

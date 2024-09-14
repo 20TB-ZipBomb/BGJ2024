@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvigtj206xfc8"
-path="res://.godot/imported/button-2-press.png-d3204ac6849590a31d648822aa713be1.ctex"
+uid="uid://dhumjcc767h6x"
+path.s3tc="res://.godot/imported/firenado_transparent.png-de2595a024e973edccb476b5ab9c5fc9.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/button-2-press.png"
-dest_files=["res://.godot/imported/button-2-press.png-d3204ac6849590a31d648822aa713be1.ctex"]
+source_file="res://assets/scenery/firenado_transparent.png"
+dest_files=["res://.godot/imported/firenado_transparent.png-de2595a024e973edccb476b5ab9c5fc9.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

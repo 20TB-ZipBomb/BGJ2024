@@ -61,7 +61,7 @@ func roll_new_desire() -> void:
 	var rng = RandomNumberGenerator.new()
 	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
-		print_debug("Attempted to set a desire ", DesireType.keys()[random_desire_type], " but it doesn't have a valid color set")
+		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
 		return
 
 	# Update the current desire and its string
@@ -74,7 +74,7 @@ func _on_desire_changed(new_desire: DesireType) -> void:
 		# Modulate the sprite based on the color associated with the desire
 		animal_sprite.modulate = desire_to_color_map[new_desire]
 	else:
-		print_debug("The animal sprite is not set, no sprites will have their colors updated")
+		Log.error("The animal sprite is not set, no sprites will have their colors updated")
 	
 	match new_desire:
 		DesireType.RED_PEN:
