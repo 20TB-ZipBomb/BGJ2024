@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=45 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
@@ -29,6 +29,10 @@
 [ext_resource type="PackedScene" uid="uid://ppnfrbvwmolt" path="res://scenes/mechanics/microgame_drink.tscn" id="24_ny644"]
 [ext_resource type="PackedScene" uid="uid://t5wwbsr1t3uw" path="res://scenes/mechanics/microgame_fire.tscn" id="26_gxxs6"]
 [ext_resource type="PackedScene" uid="uid://dt0drd5gjqxko" path="res://scenes/mechanics/microgame_charge.tscn" id="26_l73ho"]
+[ext_resource type="Texture2D" uid="uid://bw7engryjru2p" path="res://assets/scenery/Signs/apple_arrow_signpost.png" id="30_u0jo3"]
+[ext_resource type="Texture2D" uid="uid://bm21imc8rq0o1" path="res://assets/scenery/Signs/lighting_arrow_signpost.png" id="31_rky6y"]
+[ext_resource type="Texture2D" uid="uid://f5487yk77nf2" path="res://assets/scenery/Signs/thirsty_arrow_signpost.png" id="32_d5fed"]
+[ext_resource type="Texture2D" uid="uid://dx0okgy0mmrt4" path="res://assets/scenery/Signs/burning_arrow_signpost.png" id="33_mbebj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
 size = Vector3(60, 1, 60)
@@ -265,6 +269,7 @@ microgame_feed = ExtResource("24_ny644")
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/BluePen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_vbyk7")
 
@@ -296,6 +301,7 @@ microgame_feed = ExtResource("24_b5km4")
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/GreenPen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_obuob")
 
@@ -314,6 +320,7 @@ microgame_feed = ExtResource("26_l73ho")
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/YellowPen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_3o4rv")
 
@@ -326,3 +333,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89776, 0)
 
 [node name="Camera3D" type="Camera3D" parent="MoLevel"]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3.1, 2.7)
+
+[node name="AppleSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 6.07452, 2, -7.92713)
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("30_u0jo3")
+
+[node name="LightingSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 6.82508, 2.46955, 8.02153)
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("31_rky6y")
+
+[node name="ThirstySign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -7.05556, 2, 3.80005)
+flip_h = true
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("32_d5fed")
+
+[node name="BurningSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -6.38515, 2, -7.40767)
+flip_h = true
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("33_mbebj")
