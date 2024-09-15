@@ -1,4 +1,112 @@
-[gd_scene format=3 uid="uid://t5wwbsr1t3uw"]
+[gd_scene load_steps=22 format=3 uid="uid://t5wwbsr1t3uw"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/microgame_fire.gd" id="1_sdxc4"]
+[ext_resource type="AudioStream" uid="uid://h5ctt1plbwvn" path="res://assets/audio/sfx/cow/scream 2.wav" id="2_hocbv"]
+[ext_resource type="AudioStream" uid="uid://dbwhw0fntviay" path="res://assets/audio/sfx/cow/scream 3.wav" id="3_f45hq"]
+[ext_resource type="Texture2D" uid="uid://b0fwvjo5epu0b" path="res://assets/characters/cow-side.png" id="4_3evx5"]
+[ext_resource type="Texture2D" uid="uid://cj4pxaesyohu6" path="res://assets/items/water_gun.png" id="4_b0iui"]
+[ext_resource type="AudioStream" uid="uid://d2m2enwggvcgy" path="res://assets/audio/sfx/cow/scream 10.wav" id="4_sgfpr"]
+[ext_resource type="Texture2D" uid="uid://2vnrdxnbe47t" path="res://assets/particles/fire_particles.png" id="5_gcyp5"]
+[ext_resource type="Texture2D" uid="uid://2r4ah0ds3fdh" path="res://assets/items/water_gun_no_spray.png" id="5_ru67o"]
+
+[sub_resource type="SystemFont" id="SystemFont_em61w"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5dok"]
+font = SubResource("SystemFont_em61w")
+font_size = 24
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dkq64"]
+streams_count = 3
+stream_0/stream = ExtResource("2_hocbv")
+stream_1/stream = ExtResource("3_f45hq")
+stream_2/stream = ExtResource("4_sgfpr")
+
+[sub_resource type="Animation" id="Animation_umvtp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_23ekp"]
+resource_name = "new_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.785398, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ckhlx"]
+_data = {
+"RESET": SubResource("Animation_umvtp"),
+"new_animation": SubResource("Animation_23ekp")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qdrxx"]
+radius = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg6xa"]
+atlas = ExtResource("5_gcyp5")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rikm2"]
+atlas = ExtResource("5_gcyp5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16tf6"]
+atlas = ExtResource("5_gcyp5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obux3"]
+atlas = ExtResource("5_gcyp5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rp8og"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vg6xa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rikm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16tf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obux3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16tf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rikm2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_goj1y"]
+radius = 8.0
 
 [node name="MicrogameFire" type="Control"]
 layout_mode = 3
@@ -7,3 +115,112 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sdxc4")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "Extinguish the cow!"
+label_settings = SubResource("LabelSettings_g5dok")
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_dkq64")
+pitch_scale = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../CowPivot")
+libraries = {
+"": SubResource("AnimationLibrary_ckhlx")
+}
+
+[node name="CowPivot" type="Node2D" parent="."]
+position = Vector2(104, 166)
+
+[node name="Cow" type="Sprite2D" parent="CowPivot"]
+position = Vector2(48, -38.495)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_3evx5")
+
+[node name="Fire1" type="Area2D" parent="CowPivot"]
+unique_name_in_owner = true
+position = Vector2(48, -38.495)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CowPivot/Fire1"]
+shape = SubResource("CircleShape2D_qdrxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CowPivot/Fire1"]
+position = Vector2(-16.73, -41.685)
+scale = Vector2(13.6, 13.6)
+sprite_frames = SubResource("SpriteFrames_rp8og")
+autoplay = "default"
+frame_progress = 0.621938
+
+[node name="Fire2" type="Area2D" parent="CowPivot"]
+unique_name_in_owner = true
+position = Vector2(8, -70)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CowPivot/Fire2"]
+shape = SubResource("CircleShape2D_qdrxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CowPivot/Fire2"]
+position = Vector2(-16.73, -41.685)
+scale = Vector2(13.6, 13.6)
+sprite_frames = SubResource("SpriteFrames_rp8og")
+autoplay = "default"
+frame_progress = 0.261009
+
+[node name="Fire3" type="Area2D" parent="CowPivot"]
+unique_name_in_owner = true
+position = Vector2(82.66, -80.6)
+scale = Vector2(0.1, 0.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CowPivot/Fire3"]
+shape = SubResource("CircleShape2D_qdrxx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CowPivot/Fire3"]
+position = Vector2(-16.73, -41.685)
+scale = Vector2(13.6, 13.6)
+sprite_frames = SubResource("SpriteFrames_rp8og")
+autoplay = "default"
+frame_progress = 0.741088
+
+[node name="WaterGunMouse" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="WaterGunSpray" type="Sprite2D" parent="WaterGunMouse"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(16, 16)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("4_b0iui")
+
+[node name="WaterArea" type="Area2D" parent="WaterGunMouse/WaterGunSpray"]
+unique_name_in_owner = true
+position = Vector2(-123.077, -123.077)
+scale = Vector2(7.69231, 7.69231)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGunMouse/WaterGunSpray/WaterArea"]
+shape = SubResource("CircleShape2D_goj1y")
+
+[node name="WaterGunNoSpray" type="Sprite2D" parent="WaterGunMouse"]
+position = Vector2(16, 16)
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("5_ru67o")
