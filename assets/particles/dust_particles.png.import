@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2n1ge86uplrr"
-path.s3tc="res://.godot/imported/burning.png-7fcce8492a13306680906a2d6a8c701a.s3tc.ctex"
+uid="uid://c2ic0bm0akgm4"
+path.s3tc="res://.godot/imported/dust_particles.png-554ee26ef7e4eae3d0a29c37b8e86d7e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/particles/burning.png"
-dest_files=["res://.godot/imported/burning.png-7fcce8492a13306680906a2d6a8c701a.s3tc.ctex"]
+source_file="res://assets/particles/dust_particles.png"
+dest_files=["res://.godot/imported/dust_particles.png-554ee26ef7e4eae3d0a29c37b8e86d7e.s3tc.ctex"]
 
 [params]
 
