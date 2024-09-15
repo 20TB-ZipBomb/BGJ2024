@@ -4,7 +4,7 @@ extends Node
 const PENNED_ANIMAL_HP_RESTORE: float = 5 ## Seconds
 const PENNED_ANIMAL_HP_RESTORE_PER_COMBO: float = 0.5 ## Adds 0.5s per combo
 
-const MAX_HP: float = 30
+const MAX_HP: float = 2
 var main: Node
 var player: CharacterBody3D
 var micrograme_queue: Array[PackedScene] = []
@@ -42,6 +42,7 @@ func _on_game_state_changed(new_game_state: GameState) -> void:
 			pass
 		GameState.GAMEPLAY:
 			time_began = Time.get_ticks_msec()
+			player_can_move = true
 		GameState.GAME_OVER:
 			player_can_move = false
 
