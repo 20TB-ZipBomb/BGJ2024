@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=40 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://3uiqewgij487" path="res://assets/scenery/wooden_cart.tscn" id="17_4fce6"]
 [ext_resource type="PackedScene" uid="uid://cq1n8t2uiq4fn" path="res://assets/scenery/kenney/tool_rack.tscn" id="18_c37yd"]
 [ext_resource type="PackedScene" uid="uid://bgslcdv7impb" path="res://assets/scenery/fence/fence.tscn" id="20_duulg"]
+[ext_resource type="PackedScene" uid="uid://d4gk5su0q58i5" path="res://assets/scenery/game_boundary.tscn" id="20_ntwsu"]
 [ext_resource type="Script" path="res://scripts/mechanics/camera_shaker.gd" id="21_a168k"]
 [ext_resource type="PackedScene" uid="uid://d00wxprocxb36" path="res://assets/scenery/fence/fence_mirror.tscn" id="21_hbpjn"]
 [ext_resource type="PackedScene" uid="uid://3uyuduajyl3" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
@@ -154,7 +155,7 @@ shadow_reverse_cull_face = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.414, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_7schw")
 use_collision = true
-size = Vector3(30, 0.1, 30)
+size = Vector3(50, 0.1, 50)
 material = SubResource("StandardMaterial3D_ge7ww")
 metadata/_edit_lock_ = true
 
@@ -233,6 +234,9 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.05197, 1, -12.132)
 
 [node name="TreeYellow4" parent="MoLevel/LevelEnvironment/Trees" instance=ExtResource("24_3im3y")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -11.1966, 1, -15.0647)
+
+[node name="Boundary" parent="MoLevel/LevelEnvironment" instance=ExtResource("20_ntwsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
 
 [node name="Player" parent="MoLevel" instance=ExtResource("1_uer05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426703, 1, -2.41723)
