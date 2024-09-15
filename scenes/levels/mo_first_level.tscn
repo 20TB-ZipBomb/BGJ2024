@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cachykv6b8mk3"]
+[gd_scene load_steps=22 format=3 uid="uid://cachykv6b8mk3"]
 
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_7fpl4"]
 [ext_resource type="PackedScene" uid="uid://xwcablqlm51n" path="res://assets/scenery/farm_house.tscn" id="1_ko8fo"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://70c1gpelu0c3" path="res://assets/scenery/ground_dirt.tscn" id="9_0rarr"]
 [ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="11_wu36t"]
 [ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="12_m5gui"]
+[ext_resource type="PackedScene" uid="uid://d4gk5su0q58i5" path="res://assets/scenery/game_boundary.tscn" id="13_4lnsd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,7 +54,7 @@ shadow_reverse_cull_face = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.414, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_hbmph")
 use_collision = true
-size = Vector3(30, 0.1, 30)
+size = Vector3(50, 0.1, 50)
 material = SubResource("StandardMaterial3D_lvm8w")
 metadata/_edit_lock_ = true
 
@@ -139,19 +140,20 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.05197, 1, -12.132)
 [node name="TreeYellow4" parent="Level/LevelEnvironment/Trees" instance=ExtResource("12_m5gui")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -11.1966, 1, -15.0647)
 
+[node name="Boundary" parent="Level/LevelEnvironment" instance=ExtResource("13_4lnsd")]
+
 [node name="Player" parent="Level" instance=ExtResource("2_cfnf1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426703, 1, -2.41723)
 lasso_range = 0.7
 
 [node name="Camera3D" type="Camera3D" parent="Level/Player"]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.0445862, 7.40143, 4.38785)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 9.38668, 5)
 projection = 1
 fov = 45.0
 size = 10.0
 
 [node name="Animal" parent="Level" instance=ExtResource("3_sfqg8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, 9.53674e-07, 1.977)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05952, 1, -0.344)
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3

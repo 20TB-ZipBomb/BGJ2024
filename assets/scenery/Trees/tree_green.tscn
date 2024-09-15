@@ -13,13 +13,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, -0.0531719)
 shape = SubResource("BoxShape3D_8piox")
 
 [node name="Tree" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.44889, 0.258819, 0, -0.388229, 0.965926, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Base" type="Sprite3D" parent="Tree"]
 texture_filter = 0
 texture = ExtResource("1_g7vgg")
 
 [node name="Top" type="Sprite3D" parent="Tree"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158007, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160017, 0)
 texture_filter = 0
 texture = ExtResource("2_7o6rf")
