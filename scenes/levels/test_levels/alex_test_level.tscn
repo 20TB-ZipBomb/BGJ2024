@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=39 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
@@ -11,7 +11,8 @@
 [ext_resource type="Script" path="res://scripts/mechanics/kill_area.gd" id="7_to2cw"]
 [ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="8_dr6ux"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
-[ext_resource type="PackedScene" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
+[ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
 [ext_resource type="Texture2D" uid="uid://ravwrwy7wu1t" path="res://assets/scenery/kenney/tile_0000.png" id="14_0or82"]
 [ext_resource type="PackedScene" path="res://assets/scenery/ground_dirt.tscn" id="15_8sfm0"]
 [ext_resource type="PackedScene" path="res://assets/scenery/farm_house.tscn" id="16_h1cwa"]
@@ -24,7 +25,8 @@
 [ext_resource type="PackedScene" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
 [ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="23_jirl8"]
 [ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="24_3im3y"]
-[ext_resource type="PackedScene" uid="uid://gv1vgirbdu0d" path="res://scenes/mechanics/microgame1.tscn" id="24_b5km4"]
+[ext_resource type="PackedScene" uid="uid://k3aqi4ehhiaj" path="res://scenes/mechanics/microgame1.tscn" id="24_b5km4"]
+[ext_resource type="PackedScene" uid="uid://dt0drd5gjqxko" path="res://scenes/mechanics/microgame_charge.tscn" id="26_l73ho"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
 size = Vector3(60, 1, 60)
@@ -74,6 +76,8 @@ script = ExtResource("7_to2cw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillArea"]
 shape = SubResource("BoxShape3D_tgaxw")
+
+[node name="GameOver" parent="." instance=ExtResource("13_r52it")]
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
@@ -275,12 +279,9 @@ material = SubResource("StandardMaterial3D_vbyk7")
 stream = ExtResource("6_5sova")
 volume_db = -10.0
 
-[node name="RedPen" type="Area3D" parent="MoLevel" node_paths=PackedStringArray("feedback_sound")]
+[node name="RedPen" type="Area3D" parent="MoLevel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 1, -4.2)
 script = ExtResource("4_j4edg")
-desire_type = 1
-feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/RedPen"]
 shape = SubResource("BoxShape3D_angni")
@@ -312,7 +313,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, 1, 11.4)
 script = ExtResource("4_j4edg")
 desire_type = 4
 feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
+microgame_feed = ExtResource("26_l73ho")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/YellowPen"]
 shape = SubResource("BoxShape3D_angni")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4upc8m7sjfs2"
-path="res://.godot/imported/car-battery-spritesheet.png-e314ec098a632fa1930736859e602eda.ctex"
+uid="uid://sfjj57nly84o"
+path="res://.godot/imported/cownado_icon.svg-5bd6ce039a99fd523dedb61605319381.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite-src/car-battery-spritesheet.png"
-dest_files=["res://.godot/imported/car-battery-spritesheet.png-e314ec098a632fa1930736859e602eda.ctex"]
+source_file="res://cownado_icon.svg"
+dest_files=["res://.godot/imported/cownado_icon.svg-5bd6ce039a99fd523dedb61605319381.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
