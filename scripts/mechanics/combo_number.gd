@@ -12,7 +12,7 @@ extends Node3D
 func _ready() -> void:
 	Globals.animal_penned_signal.connect(func(_obj): handle_combo())
 	
-	
+
 ## Reset the global combo number to 0
 func _on_combo_dead_timer_timeout() -> void:
 	Globals.current_combo_number = 0
@@ -57,7 +57,8 @@ func display_number(value: int, pos: Vector2):
 	tween.set_parallel(true)
 	# Make the number animate going up by 24 pixels in 0.25s
 	tween.tween_property(number, "position:y", number.position.y - 24, 0.25).set_ease(Tween.EASE_OUT)
-	tween.tween_property(number, "rotation", PI / 2, 0.75)
+	var _sign = 1 if randi() % 2 else -1
+	tween.tween_property(number, "rotation", _sign * PI / 4, 0.75)
 	# Make it go back down
 	tween.tween_property(number, "position:y", number.position.y, 0.5).set_ease(Tween.EASE_IN).set_delay(0.25)
 	tween.tween_property(number, "scale", Vector2.ZERO, 0.25).set_ease(Tween.EASE_IN).set_delay(0.5)
