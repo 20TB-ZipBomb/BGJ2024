@@ -1,8 +1,6 @@
 extends Area3D
 class_name PenArea
 
-static var penned_signal: Signal = Signal()
-
 ## Invisible Leash settings
 @export var min_drag_distance: float = 2
 ## Invisible Leash settings
@@ -26,7 +24,7 @@ func _ready():
 			penned_animals.append(animal)
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
-			PenArea.penned_signal.emit()
+			Globals.animal_penned_signal.emit(animal)
 			if feedback_sound:
 				feedback_sound.play()
 			else:
