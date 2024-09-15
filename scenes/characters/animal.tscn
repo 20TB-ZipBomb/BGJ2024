@@ -5,7 +5,6 @@
 [ext_resource type="Shader" path="res://assets/materials/desire.gdshader" id="2_joee6"]
 [ext_resource type="Texture2D" uid="uid://dik1oyf24wmr5" path="res://assets/items/lasso_icon.png" id="2_tudki"]
 [ext_resource type="Script" path="res://scripts/characters/animal_sprite.gd" id="3_dlphk"]
-[ext_resource type="Texture2D" uid="uid://o0b05ge0r6ec" path="res://assets/ui/moodlet_hungry.png" id="4_ru0n7"]
 [ext_resource type="Script" path="res://scenes/characters/moodlet.gd" id="5_63iio"]
 [ext_resource type="PackedScene" uid="uid://bljivl64m5rcv" path="res://scenes/mechanics/desire.tscn" id="5_x6bub"]
 [ext_resource type="AudioStream" uid="uid://h5ctt1plbwvn" path="res://assets/audio/sfx/cow/scream 2.wav" id="9_23ibr"]
@@ -23,6 +22,9 @@ shader = ExtResource("2_joee6")
 shader_parameter/color_to_replace = Color(1, 1, 1, 1)
 shader_parameter/new_color = Color(1, 1, 1, 1)
 shader_parameter/tex = ExtResource("1_qnv4c")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jcw5i"]
+load_path = "res://.godot/imported/moodlet_hungry.png-00abb130f5cd02b5031e765389ff5fce.s3tc.ctex"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ah35l"]
 radius = 0.7
@@ -64,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54902, 0.523987, 0.140402)
 visible = false
 pixel_size = 0.05
 texture_filter = 0
-texture = ExtResource("4_ru0n7")
+texture = SubResource("CompressedTexture2D_jcw5i")
 script = ExtResource("5_63iio")
 animal = NodePath("../../..")
 desire = NodePath("../../../Desire")
