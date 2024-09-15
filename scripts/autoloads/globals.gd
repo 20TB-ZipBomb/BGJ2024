@@ -1,6 +1,8 @@
 extends Node
 
 # Global script for holding references to things and stuff
+const PENNED_ANIMAL_HP_RESTORE: float = 5 ## Seconds
+const MAX_HP: float = 30
 var main: Node
 var player: CharacterBody3D
 signal animal_penned_signal(animal: Animal)

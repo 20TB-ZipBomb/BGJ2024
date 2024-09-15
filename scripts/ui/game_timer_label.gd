@@ -1,6 +1,6 @@
 extends Label
 
-var ticking: bool = false
+var ticking: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +18,18 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta: float) -> void:
 	if ticking:
-		var ms_elapsed: int = Globals.time_began - Time.get_ticks_msec()
-		var minutes: int = ms_elapsed / 60
-		var seconds: int = ms_elapsed % 60
-		text = str(minutes) + ":" + str(seconds)
+		var seconds_elapsed: int = (Time.get_ticks_msec() - Globals.time_began) / 1000
+		var minutes: int = seconds_elapsed / 60
+		var seconds: int = seconds_elapsed % 60
+		
+		var text_string: String = ""
+		if minutes < 10:
+			text_string += "0"
+		text_string += str(minutes)
+		text_string += ":"
+		if seconds < 10:
+			text_string += "0"
+		text_string += str(seconds)
+		text = text_string

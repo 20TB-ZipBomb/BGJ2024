@@ -33,6 +33,9 @@ func _ready() -> void:
 	Globals.player = self
 
 func _physics_process(_delta: float) -> void:
+	if Globals.game_state == Globals.GameState.GAME_OVER:
+		return
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -65,6 +68,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float):
+	if Globals.game_state == Globals.GameState.GAME_OVER:
+		return
+	
 	current_shout_cooldown += delta
 	Globals.shout_energy_changed.emit(clampf(current_shout_cooldown / shout_cooldown, 0, 1))
 	if Input.is_action_just_pressed("shout") and current_shout_cooldown >= shout_cooldown:

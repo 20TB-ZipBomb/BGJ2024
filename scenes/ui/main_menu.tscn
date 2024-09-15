@@ -1,7 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqboerkph0roh"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_hj6qr"]
-[ext_resource type="PackedScene" uid="uid://c3alwvlu7bmqq" path="res://scenes/levels/test_levels/alex_test_level.tscn" id="2_mu3fh"]
 
 [sub_resource type="SystemFont" id="SystemFont_em61w"]
 subpixel_positioning = 0
@@ -20,7 +19,6 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_hj6qr")
-start_game_level = ExtResource("2_mu3fh")
 audio_stream = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
