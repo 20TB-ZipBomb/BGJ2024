@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca0qi1jic0dtm"]
+[gd_scene load_steps=5 format=3 uid="uid://ca0qi1jic0dtm"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_1j8ow"]
 [ext_resource type="Texture2D" uid="uid://crhfhlpsju2xu" path="res://assets/ui/cownado-title.png" id="3_4bgoj"]
-[ext_resource type="Theme" uid="uid://semt14wpoo5d" path="res://scenes/ui/ui_theme.tres" id="4_bvhyg"]
+[ext_resource type="Texture2D" uid="uid://buatvxn8ti2n4" path="res://assets/ui/main_menu_background.png" id="3_qb48o"]
+[ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="4_bvhyg"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("audio_stream")]
 layout_mode = 3
@@ -28,6 +29,12 @@ theme = ExtResource("4_bvhyg")
 layout_direction = 2
 layout_mode = 2
 alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="PanelContainer/VBoxContainer"]
+texture_filter = 1
+position = Vector2(160, 90)
+scale = Vector2(0.169091, 0.169091)
+texture = ExtResource("3_qb48o")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
