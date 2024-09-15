@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
 [ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="23_jirl8"]
 [ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="24_3im3y"]
-[ext_resource type="PackedScene" uid="uid://k3aqi4ehhiaj" path="res://scenes/mechanics/microgame1.tscn" id="24_b5km4"]
+[ext_resource type="PackedScene" uid="uid://ppnfrbvwmolt" path="res://scenes/mechanics/microgame_drink.tscn" id="24_qsn0c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
 size = Vector3(60, 1, 60)
@@ -265,7 +265,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 1, 7.3)
 script = ExtResource("4_j4edg")
 desire_type = 2
 feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
+microgame_feed = ExtResource("24_qsn0c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/BluePen"]
 shape = SubResource("BoxShape3D_angni")
@@ -296,7 +296,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 1, -4.8)
 script = ExtResource("4_j4edg")
 desire_type = 3
 feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/GreenPen"]
 shape = SubResource("BoxShape3D_angni")
@@ -314,7 +313,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, 1, 11.4)
 script = ExtResource("4_j4edg")
 desire_type = 4
 feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/YellowPen"]
 shape = SubResource("BoxShape3D_angni")
