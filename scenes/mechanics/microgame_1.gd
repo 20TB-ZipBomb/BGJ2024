@@ -2,9 +2,9 @@ extends Control
 
 @onready var apple: Sprite2D = %Apple
 @onready var cow_mouth: Node2D = %CowMouth
-@onready var cow: Sprite2D =  %Cowcloseup
+@onready var cow: Sprite2D = %Cowcloseup
 
-var happy_cow: Texture2D = load("res://assets/characters/cowcloseup2.png")
+var happy_cow: Texture2D = preload("res://assets/characters/cowcloseup2.png")
 
 var pickedup: bool = false
 var apple_dist_tolerance: float = 15
