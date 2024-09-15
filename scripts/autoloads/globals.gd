@@ -7,6 +7,8 @@ var main: Node
 var player: CharacterBody3D
 signal animal_penned_signal(animal: Animal)
 
+var player_can_move: bool = true
+
 var time_began: int = 0 ## Engine ms timestamp
 
 signal game_state_changed(new_game_state: GameState)
@@ -30,7 +32,7 @@ func _on_game_state_changed(new_game_state: GameState) -> void:
 		GameState.GAMEPLAY:
 			time_began = Time.get_ticks_msec()
 		GameState.GAME_OVER:
-			pass
+			player_can_move = false
 
 ## Current wave number, used for balancing storm behavior and animals spawned
 var current_storm_wave_number: int
