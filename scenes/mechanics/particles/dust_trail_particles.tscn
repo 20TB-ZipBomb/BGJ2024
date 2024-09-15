@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://c2ic0bm0akgm4" path="res://assets/particles/dust_particles.png" id="1_bsy5d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u46vw"]
-render_priority = -100
 transparency = 1
 no_depth_test = true
 albedo_texture = ExtResource("1_bsy5d")

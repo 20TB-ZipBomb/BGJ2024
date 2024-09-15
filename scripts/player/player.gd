@@ -32,12 +32,25 @@ var current_shout_cooldown: float = 0
 
 func _ready() -> void:
 	Globals.player = self
+	%AnimatedSprite3D.play("idle")
 
 func _physics_process(_delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	# Play directional animation
+	if direction.y == 1:
+		%AnimatedSprite3D.play("walk_down")
+	elif direction.y == -1:
+		%AnimatedSprite3D.play("walk_up")
+	elif direction.x > 0:
+		%AnimatedSprite3D.play("walk_right")
+	elif direction.x < 0:
+		%AnimatedSprite3D.play("walk_left")
+	else:
+		%AnimatedSprite3D.play("idle")
+		
 	if direction.length() > 0:
 		var raycast_direction: Vector2 = direction.normalized() * lasso_range
 		raycast.target_position = Vector3(raycast_direction.x, 0, raycast_direction.y)
@@ -84,3 +97,4 @@ func _process(delta: float):
 		lasso_detach_sound.play()
 		for leash in Leash.all_leashes:
 			leash.queue_free()
+	

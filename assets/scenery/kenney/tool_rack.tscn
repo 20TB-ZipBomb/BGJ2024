@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq1n8t2uiq4fn"]
+
+[ext_resource type="Texture2D" uid="uid://dv5vs4thb21ck" path="res://assets/scenery/Rack/tile_0080.png" id="1_x1734"]
+[ext_resource type="Texture2D" uid="uid://b71mgbrppr76t" path="res://assets/scenery/Rack/tile_0081.png" id="2_kk4uu"]
+[ext_resource type="Texture2D" uid="uid://ccpsa43vofaa0" path="res://assets/scenery/Rack/tile_0082.png" id="3_pj7c8"]
+[ext_resource type="Texture2D" uid="uid://dykwc4k4no2ox" path="res://assets/scenery/Tools/tile_0116.png" id="4_v57io"]
+[ext_resource type="Texture2D" uid="uid://cjr4jl7fh3pxi" path="res://assets/scenery/Tools/tile_0115.png" id="5_sbo40"]
+[ext_resource type="Texture2D" uid="uid://ebnqg1ygawgv" path="res://assets/scenery/Tools/tile_0128.png" id="6_2rhbw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1k3u"]
+size = Vector3(0.481506, 0.349059, 0.109741)
+
+[node name="ToolRack" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, 0.0656043, -0.00206385)
+shape = SubResource("BoxShape3D_i1k3u")
+
+[node name="Tilt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+
+[node name="Rack" type="Node3D" parent="Tilt"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Tilt/Rack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199768, 0, 0)
+texture_filter = 0
+texture = ExtResource("1_x1734")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Tilt/Rack"]
+transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_kk4uu")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Tilt/Rack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.197578, 0, 0)
+texture_filter = 0
+texture = ExtResource("3_pj7c8")
+
+[node name="Tools" type="Node3D" parent="Tilt"]
+
+[node name="Pitchfork" type="Sprite3D" parent="Tilt/Tools"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, -7.45058e-09, 0, 2.98023e-08, 0.75, -0.109271, 0, -0.0117401)
+sorting_offset = 1.0
+texture_filter = 0
+texture = ExtResource("4_v57io")
+
+[node name="Pickaxe" type="Sprite3D" parent="Tilt/Tools"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, -7.45058e-09, 0, 2.98023e-08, 0.75, 0, 0, -0.0117401)
+layers = 2
+sorting_offset = 1.0
+texture_filter = 0
+texture = ExtResource("5_sbo40")
+
+[node name="Shovel" type="Sprite3D" parent="Tilt/Tools"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, -7.45058e-09, 0, 2.98023e-08, 0.75, 0.114061, 0, -0.0117401)
+layers = 2
+sorting_offset = 1.0
+texture_filter = 0
+texture = ExtResource("6_2rhbw")

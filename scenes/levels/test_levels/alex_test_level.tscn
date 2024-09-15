@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=20 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://iusuegf28ylo" path="res://assets/audio/sfx/ding.wav" id="6_5sova"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
+[ext_resource type="PackedScene" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -185,3 +186,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
 stream = ExtResource("9_ey1rs")
 volume_db = -20.0
 autoplay = true
+
+[node name="ProgressBar" parent="." instance=ExtResource("10_y3afd")]
+offset_left = -10.0
+offset_top = -63.0
+offset_right = -10.0
+offset_bottom = -63.0
+scale = Vector2(0.696073, 0.696073)

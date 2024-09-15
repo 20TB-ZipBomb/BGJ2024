@@ -35,6 +35,8 @@ project/assembly_name="BGJ2024"
 
 folder_colors={
 "res://assets/": "orange",
+"res://build/": "yellow",
+"res://resources/": "green",
 "res://scenes/": "blue",
 "res://scripts/": "red"
 }
@@ -91,3 +93,7 @@ remove_leash={
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
