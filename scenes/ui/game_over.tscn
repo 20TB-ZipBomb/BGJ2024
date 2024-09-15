@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpocwde4n5jb6"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_uq4gh"]
+[ext_resource type="AudioStream" uid="uid://c0s0lps1x2abq" path="res://assets/audio/music/congrats.wav" id="2_gj0k7"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uq4gh")
+
+[node name="Time" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 13.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOUR TIME: 00:00"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -39.0
+offset_right = 103.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.574051, 0.574051)
+text = "Return to Menu"
+
+[node name="JingleStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_gj0k7")

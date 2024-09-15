@@ -1,36 +1,94 @@
 extends Node
-
 class_name Desire
 
-enum DesireType {NONE, HUNGRY, INJURED, THIRSTY, BURNING}
-
-const DESIRE_COLOR_MAP = {
-	DesireType.NONE: Color("white"),
-	DesireType.HUNGRY: Color("blue"),
-	DesireType.THIRSTY: Color("green"),
-	DesireType.BURNING: Color("red")
+## General list of desires for each animal.
+## @NOTE: These combine desires that are considered 'general' (thirsty, hungry, etc.)
+## and those that are 'storm-specific' for the time-being.
+enum DesireType {
+	NONE,
+	RED_PEN,
+	BLUE_PEN,
+	GREEN_PEN,
+	YELLOW_PEN,
+	#THIRSTY,
+	#INJURED,
+	#HUNGRY,
+	#WET,
+	#SHOCKED,
+	#BURNING,
 }
 
-@export var sprite_node_type = "AnimalSprite"
+## The animal sprite being updated with desire colors.
+@export var animal_sprite: SpriteBase3D = null
+## Maps the desires for each animal to a particular color.
+###
+## In an ideal, forgiving, and graceful world - we could efficiently set these all in the scene, and not in code.
+## https://github.com/godotengine/godot/pull/78656
+## (╯°□°)╯︵ ┻━┻
+@export var desire_to_color_map: Dictionary = {
+	DesireType.NONE: Color.WHITE,
+	DesireType.RED_PEN: Color.RED,
+	DesireType.BLUE_PEN: Color.BLUE,
+	DesireType.GREEN_PEN: Color.GREEN,
+	DesireType.YELLOW_PEN: Color.YELLOW,
+	#DesireType.THIRSTY: Color.GREEN,
+	#DesireType.INJURED: Color.PINK,
+	#DesireType.HUNGRY: Color.SADDLE_BROWN,
+	#DesireType.WET: Color.BLUE,
+	#DesireType.SHOCKED: Color.YELLOW,
+	#DesireType.BURNING: Color.FIREBRICK,
+}
 
-var current_desire = DesireType.NONE
+## String representation for the current desire.
+## This is readonly, and updating it will have no impact.
+@export var _current_desire_string = ""
+var current_desire: DesireType = DesireType.NONE:
+	set(value):
+		if value != current_desire:
+			current_desire = value
+			desire_changed.emit(current_desire)
 
-var sprite = null
+@export var burning_particles: GPUParticles3D
+@export var electric_particles: GPUParticles3D
+@export var happy_particles: GPUParticles3D
 
-func set_desire(new_desire) -> void:
-	# unsure if there is a better method to ensure type of param
-	if new_desire is not DesireType:
-		print_debug(new_desire, "is not a desire type")
-		pass
-	current_desire = new_desire
-	if sprite:
-		#material.set_shader_parameter("selected_color", DESIRE_COLOR_MAP[new_desire])
-		sprite.modulate = DESIRE_COLOR_MAP[new_desire]
-	
+signal desire_changed(new_desire: DesireType)
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite = get_node("../Tilt/" + sprite_node_type)
-	var rng = RandomNumberGenerator.new()
-	var desires = DESIRE_COLOR_MAP.keys()
-	set_desire(desires[rng.randi_range(0,3)])
+	desire_changed.connect(_on_desire_changed)
+	roll_new_desire()
+
+## Randomly assigns a new desire
+func roll_new_desire() -> void:
+	var random_desire_type: DesireType = DesireType.values().pick_random()
+	if not desire_to_color_map.has(random_desire_type):
+		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
+		return
+
+	# Update the current desire and its string
+	current_desire = random_desire_type
+	_current_desire_string = DesireType.keys()[current_desire]
+
+## Sets the color of the current sprite based on the provided desire
+func _on_desire_changed(new_desire: DesireType) -> void:
+	if animal_sprite:
+		# Modulate the sprite based on the color associated with the desire
+		animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])
+	else:
+		Log.error("The animal sprite is not set, no sprites will have their colors updated")
+	
+	# If there were more than 2 particle types, this would need to be refactored before it gets messy
+	match new_desire:
+		DesireType.RED_PEN:
+			burning_particles.emitting = true
+			electric_particles.emitting = false
+		DesireType.YELLOW_PEN:
+			electric_particles.emitting = true
+			burning_particles.emitting = false
+		_:
+			happy_particles.emitting = true
+			electric_particles.emitting = false
+			burning_particles.emitting = false
+			pass
+
+	
