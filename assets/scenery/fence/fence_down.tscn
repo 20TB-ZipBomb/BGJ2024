@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcnq7f4s0wsep"]
+
+[ext_resource type="Texture2D" uid="uid://bd6acp0unsjkw" path="res://assets/scenery/fence/tile_0047.png" id="1_qrpaw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhfl3"]
+size = Vector3(0.081, 0.5, 0.17)
+
+[node name="FenceDown" type="StaticBody3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.60344, 0.258819, 0, -0.429639, 0.965926, 0, 0.1, 0)
+texture_filter = 0
+texture = ExtResource("1_qrpaw")
+region_rect = Rect2(64.9985, 64.3601, 63.1995, 47.7621)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000112725, 0.0840509, -0.0568561)
+shape = SubResource("BoxShape3D_nhfl3")

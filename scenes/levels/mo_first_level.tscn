@@ -1,0 +1,179 @@
+[gd_scene load_steps=21 format=3 uid="uid://cachykv6b8mk3"]
+
+[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_7fpl4"]
+[ext_resource type="PackedScene" uid="uid://xwcablqlm51n" path="res://assets/scenery/farm_house.tscn" id="1_ko8fo"]
+[ext_resource type="PackedScene" uid="uid://v6hik4h5spv3" path="res://assets/scenery/oak_tree.tscn" id="1_y1fty"]
+[ext_resource type="Texture2D" uid="uid://ravwrwy7wu1t" path="res://assets/scenery/kenney/tile_0000.png" id="1_ynox4"]
+[ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_cfnf1"]
+[ext_resource type="PackedScene" uid="uid://bgslcdv7impb" path="res://assets/scenery/fence/fence.tscn" id="3_pap1a"]
+[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="3_sfqg8"]
+[ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="4_mnetn"]
+[ext_resource type="PackedScene" uid="uid://d00wxprocxb36" path="res://assets/scenery/fence/fence_mirror.tscn" id="5_uwbdv"]
+[ext_resource type="PackedScene" uid="uid://cq1n8t2uiq4fn" path="res://assets/scenery/kenney/tool_rack.tscn" id="6_yu5dl"]
+[ext_resource type="PackedScene" uid="uid://3uyuduajyl3" path="res://assets/scenery/well.tscn" id="7_ysjts"]
+[ext_resource type="PackedScene" uid="uid://3uiqewgij487" path="res://assets/scenery/wooden_cart.tscn" id="8_bmwx0"]
+[ext_resource type="PackedScene" uid="uid://70c1gpelu0c3" path="res://assets/scenery/ground_dirt.tscn" id="9_0rarr"]
+[ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="11_wu36t"]
+[ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="12_m5gui"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uhxfi"]
+sky_material = SubResource("ProceduralSkyMaterial_1d0ar")
+
+[sub_resource type="Environment" id="Environment_dob34"]
+background_mode = 2
+sky = SubResource("Sky_uhxfi")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbmph"]
+albedo_texture = ExtResource("1_ynox4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvm8w"]
+albedo_texture = ExtResource("1_7fpl4")
+uv1_triplanar = true
+texture_filter = 0
+
+[node name="FirstLevel" type="Node"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Level"]
+environment = SubResource("Environment_dob34")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Level"]
+transform = Transform3D(-0.866025, -0.3847, -0.319383, -0.344468, -0.00394046, 0.93879, -0.362411, 0.923033, -0.129104, 0, 18.264, 0)
+shadow_enabled = true
+shadow_reverse_cull_face = true
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.414, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_hbmph")
+use_collision = true
+size = Vector3(30, 0.1, 30)
+material = SubResource("StandardMaterial3D_lvm8w")
+metadata/_edit_lock_ = true
+
+[node name="LevelEnvironment" type="Node3D" parent="Level"]
+
+[node name="GroundDirt" parent="Level/LevelEnvironment" instance=ExtResource("9_0rarr")]
+transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, -4.769, -0.4, -6.712)
+
+[node name="GroundDirt2" parent="Level/LevelEnvironment" instance=ExtResource("9_0rarr")]
+transform = Transform3D(-10, 0, 8.74228e-07, 0, 0.01, 0, -8.74228e-07, 0, -10, 7.916, -0.4, 14.292)
+
+[node name="GroundDirt3" parent="Level/LevelEnvironment" instance=ExtResource("9_0rarr")]
+transform = Transform3D(-4.37114e-07, 0, -10, 0, 0.01, 0, 10, 0, -4.37114e-07, -4.318, -0.4, 12.128)
+
+[node name="FarmHouse" parent="Level/LevelEnvironment" instance=ExtResource("1_ko8fo")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 3.742, 1, -7.45268)
+
+[node name="WoodenCart" parent="Level/LevelEnvironment/FarmHouse" instance=ExtResource("8_bmwx0")]
+transform = Transform3D(0.8, 0, 0, 0, 1.4, 0, 0, 0, 0.8, -0.380919, 0, -0.134658)
+
+[node name="ToolRack" parent="Level/LevelEnvironment" instance=ExtResource("6_yu5dl")]
+transform = Transform3D(5, 0, 0, 0, 7.72741, 1.2941, 0, -2.07055, 4.82963, 6.55103, 1, -8.79163)
+
+[node name="OakTree" parent="Level/LevelEnvironment" instance=ExtResource("1_y1fty")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -5.176, -0.75, -1.69)
+visible = false
+
+[node name="OakTree2" parent="Level/LevelEnvironment" instance=ExtResource("1_y1fty")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -7.3526, -0.75, 2.12968)
+visible = false
+
+[node name="OakTree4" parent="Level/LevelEnvironment" instance=ExtResource("1_y1fty")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -8.74304, -0.75, -4.87017)
+visible = false
+
+[node name="FenceTopLeft" parent="Level/LevelEnvironment" instance=ExtResource("3_pap1a")]
+transform = Transform3D(3, 0, 5.24537e-07, 0, 3, 0, -5.24537e-07, 0, 3, -10.203, 1, -6.225)
+
+[node name="FenceBotLeft" parent="Level/LevelEnvironment" instance=ExtResource("3_pap1a")]
+transform = Transform3D(3, 0, 5.24537e-07, 0, 3, 0, -5.24537e-07, 0, 3, -10.434, 1, 5.20184)
+
+[node name="FenceTopRight" parent="Level/LevelEnvironment" instance=ExtResource("5_uwbdv")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.278, 1, -6.802)
+
+[node name="FenceBotRight" parent="Level/LevelEnvironment" instance=ExtResource("5_uwbdv")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.88573, 1, 9.33877)
+
+[node name="Well" parent="Level/LevelEnvironment" instance=ExtResource("7_ysjts")]
+transform = Transform3D(6, 0, 0, 0, 14, 0, 0, 0, 4, -8.248, 1.385, -4.253)
+
+[node name="Trees" type="Node3D" parent="Level/LevelEnvironment"]
+
+[node name="TreeGreen" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.60046, 1, -12.5931)
+
+[node name="TreeGreen4" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 9.68774, 1, -12.5931)
+
+[node name="TreeGreen2" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -5.69986, 1, -12.5931)
+
+[node name="TreeGreen3" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -6.12482, 1, -11.8073)
+
+[node name="TreeGreen5" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -10.981, 1, 0.235352)
+
+[node name="TreeGreen7" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -9.92587, 1, 1.35767)
+
+[node name="TreeGreen6" parent="Level/LevelEnvironment/Trees" instance=ExtResource("11_wu36t")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 9.61877, 1, 1.45337)
+
+[node name="TreeYellow" parent="Level/LevelEnvironment/Trees" instance=ExtResource("12_m5gui")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 10.2625, 1, 0.702026)
+
+[node name="TreeYellow2" parent="Level/LevelEnvironment/Trees" instance=ExtResource("12_m5gui")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -8.19653, 1, 11.9474)
+
+[node name="TreeYellow3" parent="Level/LevelEnvironment/Trees" instance=ExtResource("12_m5gui")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.05197, 1, -12.132)
+
+[node name="TreeYellow4" parent="Level/LevelEnvironment/Trees" instance=ExtResource("12_m5gui")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -11.1966, 1, -15.0647)
+
+[node name="Player" parent="Level" instance=ExtResource("2_cfnf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426703, 1, -2.41723)
+lasso_range = 0.7
+
+[node name="Camera3D" type="Camera3D" parent="Level/Player"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.0445862, 7.40143, 4.38785)
+projection = 1
+fov = 45.0
+size = 10.0
+
+[node name="Animal" parent="Level" instance=ExtResource("3_sfqg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27621, 9.53674e-07, 1.977)
+visible = false
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1086.0
+offset_top = -607.0
+offset_right = -1046.0
+offset_bottom = -567.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="ShoutBar" parent="HUD" instance=ExtResource("4_mnetn")]
+layout_mode = 1
+offset_left = 1024.0
+offset_top = 568.0
+offset_right = 1024.0
+offset_bottom = 568.0
+scale = Vector2(0.5, 0.5)
