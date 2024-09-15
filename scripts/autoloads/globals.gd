@@ -2,7 +2,7 @@ extends Node
 
 # Global script for holding references to things and stuff
 const PENNED_ANIMAL_HP_RESTORE: float = 5 ## Seconds
-const MAX_HP: float = 30
+const MAX_HP: float = 2
 var main: Node
 var player: CharacterBody3D
 var micrograme_queue: Array[PackedScene] = []

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_1j8ow"]
 [ext_resource type="Texture2D" uid="uid://crhfhlpsju2xu" path="res://assets/ui/cownado-title.png" id="3_4bgoj"]
-[ext_resource type="Theme" uid="uid://semt14wpoo5d" path="res://scenes/ui/ui_theme.tres" id="4_bvhyg"]
+[ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="4_bvhyg"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("audio_stream")]
 layout_mode = 3
