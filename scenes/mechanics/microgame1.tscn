@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://k3aqi4ehhiaj"]
+[gd_scene load_steps=6 format=3 uid="uid://gv1vgirbdu0d"]
 
 [ext_resource type="Script" path="res://scenes/mechanics/microgame_1.gd" id="1_0v8f6"]
 [ext_resource type="Texture2D" uid="uid://bc4cy5lu7ejb4" path="res://assets/characters/cowcloseup.png" id="2_gsqse"]

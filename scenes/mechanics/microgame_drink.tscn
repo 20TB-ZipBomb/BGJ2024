@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=3 uid="uid://ppnfrbvwmolt"]
+
+[ext_resource type="Script" path="res://scripts/mechanics/microgame_drink.gd" id="1_ge084"]
+[ext_resource type="Texture2D" uid="uid://b0ghjwd5huo76" path="res://assets/ui/water_droplet.png" id="3_iel5t"]
+[ext_resource type="Texture2D" uid="uid://c0hahkc2if71" path="res://assets/ui/cow_cutout.png" id="4_ip8x6"]
+
+[sub_resource type="SystemFont" id="SystemFont_em61w"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8mke"]
+font = SubResource("SystemFont_em61w")
+font_size = 24
+
+[node name="Microgame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_ge084")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+modulate = Color(0, 0.431098, 0.462663, 1)
+layout_mode = 0
+offset_left = 49.0
+offset_top = 179.0
+offset_right = 225.0
+offset_bottom = 417.0
+rotation = -1.57079
+show_percentage = false
+
+[node name="Cowcloseup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(168, 94)
+scale = Vector2(0.468517, 0.468517)
+texture = ExtResource("4_ip8x6")
+
+[node name="CowMouth" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(160, 150)
+
+[node name="Droplet1" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(24, 15)
+scale = Vector2(2.34375, 2.375)
+texture = ExtResource("3_iel5t")
+
+[node name="Droplet2" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(302, 153)
+scale = Vector2(2.34375, 2.375)
+texture = ExtResource("3_iel5t")
+
+[node name="Droplet3" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(302, 21)
+scale = Vector2(2.34375, 2.375)
+texture = ExtResource("3_iel5t")
+
+[node name="Droplet4" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(23, 154)
+scale = Vector2(2.34375, 2.375)
+texture = ExtResource("3_iel5t")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+light_mask = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hydrate!"
+label_settings = SubResource("LabelSettings_y8mke")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

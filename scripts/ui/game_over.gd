@@ -2,6 +2,7 @@ extends Control
 
 @onready var return_button: Button = %ReturnButton
 @onready var time_label: Label = %Time
+@onready var jingle_sound: AudioStreamPlayer = %JingleStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,7 @@ func _ready():
 					text_string += "0"
 				text_string += str(seconds)
 				time_label.text = "YOUR TIME: " + text_string
+				jingle_sound.play()
 				show()
 			Globals.GameState.GAMEPLAY:
 				hide()
