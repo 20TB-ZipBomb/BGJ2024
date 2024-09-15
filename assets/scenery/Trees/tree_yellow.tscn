@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1qywwddw4fd"]
+
+[ext_resource type="Texture2D" uid="uid://nkxpk17ubk1m" path="res://assets/scenery/Trees/tile_0015.png" id="1_8m746"]
+[ext_resource type="Texture2D" uid="uid://qoyqs217yic7" path="res://assets/scenery/Trees/tile_0010.png" id="2_tud7r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8piox"]
+size = Vector3(0.12, 0.5, 0.15)
+
+[node name="TreeGreen" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0, -0.0531719)
+shape = SubResource("BoxShape3D_8piox")
+
+[node name="Tree" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.44889, 0.258819, 0, -0.388229, 0.965926, 0, 0, 0)
+
+[node name="Base" type="Sprite3D" parent="Tree"]
+texture_filter = 0
+texture = ExtResource("1_8m746")
+
+[node name="Top" type="Sprite3D" parent="Tree"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158007, 0)
+texture_filter = 0
+texture = ExtResource("2_tud7r")

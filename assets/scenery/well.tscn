@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://3uyuduajyl3"]
+
+[ext_resource type="Texture2D" uid="uid://dqpcaqeh85qif" path="res://assets/scenery/kenney/tile_0104.png" id="1_m5ohj"]
+[ext_resource type="Texture2D" uid="uid://xgugmlebeavb" path="res://assets/scenery/kenney/tile_0092.png" id="2_1uaey"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b5kn"]
+size = Vector3(0.158, 0.159, 0.171519)
+
+[node name="Well" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52588e-05, -0.000274658, -0.0588086)
+shape = SubResource("BoxShape3D_6b5kn")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.268395, 0, -0.258819, 1.00167, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1_m5ohj")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000334054, 0.103133, -0.0482863)
+sorting_offset = 1.0
+texture_filter = 0
+texture = ExtResource("2_1uaey")

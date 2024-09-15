@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://xwcablqlm51n"]
+
+[ext_resource type="Texture2D" uid="uid://eilhdwlthnhc" path="res://assets/scenery/kenney/tilemap_packed.png" id="1_wcifj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rnb46"]
+size = Vector3(0.631, 0.5, 0.389279)
+
+[node name="FarmHouse" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0109028, 0.264927, -0.231445)
+shape = SubResource("BoxShape3D_rnb46")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.60344, 0.258819, 0, -0.42964, 0.965926, 0, 0.250038, -0.0286759)
+texture_filter = 0
+texture = ExtResource("1_wcifj")
+region_enabled = true
+region_rect = Rect2(64.9985, 95.8055, 63.1995, 16.3167)
+metadata/_edit_group_ = true
+
+[node name="Roof" type="Sprite3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.159352, 0.987222, 0, -0.987222, 0.159352, 0.00079459, 0.0997785, -0.151043)
+texture_filter = 0
+texture = ExtResource("1_wcifj")
+region_enabled = true
+region_rect = Rect2(66.0438, 66.0727, 61.8984, 29.9256)
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.60344, 0.258818, 0, -0.429639, 0.965923, 0, 0.249041, -0.0276579)
+sorting_offset = 0.1
+texture_filter = 0
+texture = ExtResource("1_wcifj")
+region_enabled = true
+region_rect = Rect2(64.0428, 112.079, 32.2232, 15.8898)
