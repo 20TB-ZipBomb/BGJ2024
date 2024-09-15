@@ -4,7 +4,6 @@
 [ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="2_3vt2e"]
 [ext_resource type="AudioStream" uid="uid://c0s0lps1x2abq" path="res://assets/audio/music/congrats.wav" id="2_gj0k7"]
 [ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="2_gl3qu"]
-[ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="3_g328t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8x4jv"]
 font = ExtResource("2_gl3qu")
@@ -70,7 +69,6 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.574051, 0.574051)
-theme = ExtResource("3_g328t")
 theme = ExtResource("2_3vt2e")
 text = "Return to Menu"
 

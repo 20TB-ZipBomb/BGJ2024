@@ -1,10 +1,11 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=47 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_63n41"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
+[ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="4_sqfnp"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
 [ext_resource type="AudioStream" uid="uid://iusuegf28ylo" path="res://assets/audio/sfx/ding.wav" id="6_5sova"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
@@ -12,24 +13,38 @@
 [ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="8_dr6ux"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
 [ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
-[ext_resource type="PackedScene" uid="uid://dpocwde4n5jb6" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
+[ext_resource type="PackedScene" uid="uid://br2jgvicaxjuh" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
 [ext_resource type="Texture2D" uid="uid://ravwrwy7wu1t" path="res://assets/scenery/kenney/tile_0000.png" id="14_0or82"]
 [ext_resource type="PackedScene" uid="uid://70c1gpelu0c3" path="res://assets/scenery/ground_dirt.tscn" id="15_8sfm0"]
 [ext_resource type="PackedScene" uid="uid://xwcablqlm51n" path="res://assets/scenery/farm_house.tscn" id="16_h1cwa"]
 [ext_resource type="PackedScene" uid="uid://3uiqewgij487" path="res://assets/scenery/wooden_cart.tscn" id="17_4fce6"]
 [ext_resource type="PackedScene" uid="uid://cq1n8t2uiq4fn" path="res://assets/scenery/kenney/tool_rack.tscn" id="18_c37yd"]
 [ext_resource type="PackedScene" uid="uid://bgslcdv7impb" path="res://assets/scenery/fence/fence.tscn" id="20_duulg"]
+[ext_resource type="PackedScene" uid="uid://d4gk5su0q58i5" path="res://assets/scenery/game_boundary.tscn" id="20_ntwsu"]
 [ext_resource type="Script" path="res://scripts/mechanics/camera_shaker.gd" id="21_a168k"]
 [ext_resource type="PackedScene" uid="uid://d00wxprocxb36" path="res://assets/scenery/fence/fence_mirror.tscn" id="21_hbpjn"]
 [ext_resource type="PackedScene" uid="uid://3uyuduajyl3" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
 [ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="23_jirl8"]
 [ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="24_3im3y"]
 [ext_resource type="PackedScene" uid="uid://gv1vgirbdu0d" path="res://scenes/mechanics/microgame1.tscn" id="24_b5km4"]
+[ext_resource type="PackedScene" uid="uid://ppnfrbvwmolt" path="res://scenes/mechanics/microgame_drink.tscn" id="24_ny644"]
 [ext_resource type="PackedScene" uid="uid://t5wwbsr1t3uw" path="res://scenes/mechanics/microgame_fire.tscn" id="26_gxxs6"]
 [ext_resource type="PackedScene" uid="uid://dt0drd5gjqxko" path="res://scenes/mechanics/microgame_charge.tscn" id="26_l73ho"]
+[ext_resource type="Texture2D" uid="uid://bw7engryjru2p" path="res://assets/scenery/Signs/apple_arrow_signpost.png" id="30_u0jo3"]
+[ext_resource type="Texture2D" uid="uid://bm21imc8rq0o1" path="res://assets/scenery/Signs/lighting_arrow_signpost.png" id="31_rky6y"]
+[ext_resource type="Texture2D" uid="uid://f5487yk77nf2" path="res://assets/scenery/Signs/thirsty_arrow_signpost.png" id="32_d5fed"]
+[ext_resource type="Texture2D" uid="uid://dx0okgy0mmrt4" path="res://assets/scenery/Signs/burning_arrow_signpost.png" id="33_mbebj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
 size = Vector3(60, 1, 60)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8x4jv"]
+font = ExtResource("4_sqfnp")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.607843)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_boaxh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -100,6 +115,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 text = "0:00"
+label_settings = SubResource("LabelSettings_8x4jv")
 horizontal_alignment = 1
 script = ExtResource("8_dr6ux")
 
@@ -154,7 +170,7 @@ shadow_reverse_cull_face = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.414, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_7schw")
 use_collision = true
-size = Vector3(30, 0.1, 30)
+size = Vector3(50, 0.1, 50)
 material = SubResource("StandardMaterial3D_ge7ww")
 metadata/_edit_lock_ = true
 
@@ -234,6 +250,9 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 1.05197, 1, -12.132)
 [node name="TreeYellow4" parent="MoLevel/LevelEnvironment/Trees" instance=ExtResource("24_3im3y")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -11.1966, 1, -15.0647)
 
+[node name="Boundary" parent="MoLevel/LevelEnvironment" instance=ExtResource("20_ntwsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+
 [node name="Player" parent="MoLevel" instance=ExtResource("1_uer05")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426703, 1, -2.41723)
 leash_pull_coefficient = 0.9
@@ -254,12 +273,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6, 1, 7.3)
 script = ExtResource("4_j4edg")
 desire_type = 2
 feedback_sound = NodePath("FeedbackAudioStreamPlayer")
-microgame_feed = ExtResource("24_b5km4")
+microgame_feed = ExtResource("24_ny644")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/BluePen"]
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/BluePen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_vbyk7")
 
@@ -291,6 +311,7 @@ microgame_feed = ExtResource("24_b5km4")
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/GreenPen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_obuob")
 
@@ -309,6 +330,7 @@ microgame_feed = ExtResource("26_l73ho")
 shape = SubResource("BoxShape3D_angni")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="MoLevel/YellowPen"]
+visible = false
 size = Vector3(3.5, 1, 4)
 material = SubResource("StandardMaterial3D_3o4rv")
 
@@ -321,3 +343,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89776, 0)
 
 [node name="Camera3D" type="Camera3D" parent="MoLevel"]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3.1, 2.7)
+
+[node name="AppleSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 6.07452, 2, -7.92713)
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("30_u0jo3")
+
+[node name="LightingSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 6.82508, 2.46955, 8.02153)
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("31_rky6y")
+
+[node name="ThirstySign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -7.05556, 2, 3.80005)
+flip_h = true
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("32_d5fed")
+
+[node name="BurningSign" type="Sprite3D" parent="MoLevel"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, -6.38515, 2, -7.40767)
+flip_h = true
+pixel_size = 0.05
+texture_filter = 0
+texture = ExtResource("33_mbebj")
