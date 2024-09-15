@@ -18,13 +18,10 @@ func _ready():
 			var animal: Animal = body
 			if animal.desire.current_desire != desire_type or animal.desire.current_desire == Desire.DesireType.NONE:
 				return
-				
-			var microgame := microgame_feed.instantiate()
 			
-			add_child(microgame)
-			Globals.player_can_move = false
+			Globals.micrograme_queue.append(microgame_feed)
+			Globals.load_next_microgame()
 			
-			penned_animals.append(animal)
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
 			Globals.animal_penned_signal.emit(animal)
