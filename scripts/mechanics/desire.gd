@@ -50,6 +50,7 @@ var current_desire: DesireType = DesireType.NONE:
 
 @export var burning_particles: GPUParticles3D
 @export var electric_particles: GPUParticles3D
+@export var happy_particles: GPUParticles3D
 
 signal desire_changed(new_desire: DesireType)
 
@@ -86,6 +87,8 @@ func _on_desire_changed(new_desire: DesireType) -> void:
 			electric_particles.emitting = true
 			burning_particles.emitting = false
 		_:
+			happy_particles.emitting = true
+			electric_particles.emitting = false
 			burning_particles.emitting = false
 			pass
 
