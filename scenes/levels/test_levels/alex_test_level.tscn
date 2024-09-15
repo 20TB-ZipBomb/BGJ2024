@@ -1,10 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=47 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_63n41"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
+[ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="4_sqfnp"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
 [ext_resource type="AudioStream" uid="uid://iusuegf28ylo" path="res://assets/audio/sfx/ding.wav" id="6_5sova"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
@@ -12,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="8_dr6ux"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
 [ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
-[ext_resource type="PackedScene" uid="uid://dpocwde4n5jb6" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
+[ext_resource type="PackedScene" uid="uid://br2jgvicaxjuh" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
 [ext_resource type="Texture2D" uid="uid://ravwrwy7wu1t" path="res://assets/scenery/kenney/tile_0000.png" id="14_0or82"]
 [ext_resource type="PackedScene" uid="uid://70c1gpelu0c3" path="res://assets/scenery/ground_dirt.tscn" id="15_8sfm0"]
 [ext_resource type="PackedScene" uid="uid://xwcablqlm51n" path="res://assets/scenery/farm_house.tscn" id="16_h1cwa"]
@@ -36,6 +37,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
 size = Vector3(60, 1, 60)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8x4jv"]
+font = ExtResource("4_sqfnp")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.607843)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_boaxh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -106,6 +115,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 text = "0:00"
+label_settings = SubResource("LabelSettings_8x4jv")
 horizontal_alignment = 1
 script = ExtResource("8_dr6ux")
 
