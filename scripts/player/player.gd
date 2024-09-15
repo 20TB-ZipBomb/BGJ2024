@@ -6,7 +6,7 @@ extends CharacterBody3D
 ## The player's speed is multiplied by this number to the power of the number of leashed_animals.
 ## This lets the player can leash as many animals as they want without completely stopping.
 @export_range(0, 1) var speed_reduction_per_dragged_body: float = 0.85
-
+@export_range(0, 1) var leash_pull_coefficient: float = 0.8
 @export var lasso_range: float = 3
 
 @onready var raycast: RayCast3D = %RayCast3D
@@ -16,6 +16,8 @@ extends CharacterBody3D
 @onready var shout_sound: AudioStreamPlayer = %ShoutStreamPlayer
 @onready var lasso_attach_sound: AudioStreamPlayer = %LassoAttachStreamPlayer
 @onready var lasso_detach_sound: AudioStreamPlayer = %LassoDetachStreamPlayer
+@onready var dust_particles: GPUParticles3D = %DustTrailParticles
+@onready var shout_particles: GPUParticles3D = %ShoutParticles
 
 ## Can be null when not targetting any animal
 var targeted_animal: Animal:
@@ -34,6 +36,9 @@ func _ready() -> void:
 	%AnimatedSprite3D.play("idle")
 
 func _physics_process(_delta: float) -> void:
+	if Globals.player_can_move == false:
+		return
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -55,9 +60,11 @@ func _physics_process(_delta: float) -> void:
 		raycast.target_position = Vector3(raycast_direction.x, 0, raycast_direction.y)
 		if not foostep_sound.playing:
 			foostep_sound.play()
+			dust_particles.emitting = true
 	else:
 		if foostep_sound.playing:
 			foostep_sound.stop()
+			dust_particles.emitting = false
 	
 	# Handle targetting and leashing of animals
 	var body: Area3D = raycast.get_collider()
@@ -65,6 +72,7 @@ func _physics_process(_delta: float) -> void:
 		targeted_animal = body.owner
 		if Input.is_action_just_pressed("use_leash"):
 			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
+			leash.pull_coefficient = leash_pull_coefficient
 			dragged_animal_count += 1
 			lasso_attach_sound.play()
 			leash.tree_exiting.connect(func():
@@ -78,6 +86,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float):
+	if Globals.player_can_move == false:
+		return
+	
 	current_shout_cooldown += delta
 	Globals.shout_energy_changed.emit(clampf(current_shout_cooldown / shout_cooldown, 0, 1))
 	if Input.is_action_just_pressed("shout") and current_shout_cooldown >= shout_cooldown:
@@ -90,6 +101,7 @@ func _process(delta: float):
 		if camera_shaker:
 			camera_shaker.apply_shake()
 		shout_sound.play()
+		shout_particles.emitting = true
 	if Input.is_action_just_pressed("remove_leash"):
 		lasso_detach_sound.play()
 		for leash in Leash.all_leashes:

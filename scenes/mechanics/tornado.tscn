@@ -17,7 +17,6 @@ shader_parameter/new_color = Color(1, 1, 1, 1)
 shader_parameter/tex = ExtResource("1_m2yj0")
 
 [node name="Tornado" type="Node3D"]
-visible = false
 script = ExtResource("1_n5pc6")
 animal_scene = ExtResource("2_03n5f")
 storm_difficulty_curve = ExtResource("2_38j44")
@@ -37,10 +36,10 @@ autostart = true
 animal_sprite = NodePath("../Tilt/TornadoSprite")
 
 [node name="Tilt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0.1)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="TornadoSprite" type="Sprite3D" parent="Tilt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 material_override = SubResource("ShaderMaterial_fsv4o")
 pixel_size = 0.05
 shaded = true
@@ -53,7 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405385, 0.9477, 0.00607109)
 curve = ExtResource("7_w6ual")
 
 [node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoMovePath"]
-transform = Transform3D(-0.16439, 0, -0.986292, 0, 0.999933, 0, 0.98634, 0, -0.164382, -6, -1, 1)
+transform = Transform3D(-0.332802, 0, -0.942893, 0, 0.999933, 0, 0.942939, 0, -0.332786, -4, -1, -9)
 tilt_enabled = false
 
 [connection signal="timeout" from="Timers/TornadoDespawnTimer" to="." method="_on_despawn_timer_timeout"]

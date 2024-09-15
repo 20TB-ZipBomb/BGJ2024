@@ -19,7 +19,7 @@ enum DesireType {
 }
 
 ## The animal sprite being updated with desire colors.
-@export var animal_sprite: Sprite3D = null
+@export var animal_sprite: SpriteBase3D = null
 ## Maps the desires for each animal to a particular color.
 ###
 ## In an ideal, forgiving, and graceful world - we could efficiently set these all in the scene, and not in code.
@@ -49,6 +49,8 @@ var current_desire: DesireType = DesireType.NONE:
 			desire_changed.emit(current_desire)
 
 @export var burning_particles: GPUParticles3D
+@export var electric_particles: GPUParticles3D
+@export var happy_particles: GPUParticles3D
 
 signal desire_changed(new_desire: DesireType)
 
@@ -58,7 +60,6 @@ func _ready() -> void:
 
 ## Randomly assigns a new desire
 func roll_new_desire() -> void:
-	var rng = RandomNumberGenerator.new()
 	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
 		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
@@ -72,16 +73,22 @@ func roll_new_desire() -> void:
 func _on_desire_changed(new_desire: DesireType) -> void:
 	if animal_sprite:
 		# Modulate the sprite based on the color associated with the desire
-		animal_sprite.modulate = desire_to_color_map[new_desire]
+		animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])
 	else:
 		Log.error("The animal sprite is not set, no sprites will have their colors updated")
 	
+	# If there were more than 2 particle types, this would need to be refactored before it gets messy
 	match new_desire:
 		DesireType.RED_PEN:
 			burning_particles.emitting = true
+			electric_particles.emitting = false
+		DesireType.YELLOW_PEN:
+			electric_particles.emitting = true
+			burning_particles.emitting = false
 		_:
+			happy_particles.emitting = true
+			electric_particles.emitting = false
 			burning_particles.emitting = false
 			pass
 
-	# Modulate the sprite based on the color associated with the desire
-	animal_sprite.material_override.set_shader_parameter("new_color", desire_to_color_map[current_desire])
+	

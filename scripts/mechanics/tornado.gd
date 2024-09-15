@@ -27,6 +27,7 @@ static func _static_init() -> void:
 
 
 func _ready() -> void:
+	hide()
 	setup_random_generated_curve_for_path()
 	
 	# Determine the number of cows to spawn using the current wave number,

@@ -6,8 +6,9 @@ class_name PenArea
 ## Invisible Leash settings
 @export var pull_coefficient: float = 0.2
 @export var desire_type: Desire.DesireType = Desire.DesireType.NONE
+@export var feedback_sound: AudioStreamPlayer
 
-@onready var feedback_sound: AudioStreamPlayer = $FeedbackAudioStreamPlayer
+@export var microgame_feed: PackedScene
 
 var penned_animals: Array[Animal] = []
 
@@ -16,10 +17,19 @@ func _ready():
 	## When an animal touches the pen area, remove any leashes,
 	## and set their Desire to DesireType.None
 	body_entered.connect(func(body: Node3D):
+		if Globals.game_state == Globals.GameState.GAME_OVER:
+			return
+			
 		if body is Animal and body not in penned_animals:
 			var animal: Animal = body
 			if animal.desire.current_desire != desire_type or animal.desire.current_desire == Desire.DesireType.NONE:
 				return
+				
+			var microgame: = microgame_feed.instantiate()
+			
+			add_child(microgame)
+			Globals.player_can_move = false
+			
 			penned_animals.append(animal)
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE

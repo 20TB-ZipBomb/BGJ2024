@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5o2ubgfxbssj"
-path="res://.godot/imported/Fire Effect and Bullet 16x16.png-92790f7223014e97472972c0f79312bb.ctex"
+uid="uid://b2eqwo12smmgp"
+path="res://.godot/imported/oak_tree_with_apples.png-f45d459e5972c52b1f17daa2fe9c3e4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/particles/Fire Effect and Bullet 16x16.png"
-dest_files=["res://.godot/imported/Fire Effect and Bullet 16x16.png-92790f7223014e97472972c0f79312bb.ctex"]
+source_file="res://assets/scenery/Trees/oak_tree_with_apples.png"
+dest_files=["res://.godot/imported/oak_tree_with_apples.png-f45d459e5972c52b1f17daa2fe9c3e4d.ctex"]
 
 [params]
 

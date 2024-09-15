@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bljivl64m5rcv"]
+[gd_scene load_steps=5 format=3 uid="uid://bljivl64m5rcv"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/desire.gd" id="1_fuimx"]
 [ext_resource type="PackedScene" uid="uid://cqal2nv4rxs5i" path="res://scenes/mechanics/particles/burning_animal_particles.tscn" id="2_w1qff"]
 [ext_resource type="PackedScene" uid="uid://bdbhytdx0kjml" path="res://scenes/mechanics/particles/electrified_animal_particles.tscn" id="3_jc4e5"]
+[ext_resource type="PackedScene" uid="uid://2iymjutd43eb" path="res://scenes/mechanics/particles/happy_animal_particles.tscn" id="4_mpubv"]
 
-[node name="Desire" type="Node3D" node_paths=PackedStringArray("burning_particles")]
+[node name="Desire" type="Node3D" node_paths=PackedStringArray("burning_particles", "electric_particles", "happy_particles")]
 script = ExtResource("1_fuimx")
 burning_particles = NodePath("BurningAnimalParticles")
+electric_particles = NodePath("ElectrifiedAnimalParticles")
+happy_particles = NodePath("HappyParticles")
 
 [node name="BurningAnimalParticles" parent="." instance=ExtResource("2_w1qff")]
 emitting = false
 
-[node name="Particles" parent="." instance=ExtResource("3_jc4e5")]
+[node name="ElectrifiedAnimalParticles" parent="." instance=ExtResource("3_jc4e5")]
 emitting = false
+
+[node name="HappyParticles" parent="." instance=ExtResource("4_mpubv")]
