@@ -58,7 +58,6 @@ func _ready() -> void:
 
 ## Randomly assigns a new desire
 func roll_new_desire() -> void:
-	var rng = RandomNumberGenerator.new()
 	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
 		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])
