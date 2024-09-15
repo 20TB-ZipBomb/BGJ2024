@@ -42,6 +42,7 @@ func _on_game_state_changed(new_game_state: GameState) -> void:
 			pass
 		GameState.GAMEPLAY:
 			time_began = Time.get_ticks_msec()
+			player_can_move = true
 		GameState.GAME_OVER:
 			player_can_move = false
 

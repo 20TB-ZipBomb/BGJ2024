@@ -22,17 +22,17 @@ func update_moodlet() -> void:
 	visible = true
 	# Long if/else reduces my social credit score
 	if animal and animal.state == Animal.State.SCARED:
-		texture = load("res://assets/ui/moodlet_scared.png")
+		texture = preload("res://assets/ui/moodlet_scared.png")
 	elif desire and desire.current_desire == Desire.DesireType.GREEN_PEN:
-		texture = load("res://assets/ui/moodlet_hungry.png")
+		texture = preload("res://assets/ui/moodlet_hungry.png")
 	elif desire and desire.current_desire == Desire.DesireType.RED_PEN:
-		texture = load("res://assets/ui/moodlet_burning.png")
+		texture = preload("res://assets/ui/moodlet_burning.png")
 	elif desire and desire.current_desire == Desire.DesireType.BLUE_PEN:
-		texture = load("res://assets/ui/moodlet_thirsty.png")
+		texture = preload("res://assets/ui/moodlet_thirsty.png")
 	elif desire and desire.current_desire == Desire.DesireType.YELLOW_PEN:
-		texture = load("res://assets/ui/moodlet_shock.png")
+		texture = preload("res://assets/ui/moodlet_shock.png")
 	else:
-		texture = load("res://assets/ui/moodlet_wander.png")
+		texture = preload("res://assets/ui/moodlet_wander.png")
 	
 	get_tree().create_timer(duration).timeout.connect(func():
 		visible = false
