@@ -36,7 +36,7 @@ func _ready() -> void:
 	%AnimatedSprite3D.play("idle")
 
 func _physics_process(_delta: float) -> void:
-	if Globals.game_state == Globals.GameState.GAME_OVER:
+	if Globals.player_can_move == false:
 		return
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -86,7 +86,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float):
-	if Globals.game_state == Globals.GameState.GAME_OVER:
+	if Globals.player_can_move == false:
 		return
 	
 	current_shout_cooldown += delta
