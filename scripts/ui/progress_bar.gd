@@ -8,7 +8,8 @@ var progress_bar_value: float = Globals.MAX_HP
 
 func _ready():
 	Globals.animal_penned_signal.connect(func(obj):
-		progress_bar_value = clampf(progress_bar_value + Globals.PENNED_ANIMAL_HP_RESTORE, 0, Globals.MAX_HP)
+		var increment_value = Globals.PENNED_ANIMAL_HP_RESTORE + (Globals.current_combo_number * Globals.PENNED_ANIMAL_HP_RESTORE_PER_COMBO)
+		progress_bar_value = clampf(progress_bar_value + increment_value, 0, Globals.MAX_HP)
 	)
 
 func set_progressbar(percentage: float):
