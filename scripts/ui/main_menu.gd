@@ -1,6 +1,5 @@
 extends Control
 
-@export var start_game_level: PackedScene
 @export var audio_stream: AudioStreamPlayer
 @onready var start_game: Button = %StartGame
 @onready var quit_game: Button = %QuitGame
@@ -15,10 +14,20 @@ func _init() -> void:
 	stylebox_override.set_expand_margin(SIDE_TOP, 5)
 	stylebox_override.set_expand_margin(SIDE_BOTTOM, 5)
 	stylebox_override.set_content_margin(SIDE_TOP, 5)
+
+func _ready() -> void:
+	Globals.game_state_changed.connect(func(new_game_state: Globals.GameState):
+		match new_game_state:
+			Globals.GameState.MENU:
+				self.show()
+			Globals.GameState.GAMEPLAY:
+				self.hide()
+			Globals.GameState.GAME_OVER:
+				self.hide()
+	)
 	
 func _on_start_game_pressed() -> void:
-	Globals.main.load_level(start_game_level)
-	self.hide()
+	Globals.game_state = Globals.GameState.GAMEPLAY
 
 func _on_quit_game_pressed() -> void:
 	get_tree().quit()
