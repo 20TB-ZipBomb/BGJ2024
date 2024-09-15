@@ -1,13 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=23 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
-[ext_resource type="PackedScene" path="res://scenes/mechanics/camera_shaker.tscn" id="3_cnmxi"]
-[ext_resource type="PackedScene" uid="uid://bccl8qiqbo8hf" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
+[ext_resource type="PackedScene" uid="uid://dxa2c7ev1jjs8" path="res://scenes/mechanics/camera_shaker.tscn" id="3_cnmxi"]
+[ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="4_wejr3"]
 [ext_resource type="AudioStream" uid="uid://iusuegf28ylo" path="res://assets/audio/sfx/ding.wav" id="6_5sova"]
 [ext_resource type="PackedScene" uid="uid://cru7nkq8vmpey" path="res://scenes/systems/storm_system.tscn" id="6_nc3aw"]
+[ext_resource type="Script" path="res://scripts/mechanics/kill_area.gd" id="7_to2cw"]
+[ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="8_dr6ux"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
 [ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
 
@@ -43,6 +45,9 @@ albedo_color = Color(0.0166667, 1, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4dnu"]
 albedo_color = Color(0.983333, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tgaxw"]
+size = Vector3(50, 1, 50)
 
 [node name="AlexTestLevel" type="Node"]
 
@@ -153,29 +158,61 @@ shape = SubResource("BoxShape3D_gfj3e")
 stream = ExtResource("6_5sova")
 max_polyphony = 2
 
+[node name="KillArea" type="Area3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+script = ExtResource("7_to2cw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/KillArea"]
+shape = SubResource("BoxShape3D_tgaxw")
+
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -24.0
+offset_top = 9.0
+offset_right = 71.0
+offset_bottom = 32.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+text = "0:00"
+horizontal_alignment = 1
+script = ExtResource("8_dr6ux")
+
+[node name="ShoutBar" parent="HUD" instance=ExtResource("3_kng4s")]
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1086.0
-offset_top = -607.0
-offset_right = -1046.0
-offset_bottom = -567.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-size_flags_vertical = 8
-metadata/_edit_use_anchors_ = true
+offset_left = -45.0
+offset_top = -23.0
+offset_right = -45.0
+offset_bottom = -23.0
+scale = Vector2(0.575, 0.575)
 
-[node name="ShoutBar" parent="HUD" instance=ExtResource("3_kng4s")]
+[node name="ProgressBar" parent="HUD" instance=ExtResource("10_y3afd")]
 layout_mode = 1
-offset_left = 953.0
-offset_top = 534.0
-offset_right = 953.0
-offset_bottom = 534.0
+anchors_preset = -1
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 46.0
+offset_top = -24.0
+offset_right = 46.0
+offset_bottom = -24.0
+scale = Vector2(0.575, 0.575)
 
 [node name="Systems" type="Node" parent="."]
 
@@ -186,10 +223,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991115, 0)
 stream = ExtResource("9_ey1rs")
 volume_db = -20.0
 autoplay = true
-
-[node name="ProgressBar" parent="." instance=ExtResource("10_y3afd")]
-offset_left = -10.0
-offset_top = -63.0
-offset_right = -10.0
-offset_bottom = -63.0
-scale = Vector2(0.696073, 0.696073)
