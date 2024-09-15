@@ -3,18 +3,18 @@ extends EditorScript
 class_name CurveGenerator
 
 ## Number of curves for the script to generate.
-const NUMBER_OF_CURVES_TO_GENERATE: int = 25
+const NUMBER_OF_CURVES_TO_GENERATE: int = 50
 
 ## Minimum and maximum number of points on each curve.
-const MIN_NUMBER_OF_POINTS_PER_CURVE = 5
-const MAX_NUMBER_OF_POINTS_PER_CURVE = 10
+const MIN_NUMBER_OF_POINTS_PER_CURVE = 10
+const MAX_NUMBER_OF_POINTS_PER_CURVE = 20
 
 ## Position parameters for each point generated on each curve.
-const X_MIN: int = -20
-const X_MAX: int =  20
-const Y_POS: int =  -1
-const Z_MIN: int = -20
-const Z_MAX: int =  20
+const X_MIN: int =  -5
+const X_MAX: int =   5
+const Y_POS: int =   0
+const Z_MIN: int =  -9
+const Z_MAX: int =  15
 
 ## Bake interval parameters for each curve.
 const MIN_BAKE_INTERVAL: int = 2
