@@ -12,7 +12,7 @@ func _ready() -> void:
 	var timer = $MoodletUpdateTimer
 	timer.wait_time = frequency
 	var rng = RandomNumberGenerator.new()
-	get_tree().create_timer(frequency*rng.randf()).timeout.connect(func():
+	get_tree().create_timer(frequency * rng.randf()).timeout.connect(func():
 		update_moodlet()
 		timer.start()
 	)

@@ -6,7 +6,7 @@ extends Control
 
 var is_hovering: bool = false
 var button_down = false
-var tex = preload("res://assets/ui/button-2-press.png")
+@onready var tex = preload("res://assets/ui/button-2-press.png")
 var stylebox_override = StyleBoxTexture.new()
 
 func _init() -> void:
@@ -72,5 +72,5 @@ func _on_quit_game_mouse_exited() -> void:
 
 
 func play_hover_audio() -> void:
-	audio_stream.stream = preload("res://assets/audio/sfx/menu select.wav")
+	audio_stream.stream = load("res://assets/audio/sfx/menu select.wav")
 	audio_stream.play()

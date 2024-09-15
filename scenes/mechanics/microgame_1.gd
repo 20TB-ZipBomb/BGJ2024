@@ -4,7 +4,7 @@ extends Control
 @onready var cow_mouth: Node2D = %CowMouth
 @onready var cow: Sprite2D = %Cowcloseup
 
-var happy_cow: Texture2D = preload("res://assets/characters/cowcloseup2.png")
+@onready var happy_cow: Texture2D = preload("res://assets/characters/cowcloseup2.png")
 
 var pickedup: bool = false
 var apple_dist_tolerance: float = 15
