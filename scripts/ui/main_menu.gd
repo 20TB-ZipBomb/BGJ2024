@@ -6,7 +6,7 @@ extends Control
 
 var is_hovering: bool = false
 var button_down = false
-var tex = load("res://assets/button-2-press.png")
+var tex = load("res://assets/ui/button-2-press.png")
 var stylebox_override = StyleBoxTexture.new()
 
 func _init() -> void:
