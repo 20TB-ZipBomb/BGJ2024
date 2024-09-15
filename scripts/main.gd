@@ -6,6 +6,7 @@ extends Node
 
 var current_level: Node = null
 
+
 func _ready() -> void:
 	Globals.main = self
 	Globals.game_state_changed.connect(func(new_game_state: Globals.GameState):
@@ -16,10 +17,12 @@ func _ready() -> void:
 				unload_level()
 	)
 
+
 func unload_level() -> void:
 	if is_instance_valid(current_level):
 		current_level.queue_free()
 	current_level = null
+	
 	
 func load_level(level: PackedScene) -> void:
 	unload_level()

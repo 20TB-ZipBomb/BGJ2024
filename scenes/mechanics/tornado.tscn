@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1hea2kqq2qf0"]
+
+[ext_resource type="Texture2D" uid="uid://dhumjcc767h6x" path="res://assets/scenery/firenado_transparent.png" id="1_m2yj0"]
+[ext_resource type="Script" path="res://scripts/mechanics/tornado.gd" id="1_n5pc6"]
+[ext_resource type="PackedScene" uid="uid://bljivl64m5rcv" path="res://scenes/mechanics/desire.tscn" id="2_1u750"]
+[ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="2_03n5f"]
+[ext_resource type="Curve" uid="uid://ctw5vyt686uqy" path="res://resources/animal_spawn_difficulty_curve.tres" id="2_38j44"]
+[ext_resource type="Shader" path="res://assets/materials/desire.gdshader" id="5_yx55a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsv4o"]
+render_priority = 0
+shader = ExtResource("5_yx55a")
+shader_parameter/color_to_replace = Color(1, 1, 1, 1)
+shader_parameter/new_color = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("1_m2yj0")
+
+[sub_resource type="Curve3D" id="Curve3D_783am"]
+bake_interval = 100.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5, -0.875, -5, 0, 0, 0, 0, 0, 0, -5, -0.875, -5, 0, 0, 0, 0, 0, 0, -5, -0.875, 5, 0, 0, 0, 0, 0, 0, 5, -0.875, 5, 0, 0, 0, 0, 0, 0, 5, -0.875, -5),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Tornado" type="Node3D"]
+visible = false
+script = ExtResource("1_n5pc6")
+animal_scene = ExtResource("2_03n5f")
+storm_difficulty_curve = ExtResource("2_38j44")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="TornadoDespawnTimer" type="Timer" parent="Timers"]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="SpawnAnimalDelayTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
+[node name="Desire" parent="." node_paths=PackedStringArray("animal_sprite") instance=ExtResource("2_1u750")]
+animal_sprite = NodePath("../Tilt/TornadoSprite")
+
+[node name="Tilt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0.1)
+
+[node name="TornadoSprite" type="Sprite3D" parent="Tilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0.2)
+material_override = SubResource("ShaderMaterial_fsv4o")
+pixel_size = 0.05
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("1_m2yj0")
+
+[node name="TornadoMovePath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405385, 0.9477, 0.00607109)
+curve = SubResource("Curve3D_783am")
+
+[node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoMovePath"]
+transform = Transform3D(-4.37092e-08, 0, 0.999898, 0, 0.999933, 0, -0.999949, 0, -4.37069e-08, 5, -0.875, -5)
+tilt_enabled = false
+
+[connection signal="timeout" from="Timers/TornadoDespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="Timers/SpawnAnimalDelayTimer" to="." method="_on_spawn_animal_delay_timer_timeout"]

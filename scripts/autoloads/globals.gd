@@ -28,4 +28,8 @@ func _on_game_state_changed(new_game_state: GameState) -> void:
 		GameState.GAME_OVER:
 			pass
 
+## Current wave number, used for balancing storm behavior and animals spawned
+var current_storm_wave_number: int
+
+
 signal shout_energy_changed(value: float) # set shout energy. 0 is no shout, 1 is shout ready
