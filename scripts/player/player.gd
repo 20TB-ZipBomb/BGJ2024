@@ -17,6 +17,7 @@ extends CharacterBody3D
 @onready var lasso_attach_sound: AudioStreamPlayer = %LassoAttachStreamPlayer
 @onready var lasso_detach_sound: AudioStreamPlayer = %LassoDetachStreamPlayer
 @onready var dust_particles: GPUParticles3D = %DustTrailParticles
+@onready var shout_particles: GPUParticles3D = %ShoutParticles
 
 ## Can be null when not targetting any animal
 var targeted_animal: Animal:
@@ -93,6 +94,7 @@ func _process(delta: float):
 		if camera_shaker:
 			camera_shaker.apply_shake()
 		shout_sound.play()
+		shout_particles.emitting = true
 	if Input.is_action_just_pressed("remove_leash"):
 		lasso_detach_sound.play()
 		for leash in Leash.all_leashes:
