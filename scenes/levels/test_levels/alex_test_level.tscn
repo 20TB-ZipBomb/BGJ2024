@@ -1,7 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://c3alwvlu7bmqq"]
+[gd_scene load_steps=46 format=3 uid="uid://c3alwvlu7bmqq"]
 
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="1_uer05"]
-[ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_yopsd"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_63n41"]
 [ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="3_kng4s"]
 [ext_resource type="Script" path="res://scripts/mechanics/pen.gd" id="4_j4edg"]
@@ -63,7 +62,8 @@ glow_enabled = true
 albedo_texture = ExtResource("14_0or82")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge7ww"]
-albedo_texture = ExtResource("1_yopsd")
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.65098, 0.878431, 0.529412, 1)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -175,7 +175,7 @@ material = SubResource("StandardMaterial3D_ge7ww")
 metadata/_edit_lock_ = true
 
 [node name="InvisFloor" type="CSGBox3D" parent="MoLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109828, 0.161096, -0.0772705)
 use_collision = true
 size = Vector3(30, 1.2, 42.4)
 material = SubResource("StandardMaterial3D_o0fwe")
