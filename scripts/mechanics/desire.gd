@@ -19,7 +19,7 @@ enum DesireType {
 }
 
 ## The animal sprite being updated with desire colors.
-@export var animal_sprite: Sprite3D = null
+@export var animal_sprite: SpriteBase3D = null
 ## Maps the desires for each animal to a particular color.
 ###
 ## In an ideal, forgiving, and graceful world - we could efficiently set these all in the scene, and not in code.
