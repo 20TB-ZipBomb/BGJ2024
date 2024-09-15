@@ -17,7 +17,6 @@ var penned_animals: Array[Animal] = []
 func _ready():
 	## When an animal touches the pen area, remove any leashes,
 	## and set their Desire to DesireType.None
-	print(feedback_sound)
 	body_entered.connect(func(body: Node3D):
 		if body is Animal and body not in penned_animals:
 			var animal: Animal = body
@@ -33,6 +32,3 @@ func _ready():
 				print("WARNING: Pen does not have a feedback audio stream player")
 			print("Animal penned")
 	)
-
-func _process(delta: float) -> void:
-	print(feedback_sound)

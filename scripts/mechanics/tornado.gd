@@ -14,15 +14,21 @@ class_name Tornado
 ## and the y-axis represents the number of animals to spawn in.
 @export var storm_difficulty_curve: Curve = null
 
-@onready var movement_path: PathFollow3D = $TornadoMovePath/TornadoSpawnLocation
+@onready var move_path: Path3D = $TornadoMovePath
+@onready var path_follow: PathFollow3D = $TornadoMovePath/TornadoSpawnLocation
 
 var curved_num_animals_to_spawn: int = 0
+static var generated_curves: Array[String] = []
+
+
+static func _static_init() -> void:
+	# Select a random tornado path for this tornado
+	generated_curves = FileHelper.get_files_in_directory(CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR)
 
 
 func _ready() -> void:
-	# Initialize the tornado in a random position on its path
-	movement_path.progress_ratio = randf()
-
+	setup_random_generated_curve_for_path()
+	
 	# Determine the number of cows to spawn using the current wave number,
 	# the maximum number of cows per storm, and the difficulty curve
 	# @TODO: Port this logic for the tornado spawning... I think?
@@ -31,8 +37,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	movement_path.progress_ratio += tornado_speed * delta
-	position = movement_path.position
+	path_follow.progress_ratio += tornado_speed * delta
+	position = path_follow.position
 	# After first update, turn the visibility on
 	visible = true
 
@@ -42,9 +48,20 @@ func _on_despawn_timer_timeout() -> void:
 	queue_free()
 
 
-## When the animal spawn timer is triggered, throw an animal out near the tornado
+## When the animal spawn timer is triggered, throw an animal out near the tornado.
 func _on_spawn_animal_delay_timer_timeout() -> void:
 	spawn_and_throw_animal()
+
+
+## Selects a random file in `CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR` and assigns it as this tornado's movement path.
+## Also initializes the progress ratio to the start of the path. 
+func setup_random_generated_curve_for_path() -> void:
+	var generated_curve_index = randi_range(0, generated_curves.size() - 1)
+	var generated_curve_resource_path = CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR + generated_curves[generated_curve_index]
+	move_path.curve = ResourceLoader.load(generated_curve_resource_path) as Curve3D
+	
+	# Initialize the tornado in a random position on its path
+	path_follow.progress_ratio = 0
 
 
 ## Spawns an animal on a parent node... and throws it.
