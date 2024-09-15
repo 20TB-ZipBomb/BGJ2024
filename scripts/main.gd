@@ -13,6 +13,7 @@ func _ready() -> void:
 		match new_game_state:
 			Globals.GameState.GAMEPLAY:
 				load_level(start_game_level)
+				Globals.time_began = Time.get_ticks_msec()
 			Globals.GameState.MENU:
 				unload_level()
 	)
@@ -26,9 +27,7 @@ func unload_level() -> void:
 	
 func load_level(level: PackedScene) -> void:
 	unload_level()
-	var level_scene: PackedScene = load(level.get_path())
 	
-	if level_scene:
-		current_level = level_scene.instantiate()
+	if level:
+		current_level = level.instantiate()
 		level_container.add_child(current_level)
-		Globals.time_began = Time.get_ticks_msec()
