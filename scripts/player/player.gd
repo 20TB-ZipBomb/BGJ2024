@@ -106,4 +106,3 @@ func _process(delta: float):
 		lasso_detach_sound.play()
 		for leash in Leash.all_leashes:
 			leash.queue_free()
-	

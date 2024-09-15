@@ -1,14 +1,16 @@
-[gd_scene load_steps=44 format=3 uid="uid://jmen0e87ma80"]
+[gd_scene load_steps=46 format=3 uid="uid://jmen0e87ma80"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://be0ggxqjnawse" path="res://assets/aseprite-src/farmer-spritesheet-2.0.png" id="2_4k3lg"]
 [ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
-[ext_resource type="PackedScene" uid="uid://bis5wlb7fofq6" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_4a8vu"]
+[ext_resource type="PackedScene" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_4a8vu"]
 [ext_resource type="AudioStream" uid="uid://c8nx4q5w1jina" path="res://assets/audio/sfx/player/footstep dirt 1.wav" id="3_46thp"]
 [ext_resource type="AudioStream" uid="uid://cwhgm4eekpkcr" path="res://assets/audio/sfx/player/footstep dirt 2.wav" id="4_6xbb8"]
 [ext_resource type="PackedScene" uid="uid://f3qnoc0iss0g" path="res://scenes/mechanics/particles/shout_particles.tscn" id="5_5s2d5"]
 [ext_resource type="AudioStream" uid="uid://cypiw5crjlipo" path="res://assets/audio/sfx/player/footstep dirt 3.wav" id="5_aboim"]
+[ext_resource type="Script" path="res://scripts/mechanics/combo_number.gd" id="6_rwdyo"]
 [ext_resource type="AudioStream" uid="uid://c0jp7tkptmvk0" path="res://assets/audio/sfx/player/footstep dirt 4.wav" id="6_wfc38"]
+[ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="7_agppr"]
 [ext_resource type="AudioStream" uid="uid://b8l2yap0tdwmk" path="res://assets/audio/sfx/player/footstep dirt 5.wav" id="7_g0whf"]
 [ext_resource type="AudioStream" uid="uid://cn8i7hsqroqxu" path="res://assets/audio/sfx/player/boom.wav" id="8_jl5ne"]
 [ext_resource type="AudioStream" uid="uid://sujurkwqmrdh" path="res://assets/audio/sfx/player/oi.wav" id="8_wsr2q"]
@@ -259,6 +261,15 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0.736
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.272603, 0.212585, 0)
 
+[node name="ComboDeadTimer" type="Timer" parent="Tilt"]
+unique_name_in_owner = true
+wait_time = 10.0
+
+[node name="ComboNumber" type="Node3D" parent="Tilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.572677, 1.01123, 0)
+script = ExtResource("6_rwdyo")
+font = ExtResource("7_agppr")
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -294,3 +305,5 @@ stream = ExtResource("14_ika78")
 [node name="LassoDetachStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_k3g2g")
+
+[connection signal="timeout" from="Tilt/ComboDeadTimer" to="Tilt/ComboNumber" method="_on_combo_dead_timer_timeout"]
