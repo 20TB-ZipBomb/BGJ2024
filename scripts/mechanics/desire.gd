@@ -19,7 +19,7 @@ enum DesireType {
 }
 
 ## The animal sprite being updated with desire colors.
-@export var animal_sprite: Sprite3D = null
+@export var animal_sprite: SpriteBase3D = null
 ## Maps the desires for each animal to a particular color.
 ###
 ## In an ideal, forgiving, and graceful world - we could efficiently set these all in the scene, and not in code.
@@ -60,7 +60,6 @@ func _ready() -> void:
 
 ## Randomly assigns a new desire
 func roll_new_desire() -> void:
-	var rng = RandomNumberGenerator.new()
 	var random_desire_type: DesireType = DesireType.values().pick_random()
 	if not desire_to_color_map.has(random_desire_type):
 		Log.error("Attempted to set a desire %s but it doesn't have a valid color set" % DesireType.keys()[random_desire_type])

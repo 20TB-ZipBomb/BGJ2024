@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2m7e7f1ij6ss"]
+[gd_scene load_steps=23 format=3 uid="uid://d2m7e7f1ij6ss"]
 
 [ext_resource type="Script" path="res://scripts/characters/animal.gd" id="1_4a3xr"]
-[ext_resource type="Texture2D" uid="uid://ynjlw3a0ahs6" path="res://assets/characters/cow.png" id="1_qnv4c"]
 [ext_resource type="Shader" path="res://assets/materials/desire.gdshader" id="2_joee6"]
+[ext_resource type="Texture2D" uid="uid://dumajwwkfpomb" path="res://assets/characters/cow_spritesheet.png" id="2_ln7uv"]
 [ext_resource type="Texture2D" uid="uid://dik1oyf24wmr5" path="res://assets/items/lasso_icon.png" id="2_tudki"]
 [ext_resource type="Script" path="res://scripts/characters/animal_sprite.gd" id="3_dlphk"]
 [ext_resource type="Script" path="res://scenes/characters/moodlet.gd" id="5_63iio"]
@@ -21,13 +21,68 @@ render_priority = 0
 shader = ExtResource("2_joee6")
 shader_parameter/color_to_replace = Color(1, 1, 1, 1)
 shader_parameter/new_color = Color(1, 1, 1, 1)
-shader_parameter/tex = ExtResource("1_qnv4c")
+shader_parameter/tex = ExtResource("2_ln7uv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx13d"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csru4"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7i6a"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iqn6"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb535"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88yme"]
+atlas = ExtResource("2_ln7uv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r602q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx13d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csru4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7i6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iqn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lb535")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88yme")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jcw5i"]
 load_path = "res://.godot/imported/moodlet_hungry.png-00abb130f5cd02b5031e765389ff5fce.s3tc.ctex"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ah35l"]
-radius = 0.7
+radius = 0.8
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xel7d"]
 random_volume_offset_db = 1.0
@@ -45,25 +100,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_wyftn")
 
 [node name="Tilt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0.1)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="AnimalSprite" type="Sprite3D" parent="Tilt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Tilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 material_override = SubResource("ShaderMaterial_76grc")
 pixel_size = 0.05
-shaded = true
-alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_qnv4c")
+sprite_frames = SubResource("SpriteFrames_r602q")
+animation = &"walk"
+frame_progress = 0.0928806
 script = ExtResource("3_dlphk")
 
-[node name="LeashPoint" type="Node3D" parent="Tilt/AnimalSprite"]
+[node name="LeashPoint" type="Node3D" parent="Tilt/AnimatedSprite3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22, -0.08, 7.45058e-09)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18, -0.08, 7.45058e-09)
 
-[node name="Moodlet" type="Sprite3D" parent="Tilt/AnimalSprite" node_paths=PackedStringArray("animal", "desire")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.54902, 0.523987, 0.140402)
-visible = false
+[node name="Moodlet" type="Sprite3D" parent="Tilt/AnimatedSprite3D" node_paths=PackedStringArray("animal", "desire")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.951, 0.624, 0)
 pixel_size = 0.05
 texture_filter = 0
 texture = SubResource("CompressedTexture2D_jcw5i")
@@ -71,11 +125,11 @@ script = ExtResource("5_63iio")
 animal = NodePath("../../..")
 desire = NodePath("../../../Desire")
 
-[node name="MoodletUpdateTimer" type="Timer" parent="Tilt/AnimalSprite/Moodlet"]
+[node name="MoodletUpdateTimer" type="Timer" parent="Tilt/AnimatedSprite3D/Moodlet"]
 
 [node name="LassoIcon" type="Sprite3D" parent="Tilt"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.152461, 0.887068, -0.00346542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.237, 0)
 pixel_size = 0.05
 texture_filter = 0
 texture = ExtResource("2_tudki")
@@ -89,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 shape = SubResource("SphereShape3D_ah35l")
 
 [node name="Desire" parent="." node_paths=PackedStringArray("animal_sprite") instance=ExtResource("5_x6bub")]
-animal_sprite = NodePath("../Tilt/AnimalSprite")
+animal_sprite = NodePath("../Tilt/AnimatedSprite3D")
 
 [node name="MooStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
@@ -97,4 +151,4 @@ stream = SubResource("AudioStreamRandomizer_xel7d")
 volume_db = -20.0
 pitch_scale = 0.2
 
-[connection signal="timeout" from="Tilt/AnimalSprite/Moodlet/MoodletUpdateTimer" to="Tilt/AnimalSprite/Moodlet" method="_on_timer_timeout"]
+[connection signal="timeout" from="Tilt/AnimatedSprite3D/Moodlet/MoodletUpdateTimer" to="Tilt/AnimatedSprite3D/Moodlet" method="_on_timer_timeout"]

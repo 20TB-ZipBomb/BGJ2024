@@ -38,11 +38,5 @@ func update_moodlet() -> void:
 		visible = false
 	)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _on_timer_timeout() -> void:
 	update_moodlet()

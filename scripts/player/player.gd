@@ -6,7 +6,7 @@ extends CharacterBody3D
 ## The player's speed is multiplied by this number to the power of the number of leashed_animals.
 ## This lets the player can leash as many animals as they want without completely stopping.
 @export_range(0, 1) var speed_reduction_per_dragged_body: float = 0.85
-
+@export_range(0, 1) var leash_pull_coefficient: float = 0.8
 @export var lasso_range: float = 3
 
 @onready var raycast: RayCast3D = %RayCast3D
@@ -36,6 +36,9 @@ func _ready() -> void:
 	%AnimatedSprite3D.play("idle")
 
 func _physics_process(_delta: float) -> void:
+	if Globals.game_state == Globals.GameState.GAME_OVER:
+		return
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -69,6 +72,7 @@ func _physics_process(_delta: float) -> void:
 		targeted_animal = body.owner
 		if Input.is_action_just_pressed("use_leash"):
 			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
+			leash.pull_coefficient = leash_pull_coefficient
 			dragged_animal_count += 1
 			lasso_attach_sound.play()
 			leash.tree_exiting.connect(func():
@@ -82,6 +86,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float):
+	if Globals.game_state == Globals.GameState.GAME_OVER:
+		return
+	
 	current_shout_cooldown += delta
 	Globals.shout_energy_changed.emit(clampf(current_shout_cooldown / shout_cooldown, 0, 1))
 	if Input.is_action_just_pressed("shout") and current_shout_cooldown >= shout_cooldown:

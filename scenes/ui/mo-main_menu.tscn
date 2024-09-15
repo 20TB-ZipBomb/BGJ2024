@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca0qi1jic0dtm"]
+[gd_scene load_steps=4 format=3 uid="uid://ca0qi1jic0dtm"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_1j8ow"]
-[ext_resource type="PackedScene" uid="uid://dly1p06i1c1i4" path="res://scenes/levels/first_level.tscn" id="2_2sq2e"]
 [ext_resource type="Texture2D" uid="uid://crhfhlpsju2xu" path="res://assets/ui/cownado-title.png" id="3_4bgoj"]
 [ext_resource type="Theme" uid="uid://semt14wpoo5d" path="res://scenes/ui/ui_theme.tres" id="4_bvhyg"]
 
@@ -13,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1j8ow")
-start_game_level = ExtResource("2_2sq2e")
 audio_stream = NodePath("AudioStreamPlayer")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

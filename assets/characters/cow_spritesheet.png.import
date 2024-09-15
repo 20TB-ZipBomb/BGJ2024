@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drkyo7ypkqp5u"
-path="res://.godot/imported/Oak_Tree.png-2d6eb87ac13de4ee5ee30ff5b1ce8523.ctex"
+uid="uid://dumajwwkfpomb"
+path="res://.godot/imported/cow_spritesheet.png-833a9c7924f57e2c7bdc1769f06b636e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/scenery/Oak_Tree.png"
-dest_files=["res://.godot/imported/Oak_Tree.png-2d6eb87ac13de4ee5ee30ff5b1ce8523.ctex"]
+source_file="res://assets/characters/cow_spritesheet.png"
+dest_files=["res://.godot/imported/cow_spritesheet.png-833a9c7924f57e2c7bdc1769f06b636e.ctex"]
 
 [params]
 

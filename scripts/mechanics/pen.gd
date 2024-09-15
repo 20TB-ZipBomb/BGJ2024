@@ -6,8 +6,7 @@ class_name PenArea
 ## Invisible Leash settings
 @export var pull_coefficient: float = 0.2
 @export var desire_type: Desire.DesireType = Desire.DesireType.NONE
-
-@onready var feedback_sound: AudioStreamPlayer = $FeedbackAudioStreamPlayer
+@export var feedback_sound: AudioStreamPlayer
 
 var penned_animals: Array[Animal] = []
 
