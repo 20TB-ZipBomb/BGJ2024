@@ -30,5 +30,5 @@ func _input(event):
 			if (dist < mouth_dist_tolerance):
 				pickedup = false
 				cow.texture = happy_cow
-				Globals.player_can_move = true
+				Globals.microgame_completed.emit()
 				queue_free()

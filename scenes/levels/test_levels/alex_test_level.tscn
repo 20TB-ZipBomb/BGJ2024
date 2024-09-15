@@ -12,17 +12,17 @@
 [ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="8_dr6ux"]
 [ext_resource type="AudioStream" uid="uid://vbvhtmjde1fg" path="res://assets/audio/music/level_bgm.ogg" id="9_ey1rs"]
 [ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="10_y3afd"]
-[ext_resource type="PackedScene" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
+[ext_resource type="PackedScene" uid="uid://dpocwde4n5jb6" path="res://scenes/ui/game_over.tscn" id="13_r52it"]
 [ext_resource type="Texture2D" uid="uid://ravwrwy7wu1t" path="res://assets/scenery/kenney/tile_0000.png" id="14_0or82"]
-[ext_resource type="PackedScene" path="res://assets/scenery/ground_dirt.tscn" id="15_8sfm0"]
-[ext_resource type="PackedScene" path="res://assets/scenery/farm_house.tscn" id="16_h1cwa"]
-[ext_resource type="PackedScene" path="res://assets/scenery/wooden_cart.tscn" id="17_4fce6"]
+[ext_resource type="PackedScene" uid="uid://70c1gpelu0c3" path="res://assets/scenery/ground_dirt.tscn" id="15_8sfm0"]
+[ext_resource type="PackedScene" uid="uid://xwcablqlm51n" path="res://assets/scenery/farm_house.tscn" id="16_h1cwa"]
+[ext_resource type="PackedScene" uid="uid://3uiqewgij487" path="res://assets/scenery/wooden_cart.tscn" id="17_4fce6"]
 [ext_resource type="PackedScene" uid="uid://cq1n8t2uiq4fn" path="res://assets/scenery/kenney/tool_rack.tscn" id="18_c37yd"]
-[ext_resource type="PackedScene" path="res://assets/scenery/oak_tree.tscn" id="19_oxgwh"]
+[ext_resource type="PackedScene" uid="uid://v6hik4h5spv3" path="res://assets/scenery/oak_tree.tscn" id="19_oxgwh"]
 [ext_resource type="PackedScene" uid="uid://bgslcdv7impb" path="res://assets/scenery/fence/fence.tscn" id="20_duulg"]
 [ext_resource type="Script" path="res://scripts/mechanics/camera_shaker.gd" id="21_a168k"]
 [ext_resource type="PackedScene" uid="uid://d00wxprocxb36" path="res://assets/scenery/fence/fence_mirror.tscn" id="21_hbpjn"]
-[ext_resource type="PackedScene" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
+[ext_resource type="PackedScene" uid="uid://3uyuduajyl3" path="res://assets/scenery/well.tscn" id="22_8pp8n"]
 [ext_resource type="PackedScene" uid="uid://235je2rqr1xt" path="res://assets/scenery/Trees/tree_green.tscn" id="23_jirl8"]
 [ext_resource type="PackedScene" uid="uid://d1qywwddw4fd" path="res://assets/scenery/Trees/tree_yellow.tscn" id="24_3im3y"]
 [ext_resource type="PackedScene" uid="uid://k3aqi4ehhiaj" path="res://scenes/mechanics/microgame1.tscn" id="24_b5km4"]
@@ -278,9 +278,11 @@ material = SubResource("StandardMaterial3D_vbyk7")
 stream = ExtResource("6_5sova")
 volume_db = -10.0
 
-[node name="RedPen" type="Area3D" parent="MoLevel"]
+[node name="RedPen" type="Area3D" parent="MoLevel" node_paths=PackedStringArray("feedback_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 1, -4.2)
 script = ExtResource("4_j4edg")
+desire_type = 1
+feedback_sound = NodePath("FeedbackAudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoLevel/RedPen"]
 shape = SubResource("BoxShape3D_angni")
