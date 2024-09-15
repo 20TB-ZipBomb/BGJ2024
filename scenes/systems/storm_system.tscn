@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/systems/storm_system.gd" id="1_3afom"]
 [ext_resource type="AudioStream" uid="uid://bab0612786awm" path="res://assets/audio/sfx/wind.wav" id="3_fknkm"]
-[ext_resource type="PackedScene" path="res://scenes/mechanics/tornado.tscn" id="3_jaeq8"]
+[ext_resource type="PackedScene" uid="uid://70wcoikythob" path="res://scenes/mechanics/tornado.tscn" id="3_jaeq8"]
 
 [node name="StormSystem" type="Node3D" node_paths=PackedStringArray("wind_sound")]
 script = ExtResource("1_3afom")
