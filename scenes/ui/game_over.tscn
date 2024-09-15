@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpocwde4n5jb6"]
+[gd_scene load_steps=3 format=3 uid="uid://dpocwde4n5jb6"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_uq4gh"]
+[ext_resource type="AudioStream" uid="uid://c0s0lps1x2abq" path="res://assets/audio/music/congrats.wav" id="2_gj0k7"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -54,3 +55,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.574051, 0.574051)
 text = "Return to Menu"
+
+[node name="JingleStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_gj0k7")
