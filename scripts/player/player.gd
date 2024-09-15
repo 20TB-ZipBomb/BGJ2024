@@ -6,7 +6,7 @@ extends CharacterBody3D
 ## The player's speed is multiplied by this number to the power of the number of leashed_animals.
 ## This lets the player can leash as many animals as they want without completely stopping.
 @export_range(0, 1) var speed_reduction_per_dragged_body: float = 0.85
-
+@export_range(0, 1) var leash_pull_coefficient: float = 0.8
 @export var lasso_range: float = 3
 
 @onready var raycast: RayCast3D = %RayCast3D
@@ -68,6 +68,7 @@ func _physics_process(_delta: float) -> void:
 		targeted_animal = body.owner
 		if Input.is_action_just_pressed("use_leash"):
 			var leash: Leash = Leash.create_leash(leash_point, targeted_animal.leash_point)
+			leash.pull_coefficient = leash_pull_coefficient
 			dragged_animal_count += 1
 			lasso_attach_sound.play()
 			leash.tree_exiting.connect(func():
