@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=3 uid="uid://dt0drd5gjqxko"]
+
+[ext_resource type="Script" path="res://scenes/mechanics/microgame_charge.gd" id="1_uiafb"]
+[ext_resource type="Texture2D" uid="uid://b0fwvjo5epu0b" path="res://assets/characters/cow-side.png" id="2_r4xsf"]
+[ext_resource type="Texture2D" uid="uid://c0bphfu4atlch" path="res://assets/items/car-battery-spritesheet.png" id="3_3qjb6"]
+[ext_resource type="Texture2D" uid="uid://cuis1mb13uqgk" path="res://assets/items/aligatorclip2_icon.png" id="4_hb8gn"]
+[ext_resource type="Texture2D" uid="uid://dw844vxwjvlf2" path="res://assets/items/aligatorclip_icon.png" id="5_soy0j"]
+
+[sub_resource type="SystemFont" id="SystemFont_em61w"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_y8mke"]
+font = SubResource("SystemFont_em61w")
+font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukr8g"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hufdi"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30qq4"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqqbq"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpm47"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vvum"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1a2m"]
+atlas = ExtResource("3_3qjb6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1btr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukr8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hufdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30qq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqqbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpm47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vvum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1a2m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Microgame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_uiafb")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Charge the battery!"
+label_settings = SubResource("LabelSettings_y8mke")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cowcloseup" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(168, 109)
+scale = Vector2(0.136376, 0.136376)
+texture = ExtResource("2_r4xsf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(286, 149)
+scale = Vector2(1.95653, 1.95653)
+sprite_frames = SubResource("SpriteFrames_p1btr")
+frame_progress = 0.385448
+
+[node name="JumperCableRed_Cow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(114, 124)
+rotation = 0.221237
+scale = Vector2(0.444102, 0.444102)
+texture = ExtResource("4_hb8gn")
+
+[node name="JumperCableRed" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(116, 160)
+rotation = -3.12212
+scale = Vector2(0.706226, 0.706226)
+texture = ExtResource("4_hb8gn")
+
+[node name="JumperCableBlue_Cow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(121, 123)
+rotation = -0.313031
+scale = Vector2(0.444102, 0.444102)
+texture = ExtResource("5_soy0j")
+
+[node name="JumperCableBlue" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(131, 160)
+rotation = 3.1294
+scale = Vector2(0.72903, 0.72903)
+texture = ExtResource("5_soy0j")
+
+[node name="BlueSpot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(265, 141)
+scale = Vector2(4, 4)
+
+[node name="RedSpot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(293, 141)
+scale = Vector2(4, 4)

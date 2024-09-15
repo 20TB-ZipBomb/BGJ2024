@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4upc8m7sjfs2"
-path="res://.godot/imported/car-battery-spritesheet.png-e314ec098a632fa1930736859e602eda.ctex"
+uid="uid://cuis1mb13uqgk"
+path="res://.godot/imported/aligatorclip2_icon.png-93b7717bf3a07c160e3cb547184eba4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/aseprite-src/car-battery-spritesheet.png"
-dest_files=["res://.godot/imported/car-battery-spritesheet.png-e314ec098a632fa1930736859e602eda.ctex"]
+source_file="res://assets/items/aligatorclip2_icon.png"
+dest_files=["res://.godot/imported/aligatorclip2_icon.png-93b7717bf3a07c160e3cb547184eba4a.ctex"]
 
 [params]
 
