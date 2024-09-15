@@ -1,14 +1,21 @@
-[gd_scene load_steps=37 format=3 uid="uid://jmen0e87ma80"]
+[gd_scene load_steps=44 format=3 uid="uid://jmen0e87ma80"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://be0ggxqjnawse" path="res://assets/aseprite-src/farmer-spritesheet-2.0.png" id="2_4k3lg"]
+[ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
+[ext_resource type="PackedScene" uid="uid://bis5wlb7fofq6" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_4a8vu"]
 [ext_resource type="AudioStream" uid="uid://c8nx4q5w1jina" path="res://assets/audio/sfx/player/footstep dirt 1.wav" id="3_46thp"]
 [ext_resource type="AudioStream" uid="uid://cwhgm4eekpkcr" path="res://assets/audio/sfx/player/footstep dirt 2.wav" id="4_6xbb8"]
+[ext_resource type="PackedScene" uid="uid://f3qnoc0iss0g" path="res://scenes/mechanics/particles/shout_particles.tscn" id="5_5s2d5"]
 [ext_resource type="AudioStream" uid="uid://cypiw5crjlipo" path="res://assets/audio/sfx/player/footstep dirt 3.wav" id="5_aboim"]
 [ext_resource type="AudioStream" uid="uid://c0jp7tkptmvk0" path="res://assets/audio/sfx/player/footstep dirt 4.wav" id="6_wfc38"]
 [ext_resource type="AudioStream" uid="uid://b8l2yap0tdwmk" path="res://assets/audio/sfx/player/footstep dirt 5.wav" id="7_g0whf"]
 [ext_resource type="AudioStream" uid="uid://cn8i7hsqroqxu" path="res://assets/audio/sfx/player/boom.wav" id="8_jl5ne"]
 [ext_resource type="AudioStream" uid="uid://sujurkwqmrdh" path="res://assets/audio/sfx/player/oi.wav" id="8_wsr2q"]
+[ext_resource type="AudioStream" uid="uid://cpov4fdcvgkhs" path="res://assets/audio/sfx/player/attach 1.wav" id="10_1gqxh"]
+[ext_resource type="AudioStream" uid="uid://df55xhqakik6f" path="res://assets/audio/sfx/player/attach 2.wav" id="11_kenq3"]
+[ext_resource type="AudioStream" uid="uid://dg2q2ew8c4s8e" path="res://assets/audio/sfx/player/attach 3.wav" id="12_gwfxw"]
+[ext_resource type="AudioStream" uid="uid://c5jfgy5tcnvuo" path="res://assets/audio/sfx/player/attach 4.wav" id="13_38g34"]
 [ext_resource type="AudioStream" uid="uid://bsvdbnt8hwunw" path="res://assets/audio/sfx/player/crack.wav" id="14_ika78"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nea58"]
@@ -205,8 +212,11 @@ stream_1/volume = -12.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k3g2g"]
 random_pitch = 1.2
 random_volume_offset_db = 0.2
-streams_count = 1
-stream_0/stream = ExtResource("14_ika78")
+streams_count = 4
+stream_0/stream = ExtResource("10_1gqxh")
+stream_1/stream = ExtResource("11_kenq3")
+stream_2/stream = ExtResource("12_gwfxw")
+stream_3/stream = ExtResource("13_38g34")
 
 [node name="Player" type="CharacterBody3D"]
 motion_mode = 1
@@ -226,6 +236,24 @@ pixel_size = 0.05
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_vwuiv")
 animation = &"idle"
+
+[node name="Sprite3D" type="Sprite3D" parent="Tilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+visible = false
+pixel_size = 0.05
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("2_fyp6h")
+
+[node name="DustTrailParticles" parent="Tilt" instance=ExtResource("3_4a8vu")]
+unique_name_in_owner = true
+emitting = false
+lifetime = 1.0
+
+[node name="ShoutParticles" parent="Tilt" instance=ExtResource("5_5s2d5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0.736219, 0.197269)
 
 [node name="LeashPoint" type="Node3D" parent="Tilt"]
 unique_name_in_owner = true
@@ -261,7 +289,7 @@ pitch_scale = 0.8
 
 [node name="LassoAttachStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = SubResource("AudioStreamRandomizer_k3g2g")
+stream = ExtResource("14_ika78")
 
 [node name="LassoDetachStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
