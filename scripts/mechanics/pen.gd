@@ -1,8 +1,6 @@
 extends Area3D
 class_name PenArea
 
-static var penned_signal: Signal = Signal()
-
 ## Invisible Leash settings
 @export var min_drag_distance: float = 2
 ## Invisible Leash settings
@@ -17,7 +15,6 @@ var penned_animals: Array[Animal] = []
 func _ready():
 	## When an animal touches the pen area, remove any leashes,
 	## and set their Desire to DesireType.None
-	print(feedback_sound)
 	body_entered.connect(func(body: Node3D):
 		if body is Animal and body not in penned_animals:
 			var animal: Animal = body
@@ -26,13 +23,10 @@ func _ready():
 			penned_animals.append(animal)
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
-			PenArea.penned_signal.emit()
+			Globals.animal_penned_signal.emit(animal)
 			if feedback_sound:
 				feedback_sound.play()
 			else:
 				print("WARNING: Pen does not have a feedback audio stream player")
 			print("Animal penned")
 	)
-
-func _process(delta: float) -> void:
-	print(feedback_sound)

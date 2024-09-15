@@ -3,6 +3,8 @@ extends Node
 # Global script for holding references to things and stuff
 var main: Node
 var player: CharacterBody3D
+signal animal_penned_signal(animal: Animal)
+
 var time_began: int = 0 ## Engine ms timestamp
 
 signal game_state_changed(new_game_state: GameState)

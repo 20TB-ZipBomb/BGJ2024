@@ -1,0 +1,9 @@
+[gd_resource type="Curve3D" format=3 uid="uid://cdtgu88s0ga0u"]
+
+[resource]
+bake_interval = 45.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20, -1, -12, 0, 0, 0, 0, 0, 0, 2, -1, -1, 0, 0, 0, 0, 0, 0, 13, -1, -2, 0, 0, 0, 0, 0, 0, 16, -1, 11, 0, 0, 0, 0, 0, 0, 0, -1, 2, 0, 0, 0, 0, 0, 0, -4, -1, 19, 0, 0, 0, 0, 0, 0, -5, -1, 4, 0, 0, 0, 0, 0, 0, -7, -1, 0, 0, 0, 0, 0, 0, 0, -18, -1, 9),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9

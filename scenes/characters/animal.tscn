@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/characters/animal.gd" id="1_4a3xr"]
 [ext_resource type="Texture2D" uid="uid://ynjlw3a0ahs6" path="res://assets/characters/cow.png" id="1_qnv4c"]
-[ext_resource type="Shader" path="res://assets/materials/desire.gdshader" id="2_joee6"]
+[ext_resource type="Shader" path="res://assets/materials/animal.gdshader" id="2_228es"]
 [ext_resource type="Texture2D" uid="uid://dik1oyf24wmr5" path="res://assets/items/lasso_icon.png" id="2_tudki"]
 [ext_resource type="Script" path="res://scripts/characters/animal_sprite.gd" id="3_dlphk"]
 [ext_resource type="Texture2D" uid="uid://o0b05ge0r6ec" path="res://assets/ui/moodlet_hungry.png" id="4_ru0n7"]
@@ -16,10 +16,10 @@
 radius = 0.3
 height = 1.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_76grc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4s256"]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("2_joee6")
+shader = ExtResource("2_228es")
 shader_parameter/color_to_replace = Color(1, 1, 1, 1)
 shader_parameter/new_color = Color(1, 1, 1, 1)
 shader_parameter/tex = ExtResource("1_qnv4c")
@@ -47,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 
 [node name="AnimalSprite" type="Sprite3D" parent="Tilt"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-material_override = SubResource("ShaderMaterial_76grc")
+material_override = SubResource("ShaderMaterial_4s256")
 pixel_size = 0.05
 shaded = true
 alpha_cut = 2
