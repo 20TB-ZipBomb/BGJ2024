@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce8i21qt6ws87"]
+[gd_scene load_steps=7 format=3 uid="uid://ce8i21qt6ws87"]
 
 [ext_resource type="Script" path="res://scripts/ui/shout_bar.gd" id="1_vyfse"]
 [ext_resource type="Texture2D" uid="uid://mv4lmmtcdtup" path="res://assets/ui/progress_over.png" id="2_7ulx5"]
+[ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="2_lwm24"]
 [ext_resource type="Texture2D" uid="uid://cmhd2fkrcbcws" path="res://assets/ui/progress_fill.png" id="3_j71vn"]
 [ext_resource type="AudioStream" uid="uid://b8qvl2dwov3pb" path="res://assets/audio/sfx/player/shout_meter_filled.wav" id="4_o2wsf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8x4jv"]
+font = ExtResource("2_lwm24")
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.607843)
 
 [node name="ShoutBar" type="Control"]
 layout_mode = 3
@@ -13,13 +22,16 @@ script = ExtResource("1_vyfse")
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
-offset_left = -31.0
-offset_top = -30.0
-offset_right = 31.0
-offset_bottom = -7.0
+offset_left = -82.0
+offset_top = -2.0
+offset_right = -35.0
+offset_bottom = 10.0
+rotation = -0.174533
 text = "SHOUT!
 "
+label_settings = SubResource("LabelSettings_8x4jv")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 unique_name_in_owner = true
