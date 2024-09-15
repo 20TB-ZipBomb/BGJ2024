@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://mrwfhtbww3xe"]
+[gd_scene load_steps=10 format=3 uid="uid://mrwfhtbww3xe"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_pytbp"]
 [ext_resource type="PackedScene" uid="uid://c3alwvlu7bmqq" path="res://scenes/levels/test_levels/alex_test_level.tscn" id="2_geydo"]
 [ext_resource type="PackedScene" uid="uid://ca0qi1jic0dtm" path="res://scenes/ui/mo-main_menu.tscn" id="3_oxpx8"]
+[ext_resource type="PackedScene" uid="uid://bis5wlb7fofq6" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_td8f4"]
+[ext_resource type="PackedScene" uid="uid://f3qnoc0iss0g" path="res://scenes/mechanics/particles/shout_particles.tscn" id="4_12wqp"]
 [ext_resource type="PackedScene" uid="uid://dpocwde4n5jb6" path="res://scenes/ui/game_over.tscn" id="4_ipjjn"]
+[ext_resource type="PackedScene" uid="uid://cqal2nv4rxs5i" path="res://scenes/mechanics/particles/burning_animal_particles.tscn" id="5_ad4ee"]
+[ext_resource type="PackedScene" uid="uid://bdbhytdx0kjml" path="res://scenes/mechanics/particles/electrified_animal_particles.tscn" id="6_ix15h"]
+[ext_resource type="PackedScene" uid="uid://2iymjutd43eb" path="res://scenes/mechanics/particles/happy_animal_particles.tscn" id="7_i2cf2"]
 
 [node name="Main" type="Node" node_paths=PackedStringArray("level_container", "ui_container")]
 script = ExtResource("1_pytbp")
@@ -12,6 +17,28 @@ level_container = NodePath("LevelContainer")
 ui_container = NodePath("UI")
 
 [node name="LevelContainer" type="Node3D" parent="."]
+
+[node name="PreloadedStuffs" type="Node3D" parent="LevelContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.139, -2.38419e-07, -540.263)
+
+[node name="DustTrailParticles" parent="LevelContainer/PreloadedStuffs" instance=ExtResource("3_td8f4")]
+unique_name_in_owner = true
+amount = 1
+lifetime = 1.0
+
+[node name="ShoutParticles" parent="LevelContainer/PreloadedStuffs" instance=ExtResource("4_12wqp")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0.736219, 0.197269)
+amount = 1
+
+[node name="BurningAnimalParticles" parent="LevelContainer/PreloadedStuffs" instance=ExtResource("5_ad4ee")]
+amount = 1
+
+[node name="ElectrifiedAnimalParticles" parent="LevelContainer/PreloadedStuffs" instance=ExtResource("6_ix15h")]
+amount = 1
+
+[node name="HappyParticles" parent="LevelContainer/PreloadedStuffs" instance=ExtResource("7_i2cf2")]
+amount = 1
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
