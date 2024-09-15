@@ -1,6 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://br2jgvicaxjuh"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_uq4gh"]
+[ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="2_3vt2e"]
 [ext_resource type="AudioStream" uid="uid://c0s0lps1x2abq" path="res://assets/audio/music/congrats.wav" id="2_gj0k7"]
 [ext_resource type="FontFile" uid="uid://dat0xykh16yum" path="res://scenes/ui/fonts/SF Pixelate/SF Pixelate Bold.ttf" id="2_gl3qu"]
 [ext_resource type="Theme" uid="uid://bqo7eyr1kvo3u" path="res://scenes/ui/ui_theme.tres" id="3_g328t"]
@@ -33,6 +34,8 @@ offset_top = -8.5
 offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_3vt2e")
+theme_override_font_sizes/font_size = 12
 text = "YOUR TIME: 00:00"
 label_settings = SubResource("LabelSettings_8x4jv")
 horizontal_alignment = 1
@@ -47,6 +50,7 @@ offset_top = -33.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_3vt2e")
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_8x4jv")
 horizontal_alignment = 1
@@ -67,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.574051, 0.574051)
 theme = ExtResource("3_g328t")
+theme = ExtResource("2_3vt2e")
 text = "Return to Menu"
 
 [node name="JingleStreamPlayer" type="AudioStreamPlayer" parent="."]

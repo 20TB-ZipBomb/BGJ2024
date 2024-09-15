@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_g4b2t"]
 [ext_resource type="Texture2D" uid="uid://be0ggxqjnawse" path="res://assets/aseprite-src/farmer-spritesheet-2.0.png" id="2_4k3lg"]
 [ext_resource type="Texture2D" uid="uid://bpew4axhcdomu" path="res://assets/characters/simple_farmer.png" id="2_fyp6h"]
-[ext_resource type="PackedScene" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_4a8vu"]
+[ext_resource type="PackedScene" uid="uid://bis5wlb7fofq6" path="res://scenes/mechanics/particles/dust_trail_particles.tscn" id="3_4a8vu"]
 [ext_resource type="AudioStream" uid="uid://c8nx4q5w1jina" path="res://assets/audio/sfx/player/footstep dirt 1.wav" id="3_46thp"]
 [ext_resource type="AudioStream" uid="uid://cwhgm4eekpkcr" path="res://assets/audio/sfx/player/footstep dirt 2.wav" id="4_6xbb8"]
 [ext_resource type="PackedScene" uid="uid://f3qnoc0iss0g" path="res://scenes/mechanics/particles/shout_particles.tscn" id="5_5s2d5"]
