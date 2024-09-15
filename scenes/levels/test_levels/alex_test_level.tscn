@@ -265,6 +265,7 @@ camera = NodePath("../Camera3D")
 [node name="Camera3D" type="Camera3D" parent="MoLevel/Player"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0.0445862, 7.40143, 4.38785)
 projection = 1
+current = true
 fov = 45.0
 size = 10.0
 
