@@ -19,8 +19,9 @@ func _ready():
 			if animal.desire.current_desire != desire_type or animal.desire.current_desire == Desire.DesireType.NONE:
 				return
 			
-			Globals.micrograme_queue.append(microgame_feed)
-			Globals.load_next_microgame()
+			if microgame_feed:
+				Globals.micrograme_queue.append(microgame_feed)
+				Globals.load_next_microgame()
 			
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
