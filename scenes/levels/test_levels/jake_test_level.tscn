@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bk8eujtb2wh7n"]
+[gd_scene load_steps=39 format=3 uid="uid://dlpw7d05pt6d0"]
 
 [ext_resource type="Script" path="res://scripts/mechanics/kill_area.gd" id="1_p3571"]
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_u5vrs"]
@@ -73,7 +73,7 @@ albedo_color = Color(0.0166667, 1, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3o4rv"]
 albedo_color = Color(0.566667, 1, 0, 1)
 
-[node name="AlexTestLevel" type="Node"]
+[node name="JakeTestLevel" type="Node"]
 
 [node name="KillArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)

@@ -1,12 +1,61 @@
-[gd_scene load_steps=9 format=3 uid="uid://70wcoikythob"]
+[gd_scene load_steps=58 format=3 uid="uid://70wcoikythob"]
 
 [ext_resource type="Texture2D" uid="uid://dhumjcc767h6x" path="res://assets/scenery/firenado_transparent.png" id="1_m2yj0"]
 [ext_resource type="Script" path="res://scripts/mechanics/tornado.gd" id="1_n5pc6"]
 [ext_resource type="PackedScene" uid="uid://bljivl64m5rcv" path="res://scenes/mechanics/desire.tscn" id="2_1u750"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="2_03n5f"]
 [ext_resource type="Curve" uid="uid://ctw5vyt686uqy" path="res://resources/animal_spawn_difficulty_curve.tres" id="2_38j44"]
+[ext_resource type="Curve3D" uid="uid://cwpnwj7jmprtv" path="res://resources/generated/tornado_curve_0.tres" id="4_6dvps"]
+[ext_resource type="Curve3D" uid="uid://dxc5tohul70ga" path="res://resources/generated/tornado_curve_1.tres" id="5_0fwoh"]
 [ext_resource type="Shader" path="res://assets/materials/animal.gdshader" id="5_30aag"]
+[ext_resource type="Curve3D" uid="uid://c21qejhqbtfqa" path="res://resources/generated/tornado_curve_2.tres" id="6_khvr2"]
 [ext_resource type="Curve3D" uid="uid://o70l0kccv8rf" path="res://resources/generated/tornado_curve_3.tres" id="7_w6ual"]
+[ext_resource type="Curve3D" uid="uid://dpq8hjyfi7ki4" path="res://resources/generated/tornado_curve_4.tres" id="8_1qmlc"]
+[ext_resource type="Curve3D" uid="uid://crx0mc6yx8rwh" path="res://resources/generated/tornado_curve_5.tres" id="9_iuedm"]
+[ext_resource type="Curve3D" uid="uid://bloh0rrlvu8la" path="res://resources/generated/tornado_curve_6.tres" id="10_toakh"]
+[ext_resource type="Curve3D" uid="uid://dq4scegs0paur" path="res://resources/generated/tornado_curve_7.tres" id="11_ixqpx"]
+[ext_resource type="Curve3D" uid="uid://cdtgu88s0ga0u" path="res://resources/generated/tornado_curve_8.tres" id="12_uvovf"]
+[ext_resource type="Curve3D" uid="uid://ckv5epkr7c1lv" path="res://resources/generated/tornado_curve_9.tres" id="13_mnkxx"]
+[ext_resource type="Curve3D" uid="uid://ct2x8fhfv37fq" path="res://resources/generated/tornado_curve_10.tres" id="14_nscxo"]
+[ext_resource type="Curve3D" uid="uid://cy1femygr7cya" path="res://resources/generated/tornado_curve_11.tres" id="15_55j6w"]
+[ext_resource type="Curve3D" uid="uid://bp1vq47yqxkr3" path="res://resources/generated/tornado_curve_12.tres" id="16_j4lvr"]
+[ext_resource type="Curve3D" uid="uid://di3y1tl1xcxvs" path="res://resources/generated/tornado_curve_13.tres" id="17_lhlrr"]
+[ext_resource type="Curve3D" uid="uid://1wdpk3dg18mv" path="res://resources/generated/tornado_curve_14.tres" id="18_1r3rj"]
+[ext_resource type="Curve3D" uid="uid://der6a44cd7kfc" path="res://resources/generated/tornado_curve_15.tres" id="19_78uyx"]
+[ext_resource type="Curve3D" uid="uid://br1nslrt1jcf6" path="res://resources/generated/tornado_curve_16.tres" id="20_cvj54"]
+[ext_resource type="Curve3D" uid="uid://51ldd1l8dper" path="res://resources/generated/tornado_curve_17.tres" id="21_6xkir"]
+[ext_resource type="Curve3D" uid="uid://dovp2yomi131m" path="res://resources/generated/tornado_curve_18.tres" id="22_envha"]
+[ext_resource type="Curve3D" uid="uid://cfmo7djecn3dn" path="res://resources/generated/tornado_curve_19.tres" id="23_vuyfb"]
+[ext_resource type="Curve3D" uid="uid://c4okvwe18ig51" path="res://resources/generated/tornado_curve_20.tres" id="24_nqchy"]
+[ext_resource type="Curve3D" uid="uid://be1jl8hjv0g7n" path="res://resources/generated/tornado_curve_21.tres" id="25_0f78n"]
+[ext_resource type="Curve3D" uid="uid://oo4g1tpj5758" path="res://resources/generated/tornado_curve_22.tres" id="26_fm406"]
+[ext_resource type="Curve3D" uid="uid://brgq8fir6tpc4" path="res://resources/generated/tornado_curve_23.tres" id="27_hgx4k"]
+[ext_resource type="Curve3D" uid="uid://du18wm5sgspy4" path="res://resources/generated/tornado_curve_24.tres" id="28_qvtac"]
+[ext_resource type="Curve3D" uid="uid://cgfp51qmg76vo" path="res://resources/generated/tornado_curve_25.tres" id="29_aplyt"]
+[ext_resource type="Curve3D" uid="uid://bsg2pgosayxk1" path="res://resources/generated/tornado_curve_26.tres" id="30_ubokv"]
+[ext_resource type="Curve3D" uid="uid://c446qs7x4b64t" path="res://resources/generated/tornado_curve_27.tres" id="31_u77tr"]
+[ext_resource type="Curve3D" uid="uid://duegoo5oxnigf" path="res://resources/generated/tornado_curve_28.tres" id="32_k6h5s"]
+[ext_resource type="Curve3D" uid="uid://j2jpjw4dlipj" path="res://resources/generated/tornado_curve_29.tres" id="33_p67xt"]
+[ext_resource type="Curve3D" uid="uid://be4ir84acrh7w" path="res://resources/generated/tornado_curve_30.tres" id="34_1nuac"]
+[ext_resource type="Curve3D" uid="uid://dbcj2rwg0yo8r" path="res://resources/generated/tornado_curve_31.tres" id="35_af27k"]
+[ext_resource type="Curve3D" uid="uid://euittjnp3gbt" path="res://resources/generated/tornado_curve_32.tres" id="36_hl836"]
+[ext_resource type="Curve3D" uid="uid://cdwnbyef2ffjg" path="res://resources/generated/tornado_curve_33.tres" id="37_dysc2"]
+[ext_resource type="Curve3D" uid="uid://b1tavdkiuk3we" path="res://resources/generated/tornado_curve_34.tres" id="38_o60bg"]
+[ext_resource type="Curve3D" uid="uid://byroh0rwuatic" path="res://resources/generated/tornado_curve_35.tres" id="39_joh37"]
+[ext_resource type="Curve3D" uid="uid://c0xrwoutwqdy6" path="res://resources/generated/tornado_curve_36.tres" id="40_f2ajf"]
+[ext_resource type="Curve3D" uid="uid://deohl1essyr6b" path="res://resources/generated/tornado_curve_37.tres" id="41_ioxtx"]
+[ext_resource type="Curve3D" uid="uid://dhfyb3kgiydi1" path="res://resources/generated/tornado_curve_38.tres" id="42_tq6s6"]
+[ext_resource type="Curve3D" uid="uid://duub3ery65alr" path="res://resources/generated/tornado_curve_39.tres" id="43_wmgj8"]
+[ext_resource type="Curve3D" uid="uid://cyq2867nyhae" path="res://resources/generated/tornado_curve_40.tres" id="44_a8ppi"]
+[ext_resource type="Curve3D" uid="uid://3fw7y7ro1mxv" path="res://resources/generated/tornado_curve_41.tres" id="45_jt6hi"]
+[ext_resource type="Curve3D" uid="uid://bj748d768utnp" path="res://resources/generated/tornado_curve_42.tres" id="46_d4tde"]
+[ext_resource type="Curve3D" uid="uid://b07tkor8bqq1e" path="res://resources/generated/tornado_curve_43.tres" id="47_awqv6"]
+[ext_resource type="Curve3D" uid="uid://hq5xh03wasbw" path="res://resources/generated/tornado_curve_44.tres" id="48_kdxua"]
+[ext_resource type="Curve3D" uid="uid://ikhmgaxu5hpx" path="res://resources/generated/tornado_curve_45.tres" id="49_hnrox"]
+[ext_resource type="Curve3D" uid="uid://dphffqyocpp8p" path="res://resources/generated/tornado_curve_46.tres" id="50_ddjxy"]
+[ext_resource type="Curve3D" uid="uid://chwxg4uw4k43m" path="res://resources/generated/tornado_curve_47.tres" id="51_pu3dt"]
+[ext_resource type="Curve3D" uid="uid://c2b8djaesie34" path="res://resources/generated/tornado_curve_48.tres" id="52_0075h"]
+[ext_resource type="Curve3D" uid="uid://b3ummapu8e3x8" path="res://resources/generated/tornado_curve_49.tres" id="53_gspoe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fsv4o"]
 resource_local_to_scene = true
@@ -20,6 +69,7 @@ shader_parameter/tex = ExtResource("1_m2yj0")
 script = ExtResource("1_n5pc6")
 animal_scene = ExtResource("2_03n5f")
 storm_difficulty_curve = ExtResource("2_38j44")
+generated_curves = Array[Curve3D]([ExtResource("4_6dvps"), ExtResource("5_0fwoh"), ExtResource("6_khvr2"), ExtResource("7_w6ual"), ExtResource("8_1qmlc"), ExtResource("9_iuedm"), ExtResource("10_toakh"), ExtResource("11_ixqpx"), ExtResource("12_uvovf"), ExtResource("13_mnkxx"), ExtResource("14_nscxo"), ExtResource("15_55j6w"), ExtResource("16_j4lvr"), ExtResource("17_lhlrr"), ExtResource("18_1r3rj"), ExtResource("19_78uyx"), ExtResource("20_cvj54"), ExtResource("21_6xkir"), ExtResource("22_envha"), ExtResource("23_vuyfb"), ExtResource("24_nqchy"), ExtResource("25_0f78n"), ExtResource("26_fm406"), ExtResource("27_hgx4k"), ExtResource("28_qvtac"), ExtResource("29_aplyt"), ExtResource("30_ubokv"), ExtResource("31_u77tr"), ExtResource("32_k6h5s"), ExtResource("33_p67xt"), ExtResource("34_1nuac"), ExtResource("35_af27k"), ExtResource("36_hl836"), ExtResource("37_dysc2"), ExtResource("38_o60bg"), ExtResource("39_joh37"), ExtResource("40_f2ajf"), ExtResource("41_ioxtx"), ExtResource("42_tq6s6"), ExtResource("43_wmgj8"), ExtResource("44_a8ppi"), ExtResource("45_jt6hi"), ExtResource("46_d4tde"), ExtResource("47_awqv6"), ExtResource("48_kdxua"), ExtResource("49_hnrox"), ExtResource("50_ddjxy"), ExtResource("51_pu3dt"), ExtResource("52_0075h"), ExtResource("53_gspoe")])
 
 [node name="Timers" type="Node" parent="."]
 
@@ -52,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405385, 0.9477, 0.00607109)
 curve = ExtResource("7_w6ual")
 
 [node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoMovePath"]
-transform = Transform3D(0.55467, 0, -0.831965, 0, 0.999933, 0, 0.832005, 0, 0.554643, -5, 0, 13)
+transform = Transform3D(0.554669, 0, -0.831964, 0, 0.999933, 0, 0.832003, 0, 0.554643, -5, 0, 13)
 tilt_enabled = false
 
 [connection signal="timeout" from="Timers/TornadoDespawnTimer" to="." method="_on_despawn_timer_timeout"]

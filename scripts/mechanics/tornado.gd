@@ -18,17 +18,15 @@ class_name Tornado
 @onready var path_follow: PathFollow3D = $TornadoMovePath/TornadoSpawnLocation
 
 var curved_num_animals_to_spawn: int = 0
-static var generated_curves: Array[String] = []
 
-
-static func _static_init() -> void:
-	# Select a random tornado path for this tornado
-	generated_curves = FileHelper.get_files_in_directory(CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR)
+@export var generated_curves: Array[Curve3D] = []
 
 
 func _ready() -> void:
 	hide()
-	setup_random_generated_curve_for_path()
+	move_path.curve = generated_curves.pick_random()
+	# Initialize the tornado in a random position on its path
+	path_follow.progress_ratio = 0
 	
 	# Determine the number of cows to spawn using the current wave number,
 	# the maximum number of cows per storm, and the difficulty curve
@@ -52,17 +50,6 @@ func _on_despawn_timer_timeout() -> void:
 ## When the animal spawn timer is triggered, throw an animal out near the tornado.
 func _on_spawn_animal_delay_timer_timeout() -> void:
 	spawn_and_throw_animal()
-
-
-## Selects a random file in `CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR` and assigns it as this tornado's movement path.
-## Also initializes the progress ratio to the start of the path. 
-func setup_random_generated_curve_for_path() -> void:
-	var generated_curve_index = randi_range(0, generated_curves.size() - 1)
-	var generated_curve_resource_path = CurveGenerator.CURVE_GENERATOR_OUTPUT_DIR + generated_curves[generated_curve_index]
-	move_path.curve = ResourceLoader.load(generated_curve_resource_path) as Curve3D
-	
-	# Initialize the tornado in a random position on its path
-	path_follow.progress_ratio = 0
 
 
 ## Spawns an animal on a parent node... and throws it.
