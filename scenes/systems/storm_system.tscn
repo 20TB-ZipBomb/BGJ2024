@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cru7nkq8vmpey"]
+[gd_scene load_steps=5 format=3 uid="uid://cru7nkq8vmpey"]
 
 [ext_resource type="Script" path="res://scripts/systems/storm_system.gd" id="1_3afom"]
-[ext_resource type="PackedScene" uid="uid://70wcoikythob" path="res://scenes/mechanics/tornado.tscn" id="3_jaeq8"]
+[ext_resource type="AudioStream" uid="uid://bab0612786awm" path="res://assets/audio/sfx/wind.wav" id="3_fknkm"]
+[ext_resource type="PackedScene" uid="uid://d1hea2kqq2qf0" path="res://scenes/mechanics/tornado.tscn" id="3_jaeq8"]
 
 [sub_resource type="Curve3D" id="Curve3D_xmgyp"]
 bake_interval = 100.0
@@ -11,9 +12,10 @@ _data = {
 }
 point_count = 5
 
-[node name="StormSystem" type="Node3D"]
+[node name="StormSystem" type="Node3D" node_paths=PackedStringArray("wind_sound")]
 script = ExtResource("1_3afom")
 tornado_scene = ExtResource("3_jaeq8")
+wind_sound = NodePath("WindAmbience")
 
 [node name="Timers" type="Node" parent="."]
 
@@ -28,5 +30,10 @@ curve = SubResource("Curve3D_xmgyp")
 [node name="TornadoSpawnLocation" type="PathFollow3D" parent="TornadoSpawnPath"]
 transform = Transform3D(-4.37092e-08, 0, 0.999897, 0, 0.999932, 0, -0.999949, 0, -4.37069e-08, 5, -0.875, -5)
 tilt_enabled = false
+
+[node name="WindAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fknkm")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="timeout" from="Timers/TornadoDelayTimer" to="." method="_on_tornado_delay_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://70wcoikythob"]
+[gd_scene load_steps=9 format=3 uid="uid://d1hea2kqq2qf0"]
 
 [ext_resource type="Texture2D" uid="uid://dhumjcc767h6x" path="res://assets/scenery/firenado_transparent.png" id="1_m2yj0"]
 [ext_resource type="Script" path="res://scripts/mechanics/tornado.gd" id="1_n5pc6"]

@@ -1,12 +1,16 @@
 extends Node
 class_name StormSystem
 
+const CALM_WIND_VOLUME = -1
+const STORM_WIND_VOLUME = 0
+
 @export_category("Storm Data")
 @export var storm_duration: float = 10.0
 @export var calm_duration: float = 10.0
 @export_category("Tornado Data")
 ## The scene used for the tornado.
 @export var tornado_scene: PackedScene = null
+@export var wind_sound: AudioStreamPlayer= null
 
 @onready var tornado_delay_timer: Timer = $Timers/TornadoDelayTimer
 
@@ -30,7 +34,7 @@ func spawn_tornado() -> void:
 ## Begins the calm period - begins the storm again after a fixed duration of time.
 func start_calm_period() -> void:
 	Log.debug("Started the calm period, it will last %d seconds" % calm_duration)
-	
+	wind_sound.volume_db = CALM_WIND_VOLUME
 	await get_tree().create_timer(calm_duration).timeout
 	start_next_wave()
 	start_storm_period()
@@ -41,7 +45,7 @@ func start_calm_period() -> void:
 func start_storm_period() -> void:
 	Log.debug("Started the storm period, it will last %d seconds" % storm_duration)
 	tornado_delay_timer.start()
-	
+	wind_sound.volume_db = STORM_WIND_VOLUME
 	await get_tree().create_timer(storm_duration).timeout
 	tornado_delay_timer.stop()
 	start_calm_period()
