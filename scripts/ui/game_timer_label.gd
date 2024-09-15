@@ -20,4 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if ticking:
-		text = 
+		var ms_elapsed: int = Globals.time_began - Time.get_ticks_msec()
+		var minutes: int = ms_elapsed / 60
+		var seconds: int = ms_elapsed % 60
+		text = str(minutes) + ":" + str(seconds)

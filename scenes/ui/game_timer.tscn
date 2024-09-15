@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://dcvdnlvfmfjyu"]
 
-[ext_resource type="Script" path="res://scripts/ui/game_timer.gd" id="1_ip4o4"]
+[ext_resource type="Script" path="res://scripts/ui/game_timer_label.gd" id="1_ip4o4"]
+
 
 [node name="GameTimer" type="Label"]
 anchors_preset = 15
