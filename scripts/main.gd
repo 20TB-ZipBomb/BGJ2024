@@ -5,13 +5,16 @@ extends Node
 
 var current_level: Node = null
 
+
 func _ready() -> void:
 	Globals.main = self
+
 
 func unload_level() -> void:
 	if is_instance_valid(current_level):
 		current_level.queue_free()
 	current_level = null
+	
 	
 func load_level(level: PackedScene) -> void:
 	unload_level()

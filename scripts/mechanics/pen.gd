@@ -1,13 +1,13 @@
 extends Area3D
 class_name PenArea
 
-static var penned_signal: Signal = Signal()
-
 ## Invisible Leash settings
 @export var min_drag_distance: float = 2
 ## Invisible Leash settings
 @export var pull_coefficient: float = 0.2
 @export var desire_type: Desire.DesireType = Desire.DesireType.NONE
+
+@onready var feedback_sound: AudioStreamPlayer = $FeedbackAudioStreamPlayer
 
 var penned_animals: Array[Animal] = []
 
@@ -23,6 +23,10 @@ func _ready():
 			penned_animals.append(animal)
 			Leash.unleash(animal)
 			animal.desire.current_desire = Desire.DesireType.NONE
-			PenArea.penned_signal.emit()
+			Globals.animal_penned_signal.emit(animal)
+			if feedback_sound:
+				feedback_sound.play()
+			else:
+				print("WARNING: Pen does not have a feedback audio stream player")
 			print("Animal penned")
 	)

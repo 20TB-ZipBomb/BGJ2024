@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dly1p06i1c1i4"]
+[gd_scene load_steps=10 format=3 uid="uid://dly1p06i1c1i4"]
 
 [ext_resource type="Texture2D" uid="uid://bqnfiiqshhhha" path="res://assets/scenery/grass_tile.png" id="1_frl62"]
 [ext_resource type="PackedScene" uid="uid://jmen0e87ma80" path="res://scenes/characters/player.tscn" id="2_t4vin"]
 [ext_resource type="PackedScene" uid="uid://d2m7e7f1ij6ss" path="res://scenes/characters/animal.tscn" id="3_rtrhu"]
-[ext_resource type="PackedScene" uid="uid://ce8i21qt6ws87" path="res://scenes/ui/shout_bar.tscn" id="4_xlgk5"]
+[ext_resource type="PackedScene" uid="uid://bccl8qiqbo8hf" path="res://scenes/ui/shout_bar.tscn" id="4_xlgk5"]
+[ext_resource type="PackedScene" uid="uid://wjbtff7etgje" path="res://scenes/ui/game_progress_bar.tscn" id="5_b2etn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1d0ar"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -91,3 +92,11 @@ offset_left = 953.0
 offset_top = 534.0
 offset_right = 953.0
 offset_bottom = 534.0
+
+[node name="ProgressBar" parent="HUD" instance=ExtResource("5_b2etn")]
+layout_mode = 1
+offset_left = 903.0
+offset_top = 430.0
+offset_right = 903.0
+offset_bottom = 430.0
+scale = Vector2(0.517161, 0.517161)
