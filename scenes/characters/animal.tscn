@@ -11,9 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://dbwhw0fntviay" path="res://assets/audio/sfx/cow/scream 3.wav" id="10_vsup7"]
 [ext_resource type="AudioStream" uid="uid://d2m2enwggvcgy" path="res://assets/audio/sfx/cow/scream 10.wav" id="11_b1qao"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wyftn"]
-radius = 0.3
-height = 1.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_c8mug"]
+size = Vector3(1, 0.9, 0.8)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76grc"]
 resource_local_to_scene = true
@@ -96,8 +95,8 @@ script = ExtResource("1_4a3xr")
 desire = NodePath("Desire")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("CapsuleShape3D_wyftn")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, -2.98023e-08)
+shape = SubResource("BoxShape3D_c8mug")
 
 [node name="Tilt" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
@@ -152,7 +151,6 @@ volume_db = -20.0
 pitch_scale = 0.2
 
 [node name="Timer" type="Timer" parent="."]
-process_callback = 0
 wait_time = 2.0
 autostart = true
 
