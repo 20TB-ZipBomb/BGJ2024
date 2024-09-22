@@ -27,6 +27,9 @@ func _ready() -> void:
 	move_path.curve = generated_curves.pick_random()
 	# Initialize the tornado in a random position on its path
 	path_follow.progress_ratio = 0
+	position = path_follow.position
+	show()
+	reset_physics_interpolation()
 	
 	# Determine the number of cows to spawn using the current wave number,
 	# the maximum number of cows per storm, and the difficulty curve
@@ -38,8 +41,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	path_follow.progress_ratio += tornado_speed * delta
 	position = path_follow.position
-	# After first update, turn the visibility on
-	visible = true
 
 
 ## When the despawn timer is triggered, remove this tornado from the level
