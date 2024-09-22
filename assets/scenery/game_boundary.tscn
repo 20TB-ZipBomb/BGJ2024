@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4gk5su0q58i5"]
+[gd_scene load_steps=6 format=3 uid="uid://d4gk5su0q58i5"]
 
 [ext_resource type="Texture2D" uid="uid://bux870uvh64bl" path="res://assets/scenery/Trees/tile_0005.png" id="1_3pss5"]
 
@@ -8,8 +8,11 @@ size = Vector3(13, 5, 70)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8we0y"]
 size = Vector3(13, 5, 70)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qc2ye"]
+size = Vector3(30, 5, 10.0493)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_67ajv"]
-size = Vector3(30, 5, 15)
+size = Vector3(30, 5, 5.70435)
 
 [node name="Boundary" type="StaticBody3D"]
 
@@ -4889,5 +4892,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4754, 1, 0)
 shape = SubResource("BoxShape3D_8we0y")
 
 [node name="Top" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.1526)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.9801)
+shape = SubResource("BoxShape3D_qc2ye")
+
+[node name="Bottom" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.178)
 shape = SubResource("BoxShape3D_67ajv")

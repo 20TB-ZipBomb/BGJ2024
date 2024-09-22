@@ -175,9 +175,9 @@ material = SubResource("StandardMaterial3D_ge7ww")
 metadata/_edit_lock_ = true
 
 [node name="InvisFloor" type="CSGBox3D" parent="MoLevel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109828, 0.161096, -0.0772705)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.109828, 0.161096, 2.29783)
 use_collision = true
-size = Vector3(30, 1.2, 42.4)
+size = Vector3(30, 1.2, 47.1502)
 material = SubResource("StandardMaterial3D_o0fwe")
 
 [node name="LevelEnvironment" type="Node3D" parent="MoLevel"]
