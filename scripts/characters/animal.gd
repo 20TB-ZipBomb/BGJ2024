@@ -49,20 +49,14 @@ func throw(throwing_position: Vector3) -> void:
 	state = State.THROWN
 	is_thrown = true
 	
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	match state:
 		State.WANDERING:
-			var _sign = ((randi() % 2) - 0.5) * 2
-			wander_vector = wander_vector.rotated(_sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * wander_speed
 		State.SCARED:
-			var _sign = ((randi() % 2) - 0.5) * 2
-			wander_vector = wander_vector.rotated(_sign * delta * 3)
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * scared_speed
 		State.THROWN:
-			var _sign = ((randi() % 2) - 0.5) * 2
-			wander_vector = wander_vector.rotated(_sign * delta * 3)
-			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * (_sign * throw_intensity)
+			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * throw_intensity
 	
 	if not is_on_floor():
 		velocity += get_gravity()
@@ -72,3 +66,6 @@ func _physics_process(delta):
 		state = State.WANDERING
 	
 	move_and_slide()
+
+func change_wander_vector() -> void:
+	wander_vector = wander_vector.rotated((randf() - 0.5) * PI)
