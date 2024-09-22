@@ -59,9 +59,11 @@ func _exit_tree():
 			leashed_characters.erase(leashed_character)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta: float) -> void:
 	look_at(end_node.global_position)
 	scale.z = global_position.distance_to(end_node.global_position)
+
+func _physics_process(_delta: float) -> void:
 	if leashed_character and global_position.distance_to(leashed_character.global_position) > min_drag_distance:
 		leashed_character.velocity = (global_position - leashed_character.global_position) * pull_coefficient
 		leashed_character.move_and_slide()
