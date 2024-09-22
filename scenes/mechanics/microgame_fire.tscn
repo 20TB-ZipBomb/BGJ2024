@@ -56,8 +56,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ckhlx"]
 _data = {
-"RESET": SubResource("Animation_umvtp"),
-"new_animation": SubResource("Animation_23ekp")
+&"new_animation": SubResource("Animation_23ekp"),
+&"RESET": SubResource("Animation_umvtp")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qdrxx"]
@@ -144,7 +144,7 @@ pitch_scale = 0.5
 unique_name_in_owner = true
 root_node = NodePath("../CowPivot")
 libraries = {
-"": SubResource("AnimationLibrary_ckhlx")
+&"": SubResource("AnimationLibrary_ckhlx")
 }
 
 [node name="CowPivot" type="Node2D" parent="."]
