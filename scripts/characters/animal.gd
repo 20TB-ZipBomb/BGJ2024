@@ -58,12 +58,11 @@ func _physics_process(delta: float) -> void:
 		State.THROWN:
 			velocity = Vector3(wander_vector.x, 0, wander_vector.y).normalized() * throw_intensity
 	
-	if not is_on_floor():
-		velocity += get_gravity()
-	
 	if is_on_floor() and is_thrown:
 		is_thrown = false
 		state = State.WANDERING
+	elif not is_on_floor():
+		velocity += get_gravity()
 	
 	move_and_slide()
 
